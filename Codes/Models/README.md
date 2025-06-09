@@ -20,6 +20,7 @@ In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ an
   - run_SVRZ_molar_model_phytotypes.sbatch: runs SVRZ_molar_model_phytotypes.py
   - run_SIVZ_molar_model_phytotypes.sbatch: runs SIVZ_molar_model_phytotypes.py
   - run_SIVRZ_molar_model_phytotypes.sbatch: runs SIVRZ_molar_model_phytotypes.py
+  - run_SIVZ_MCT.sbatch runs SIVZ_MCT.py
   - run_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sbatch: runs SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.py
   - run_analysis_optimization.sbatch: runs analysis_optimization.py
 
