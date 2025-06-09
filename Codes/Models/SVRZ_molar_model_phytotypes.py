@@ -696,6 +696,7 @@ if __name__ == '__main__':
     coex_mat=np.zeros( (len(phis),len(phi_over_phir)) ) 
     coex_mat[final_state_all>7]=1
     coex_mat=np.transpose(coex_mat)
+    coex_mat=np.flipud(coex_mat)
     draw_borders(coex_mat, 1.5, 0.05, 'white', axi)
     pp.savefig()
 
