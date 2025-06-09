@@ -11,6 +11,7 @@ import random as random
 from scipy.signal import find_peaks
 from generic_functions import *
 
+# integartion
 def dSIVZ(St, It,Vt, Zt, dt,mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epso,phiz,eps_z, dz,dz2,CC, alph):
 
     dS=dt*( (mu-d-eps*phi*Vt/Qv-St/CC)*St +epso*It-phiz*Zt*St)
@@ -19,7 +20,6 @@ def dSIVZ(St, It,Vt, Zt, dt,mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,ep
     dZ=dt*((phiz*eps_z*(St+It)-dz-dz2*Zt)*Zt)
     mZ=phiz*Zt
     if It+St>0:
-        #ps=(St/(It+St))
         pi=It/(It+St)
         mV=pi/eta
     else:
@@ -35,6 +35,7 @@ def dSIVZ(St, It,Vt, Zt, dt,mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,ep
     npp=(mu-d)*St
     return dS, dI, dV, dZ, mZ, mV, gZ, gV, npp
 
+# runge lutta 4
 def rk4_SIVZ(St, It,Vt, Zt,dt, mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epso,phiz,eps_z, dz,dz2,CC, alph):
     k1S, k1I, k1V, k1Z, m1Z, m1V, g1Z, g1V, npp1=dSIVZ(St, It,Vt, Zt,dt, mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epso,phiz,eps_z, dz,dz2,CC, alph)
     k2S, k2I, k2V, k2Z, m2Z, m2V, g2Z, g2V, npp2=dSIVZ(St+0.5*k1S, It+0.5*k1I,Vt+0.5*k1V, Zt+0.5*k1Z,dt, mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epso,phiz,eps_z, dz,dz2,CC, alph)
@@ -51,7 +52,7 @@ def rk4_SIVZ(St, It,Vt, Zt,dt, mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps
     npp=(1.0/6.0)*(npp1+2*npp2+2*npp3+npp4)
     return Stn, Itn, Vtn, Ztn, mZ, mV, gZ, gV, npp
 
-
+# simulation
 def simulation_SIVZ_rk4(mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  
                         eps,epso,phiz,eps_z, dz,dz2,CC,alph, dt, ndays, init_conditions):
     #inittial conditions
@@ -96,6 +97,7 @@ def simulation_SIVZ_rk4(mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,
         Z.append(Ztn)
     return S, I, V, Z, mZs, mVs, gZs, gVs, npps
 
+# equilibrium in the case dz2!=0 and dv2=0
 def equilibrium_SIVZ(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, epso,phiz,eps_z,dz,dz2, CC):
     g=phiz
     eta=lp
@@ -105,38 +107,12 @@ def equilibrium_SIVZ(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, epso,phiz
     S_star=(1/eta+d+g*g*eps_z/dz2*(a/T-dz))/((phi*beta)/(m*eta*Qp)+g*g*eps_z/dz2*(b/T-1))
     I_star=(a-b*S_star)/T
 
-    #for i in range(1000):
     V_star=beta*Qv*I_star/((m+phi*S_star/Qp)*eta*Qp)
-    #    C=m*V_star+phi*S_star*V_star/Qp
-    #    D=beta*Qv/(eta*Qp)
-    #    I_star=(C/D)
-    #    A=-g**2*eps_z/dz2
-    #    B=-1/eta-d+g*dz/dz2-g**2*eps_z/dz2*S_star
-    #    C=eps*phi*S_star*V_star/Qv
-    #    if A!=0:
-    #        try:
-    #            I_star=(-B-mt.sqrt(B**2-4*A*C))/(2*A)
-    #        except:
-    #            I_star=0
-    #            S_star=0
-    #            break
-    #    else:
-    #        try:
-    #            I_star=-C/B
-    #        except:
-    #            I_star=0
-    #            S_star=0
-    #            break
-
-    #    E=mu-d+g*(dz/dz2)-eps*phi*V_star/Qv-g**2*eps_z/dz2*I_star
-    #    F=1/CC+g**2*eps_z/dz2
-    #    S_star=E/F
-
     Z_star=(eps_z*g*(I_star+S_star)-dz)/dz2
     
     return S_star, I_star, V_star, Z_star
 
-
+# equilibrium in the case dz2!=0 and dv2!=0
 def equilibrium_SIVZ_m2(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,  eps, epso,phiz,eps_z,dz,dz2, CC, n_update):
     # first approximation
     g=phiz
@@ -205,12 +181,6 @@ def equilibrium_SIVZ_m2(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,  eps, epso,phiz
         D=((g**2)*eps_z/dz2)/denom
         E=-d-1/lp+g*dz/dz2
         F=eps*phi*phi/(Qv*Qp*2*m2)
-
-        #a=-eps_z*g*g/dz2*(1-D)+(D**2)*phi*phi/(Qv*Qp*2*m2)
-        #b=eps_z*g*g*B/dz2-D*phi/Qv*mt.sqrt(A)+2*D*B*phi*phi/(Qv*Qp*2*m2)
-        #c=-phi/Qv*B*mt.sqrt(A)+E-C*eps_z*g**2/dz2+phi*phi/(Qv*Qp*2*m2)*(B**2)-2*D*C*phi*phi/(Qv*Qp*2*m2)
-        #d1=phi/Qv*C*mt.sqrt(A)-phi*phi/(Qv*Qp*2*m2)*2*C*B
-        #e=(phi**2)*(C**2)/(Qv*Qp*2*m2)
         
         a=-eps_z*g*g/dz2*(1-D)+(D**2)*phi*phi/(Qv*Qp*2*m2)
         b=eps_z*g*g*B/dz2-D*phi/Qv*mt.sqrt(A)-2*D*B*F
@@ -231,7 +201,7 @@ def equilibrium_SIVZ_m2(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,  eps, epso,phiz
         if I_star_sqrt>=0:
             I_star=pow(I_star_sqrt,2)
             S_star=C-B*mt.sqrt(I_star)-D*I_star
-            V_star=mt.sqrt((m+phi*S_star/Qp)**2+4*m2*beta*Qv/(lp*Qp)*I_star)/(2*m2)-m/(2*m2)-phi*S_star/(Qp*2*m2) #mt.sqrt(beta*Qv/(lp*m2*Qp))*mt.sqrt(I_star)-m/(2*m2)-phi*S_star/(Qp*2*m2)
+            V_star=mt.sqrt((m+phi*S_star/Qp)**2+4*m2*beta*Qv/(lp*Qp)*I_star)/(2*m2)-m/(2*m2)-phi*S_star/(Qp*2*m2) 
             Z_star=(eps_z*g*(I_star+S_star)-dz)/dz2
         else:
             I_star=0
@@ -256,134 +226,7 @@ def equilibrium_SIVZ_m2(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,  eps, epso,phiz
 
     return S_star, I_star, V_star, Z_star, case
 
-
-#def equilibrium_m2(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,  eps, epso,phiz,eps_z,dz,dz2, CC):
-#    g=phiz
-
-    # decide which approximation
-#    g=phiz
-#    a0=mu-d+eps_z*g*(dz/dz2)+beta*phi/Qp*(m/m2)
-#    b0=1/CC+g*g*eps_z/dz2+beta*phi*phi*eps/(Qp*m2*Qv)
-#    S_star_SVZ=a0/b0
-#    V_star_SVZ=(beta*phi/Qp*S_star_SVZ-m)/m2
-
-#    a1=g*dz/dz2-g*g*eps_z/dz2
-#    b1=-d-1/lp-(g**2)*eps_z*S_star_SVZ/dz2
-#    c1=phi*S_star_SVZ*V_star_SVZ/Qv
-
-#    try:
-#        if a1!=0:
-#            I_star0=(-b1-mt.sqrt(b1**2-4*a1*c1))/(2*a1)
-#        else:
-#            I_star0=-c1/b1
-#    except:
-#        I_star0=0
-##
-#    v1=(m+phi*S_star_SVZ/Qp)**2
-#    v2=4*beta*Qv*m2*I_star0/(lp*Qp)
-#
-#    KC=CC*mu
-#    if ((v2>5*v1) and I_star0>0) or (phi*KC/Qp<10*d and I_star0>0): #or phi/Qp<0.5:
-#        case=1
-#    else:
-#        case=2
-#    print(case)
-    #if lp==10:
-    #    print(phi)
-    #    print(case)
-#    if case==1 and I_star0>0:
-#        A=beta*Qv/(lp*Qp*m2)
-#
-        #if phi/Qp<0.5:
-        #    denom=1/CC+g*g*eps_z/dz2-phi**2/(Qv*Qp*2*m2) 
-        #else:
-#        denom=1/CC+g*g*eps_z/dz2
-
-#        B=(phi/Qv*mt.sqrt(A))/denom
-#        C=(mu-d+g*dz/dz2)/denom
-#        D=((g**2)*eps_z/dz2)/denom
-#        E=-d-1/lp+g*dz/dz2
-
-#        a=-eps_z*g*g/dz2*(1-D)+(D**2)*phi*phi/(Qv*Qp*2*m2)
-#        b=eps_z*g*g*B/dz2-D*phi/Qv*mt.sqrt(A)+2*D*B*phi*phi/(Qv*Qp*2*m2)
-#        c=-phi/Qv*B*mt.sqrt(A)+E-C*eps_z*g**2/dz2+phi*phi/(Qv*Qp*2*m2)*(B**2)-2*D*C*phi*phi/(Qv*Qp*2*m2)
-#        d1=phi/Qv*C*mt.sqrt(A)-phi*phi/(Qv*Qp*2*m2)*2*C*B
-#        e=(phi**2)*(C**2)/(Qv*Qp*2*m2)
-
-#        try:
-#            roots=np.roots([a,b,c,d1,e])
-#           I_star_sqrt=(-d1-mt.sqrt(d1**2-4*c*e))/(2*c)
-#            I_star_sqrt=0
-#            for r in roots:
-#                if r.real>0 and r.real<CC*mu:
-#                    I_star_sqrt=r.real
-#        except:
-#            I_star_sqrt=0
-#        if I_star_sqrt>=0:
-#            I_star=pow(I_star_sqrt,2)
-#            S_star=C-B*mt.sqrt(I_star)-D*I_star
-#            V_star=mt.sqrt((m+phi*S_star/Qp)**2+4*m2*beta*Qv/(lp*Qp)*I_star)/(2*m2)-m/(2*m2)-phi*S_star/(Qp*2*m2) #mt.sqrt(beta*Qv/(lp*m2*Qp))*mt.sqrt(I_star)-m/(2*m2)-phi*S_star/(Qp*2*m2)
-#            Z_star=(eps_z*g*(I_star+S_star)-dz)/dz2
-#        else:
-#            I_star=0
-#            S_star=0
-#            V_star=0
-#            Z_star=0
-#    elif case==1 and I_star0<0:
-#        I_star=0
-#        S_star=0
-#        V_star=0
-#        Z_star=0
-#    elif case==2 and lp<=10:
-#        S_star=S_star_SVZ
-#        I_star=I_star0
-#        V_star=V_star_SVZ
-#        Z_star=(eps_z*g*(I_star+S_star)-dz)/dz2
-#    elif case==2 and lp>10:
-#        S_star=np.nan
-#        I_star=np.nan
-#        V_star=np.nan
-#        Z_star=np.nan
-
-#    return S_star, I_star, V_star, Z_star, case
-
-#def equilibrium_m2(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,  eps, epso,phiz,eps_z,dz,dz2, CC):
-#    g=phiz
-#    A=beta*Qv/(lp*Qp*m2)
-#    denom=1/CC+g*g*eps_z/dz2-phi**2/(Qv*Qp*2*m2)
-    
-#    B=(phi/Qv*mt.sqrt(A))/denom
-#    C=(mu-d+g*dz/dz2)/denom
-#    D=((g**2)*eps_z/dz2)/denom
-#    E=-d-1/lp+g*dz/dz2
-
-#    a=-eps_z*g*g/dz2*(1-D)+(D**2)*phi*phi/(Qv*Qp*2*m2)
-#    b=eps_z*g*g*B/dz2-D*phi/Qv*mt.sqrt(A)+2*D*B*phi*phi/(Qv*Qp*2*m2)
-#    c=-phi/Qv*B*mt.sqrt(A)+E-C*eps_z*g**2/dz2+phi*phi/(Qv*Qp*2*m2)*(B**2)-2*D*C*phi*phi/(Qv*Qp*2*m2)
-#    d1=phi/Qv*C*mt.sqrt(A)-phi*phi/(Qv*Qp*2*m2)*2*C*B
-#    e=(phi**2)*(C**2)/(Qv*Qp*2*m2)
-
-#    try:
-#        roots=np.roots([a,b,c,d1,e])
-#        #I_star_sqrt=(-d1-mt.sqrt(d1**2-4*c*e))/(2*c)
-#        I_star_sqrt=0
-#        for r in roots:
-#            if r.real>0 and r.real<CC:
-#                I_star_sqrt=r.real
-#    except:
-#        I_star_sqrt=0
-#    if I_star_sqrt>=0:
-#        I_star=pow(I_star_sqrt,2)
-#        S_star=C-B*mt.sqrt(I_star)-D*I_star
-#        V_star=mt.sqrt(beta*Qv/(lp*m2*Qp))*mt.sqrt(I_star)-m/(2*m2)-phi*S_star/(Qp*2*m2)
-#        Z_star=(eps_z*g*(I_star+S_star)-dz)/dz2
-#    else:
-#        I_star=0
-#        S_star=0
-#        V_star=0
-#        Z_star=0
-#    return S_star, I_star, V_star, Z_star
-
+# theoretical equilibrium in the case dz2!=0 and dv2=0 and alpha=0
 def equilibrium_SIVZ_alpha(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, epso,phiz,eps_z,dz,dz2, CC, alpha):
     g=phiz
     eta=lp
@@ -399,6 +242,7 @@ def equilibrium_SIVZ_alpha(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, eps
     Z_star=(eps_z*g*(alpha*I_star+S_star)-dz)/dz2
     return S_star, I_star, V_star, Z_star
 
+# theoretical equilibrium in the case dz2!=0 and dv2=0 and loss of infection !=0 (not included in the paper)
 def equilibrium_SIVZ_LOI(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, epso,phiz,eps_z,dz,dz2, CC, eff):
     g=phiz
     gamma=float(eff)
@@ -407,7 +251,6 @@ def equilibrium_SIVZ_LOI(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, epso,
     a=1/eta+d+gamma-g*dz/dz2
     b=g*g*eps_z/dz2
     T=(beta*phi)/(m*eta*Qp)-g*g*eps_z/dz2
-    #print((a+b*I[len(I)-1])/T)
 
     if T>0:
         c=mu-d+g*dz/dz2
@@ -425,12 +268,6 @@ def equilibrium_SIVZ_LOI(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, epso,
             V_star_ap=beta*Qv*I_star/(m*eta*Qp)
             V_star=beta*Qv*I_star/(eta*Qp)/(m+phi*S_star/Qp)
             Z_star=(eps_z*g*(I_star+S_star)-dz)/dz2
-            #if V_star>0 and Z_star>0:
-            #    theor_surv_phi.append(i)
-            #    theor_surv_lp.append(len(lps)-j-1)
-            #     if V_star>0 and Z_star>0 and V_star>0:
-            #            theor_surv_phi_10.append(i)
-            #            theor_surv_lp_10.append(len(lps)-j-1)
         else:
             I_star =0
             S_star =0
@@ -443,7 +280,7 @@ def equilibrium_SIVZ_LOI(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, epso,
         Z_star=0
     return S_star, I_star, V_star, Z_star
 
-
+# theoretical equilibrium in the case dz2!=0 and dv2=0 and loss of infection !=0 and alpha!=0 (not included in the paper)
 def equilibrium_SIVZ_LOI_alpha(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, epso,phiz,eps_z,dz,dz2, CC, eff, alpha):
    gamma=float(eff)
    eta=lp
@@ -468,8 +305,6 @@ def equilibrium_SIVZ_LOI_alpha(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,
            V_star_ap=beta*Qv*I_star/(m*eta*Qp)
            V_star=beta*Qv*I_star/(eta*Qp)/(m+phi*S_star/Qp)
            Z_star=(eps_z*g*(alpha*I_star+S_star)-dz)/dz2
-           #             if V_star>0 and Z_star>0:
-           #                 final_Surv_alpha[l][i,j]=1
        else:
            I_star = -C/B
            S_star = a/T
@@ -483,7 +318,7 @@ def equilibrium_SIVZ_LOI_alpha(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,
        Z_star=0
    return S_star, I_star, V_star, Z_star
 
-
+# check stable state in the case dz2!=0 and dv2!=0 (m2 in the code)
 def check_stable_states_SIVZ_m2(mu, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epso,phiz,eps_z, dz,dz2,CC, n_state):
     epsilon=0
     lp=eta
@@ -527,8 +362,6 @@ def check_stable_states_SIVZ_m2(mu, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,eps
 
     # S, 0,0,0
     S_star=(mu-d)*CC
-    #if S_star<Qp:
-    #    print('erreur')
     Z_star=epsilon
     I_star=epsilon
     V_star=epsilon
@@ -567,6 +400,7 @@ def check_stable_states_SIVZ_m2(mu, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,eps
 
     return a_stable, o_stable,f_stable,init_conditions
 
+# check stable state in the case dz2!=0 and dv2=0 (m2 in the code)
 def check_stable_states_SIVZ(mu, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epso,phiz,eps_z, dz,dz2,CC, n_state):
     possible_init_values=[]
     mui=0
@@ -574,14 +408,6 @@ def check_stable_states_SIVZ(mu, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epso,p
     if epso==0:
         # full coexistance S, I, V, Z
         g=phiz
-        #a=mu-d+g*(dz/dz2)
-        #b=1/CC+g*g*eps_z/dz2
-        #T=(phi*beta)/(m*eta*Qp)+g*g*eps_z/dz2
-        #S_star=(1/eta+d+g*g*eps_z/dz2*(a/T-dz))/((phi*beta)/(m*eta*Qp)+g*g*eps_z/dz2*(b/T-1))
-        #I_star=(a-b*S_star)/T
-        #V_star_ap=beta*Qv*I_star/(m*eta*Qp)
-        #V_star=beta*Qv*I_star/(eta*Qp)/(m+phi*S_star/Qp)
-        #Z_star=(eps_z*phiz*(I_star+S_star)-dz)/dz2
         ast=np.nan
         ost=np.nan
         fst=np.nan
@@ -593,11 +419,6 @@ def check_stable_states_SIVZ(mu, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epso,p
         possible_init_values.append([S_star, I_star, V_star, Z_star])
 
         # S, I, V, 0
-        #S_star0=(d+1/eta)/(phi*beta/(m*eta*Qp))
-        #I_star0=(mu-d-S_star0/CC)/(phi*beta/(m*eta*Qp))
-        #V_star_ap=beta*Qv*I_star0/(m*eta*Qp)
-        #V_star0=beta*Qv*I_star0/(eta*Qp)/(m+phi*S_star0/Qp)
-        #Z_star0=epsilon
         ast1=np.nan
         ost1=np.nan
         fst1=np.nan
@@ -616,7 +437,6 @@ def check_stable_states_SIVZ(mu, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epso,p
         a=1/eta+d+gamma-g*dz/dz2
         b=g*g*eps_z/dz2
         T=(beta*phi)/(m*eta*Qp)-g*g*eps_z/dz2
-        #print((a+b*I[len(I)-1])/T)
         ast=np.nan
         ost=np.nan
         fst=np.nan
@@ -684,8 +504,6 @@ def check_stable_states_SIVZ(mu, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epso,p
 
     # S, 0,0,0
     S_star=(mu-d)*CC
-    #if S_star<Qp:
-    #    print('erreur')
     Z_star=epsilon
     I_star=epsilon
     V_star=epsilon
@@ -724,6 +542,7 @@ def check_stable_states_SIVZ(mu, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epso,p
 
     return a_stable, o_stable,f_stable,init_conditions
 
+# time series plot 1
 def make_1_plot_SIVZ(S, I, V, Z,i1,i2, title,dt, pp, Qp, Qv, Qz, plot_peaks):
     plt.rcParams['lines.linewidth'] = 3
     #time step in day
@@ -731,13 +550,11 @@ def make_1_plot_SIVZ(S, I, V, Z,i1,i2, title,dt, pp, Qp, Qv, Qz, plot_peaks):
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
     plt.plot(np.array(time_sim)*dt, np.array(I[i1:i2])/Qp, color='#ff7f0e')
-    #plt.plot(np.array(time_sim)*dt, R[0:len(R)-1])
     plt.plot(np.array(time_sim)*dt, np.array(V[i1:i2])/Qv, color='#1f77b4')
     plt.plot(np.array(time_sim)*dt, np.array(Z[i1:i2])/Qz, color='red')
     plt.xlabel('Days')
     plt.ylabel('Concentration (ind.L-1)')
     bottom, top = plt.ylim()
-    #plt.ylim((0,top))
     plt.yscale('log')
     leg_vec=['Susceptible', 'Infected', 'Virus', 'Zooplankton']
     plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
@@ -753,7 +570,7 @@ def make_1_plot_SIVZ(S, I, V, Z,i1,i2, title,dt, pp, Qp, Qv, Qz, plot_peaks):
         plt.axvline(x=Z_peak_l*dt+time_sim[0]*dt, color='red', linestyle='-', linewidth=1)
     pp.savefig()
 
-
+# time series plot 2
 def make_plots_SIVZ(S, I, V, Z,i1,i2, title,dt, pp, Qp, Qv, Qz):
     plt.rcParams['lines.linewidth'] = 3
     #time step in day
@@ -767,7 +584,6 @@ def make_plots_SIVZ(S, I, V, Z,i1,i2, title,dt, pp, Qp, Qv, Qz):
     plt.xlabel('Days')
     plt.ylabel('Concentration (umolN.L-1)')
     bottom, top = plt.ylim()
-    #plt.ylim((0,top))
     plt.ylim((1e-7,0.5))
     plt.yscale('log')
     leg_vec=['Susceptible', 'Infected', 'Virus', 'Zooplankton']
@@ -780,13 +596,11 @@ def make_plots_SIVZ(S, I, V, Z,i1,i2, title,dt, pp, Qp, Qv, Qz):
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
     plt.plot(np.array(time_sim)*dt, np.array(I[i1:i2])/Qp, color='#ff7f0e')
-    #plt.plot(np.array(time_sim)*dt, R[0:len(R)-1])
     plt.plot(np.array(time_sim)*dt, np.array(V[i1:i2])/Qv, color='#1f77b4')
     plt.plot(np.array(time_sim)*dt, np.array(Z[i1:i2])/Qz, color='red')
     plt.xlabel('Days')
     plt.ylabel('Concentration (ind.L-1)')
     bottom, top = plt.ylim()
-    #plt.ylim((0,top))
     plt.yscale('log')
     leg_vec=['Susceptible', 'Infected', 'Virus', 'Zooplankton']
     plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
@@ -797,17 +611,15 @@ def make_plots_SIVZ(S, I, V, Z,i1,i2, title,dt, pp, Qp, Qv, Qz):
 
     fig, ax = plt.subplots(figsize=(4,4))
     mxs=np.array([np.max(np.array(S[i1:i2])/Qp), np.max(np.array(I[i1:i2])/Qp), np.max(np.array(V[i1:i2])/Qv), np.max(np.array(Z[i1:i2])/Qz)])
-    #maxi=10*np.max(mxs)
     plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
     plt.plot(np.array(time_sim)*dt, np.array(I[i1:i2])/Qp, color='#ff7f0e')
-    #plt.plot(np.array(time_sim)*dt, R[0:len(R)-1])
     plt.plot(np.array(time_sim)*dt, np.array(V[i1:i2])/Qv, color='#1f77b4')
     plt.plot(np.array(time_sim)*dt, np.array(Z[i1:i2])/Qz, color='red')
     plt.xlabel('Days')
     plt.ylabel('Concentration (ind.L-1)')
     plt.yscale('log')
     bottom, top = plt.ylim()
-    mini=1e-1#max([bottom, 1e-3])
+    mini=1e-1
     maxi=2e10
     plt.ylim((mini,maxi))
     leg_vec=['Susceptible', 'Infected', 'Virus', 'Zooplankton']
@@ -820,7 +632,6 @@ def make_plots_SIVZ(S, I, V, Z,i1,i2, title,dt, pp, Qp, Qv, Qz):
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
     plt.plot(np.array(time_sim)*dt, np.array(I[i1:i2])/Qp, color='#ff7f0e')
-    #plt.plot(np.array(time_sim)*dt, R[0:len(R)-1])
     plt.plot(np.array(time_sim)*dt, np.array(V[i1:i2])/Qv, color='#1f77b4')
     plt.plot(np.array(time_sim)*dt, np.array(Z[i1:i2])/Qz, color='red')
     plt.xlabel('Days')
@@ -854,93 +665,7 @@ def make_plots_SIVZ(S, I, V, Z,i1,i2, title,dt, pp, Qp, Qv, Qz):
     plt.yticks(fontsize=14)
     pp.savefig()
 
-#    fig, ax = plt.subplots(figsize=(4,4))
-#    plt.plot(np.array(time_sim)*dt, S[i1:i2], color='#2ca02c')
-#    plt.xlabel('Days')
-#    plt.ylabel('Concentration (umolN.L-1)')
-#    bottom, top = plt.ylim()
-#    plt.ylim((0,top))
-#    leg_vec=['Susceptible']
-#    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-#    plt.title(title)
-#    plt.xticks(fontsize=14)
-#    plt.yticks(fontsize=14)
-#    pp.savefig()
-
-#    fig, ax = plt.subplots(figsize=(4,4))
-#    plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
-#    #plt.plot(np.array(time_sim)*dt, np.array(V[0:len(V)-1])/Qv, color='red')
-#    plt.xlabel('Days')
-#    plt.ylabel('Concentration (ind.L-1)')
-#    bottom, top = plt.ylim()
-#    #plt.ylim((0,top))
-#    plt.yscale('log')
-#    leg_vec=['Susceptible']
-#    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-#    plt.title(title)
-#    plt.xticks(fontsize=14)
-#    plt.yticks(fontsize=14)
-#    pp.savefig()
-
-#    fig, ax = plt.subplots(figsize=(4,4))
-#    plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
-#    plt.plot(np.array(time_sim)*dt, np.array(I[i1:i2])/Qp, color='#ff7f0e')
-    #plt.plot(np.array(time_sim)*dt, np.array(R[0:len(R)-1])/Qp)
-    #plt.plot(np.array(time_sim)*dt, np.array(V[0:len(V)-1])/Qv, color='red')
-#    plt.xlabel('Days')
-#    plt.ylabel('Concentration (ind.L-1)')
-#    bottom, top = plt.ylim()
-    #plt.ylim((0,top))
-#    plt.yscale('log')
-#    leg_vec=['Susceptible', 'Infected']
-#    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-#    plt.title(title)
-#    plt.xticks(fontsize=14)
-#    plt.yticks(fontsize=14)
-#    pp.savefig()
-
-#    fig, ax = plt.subplots(figsize=(4,4))
-#    plt.plot(np.array(time_sim)*dt, Z[i1:i2], color='red')
-#    plt.xlabel('Days')
-#    plt.ylabel('Concentration (umolN.L-1)')
-#    bottom, top = plt.ylim()
-#    plt.ylim((0,top))
-#    leg_vec=['Zooplankton']
-#    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-#    plt.title(title)
-#    plt.xticks(fontsize=14)
-#    plt.yticks(fontsize=14)
-#    pp.savefig()
-
-#    fig, ax = plt.subplots(figsize=(4,4))
-#    plt.plot(np.array(time_sim)*dt, np.array(Z[i1:i2])/Qz, color='red')
-#    plt.xlabel('Days')
-#    plt.ylabel('Concentration (ind.L-1)')
-#    bottom, top = plt.ylim()
-    #plt.ylim((0,top))
-#    plt.yscale('log')
-#    leg_vec=['Zooplankton']
-#    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-#    plt.title(title)
-#    plt.xticks(fontsize=14)
-#    plt.yticks(fontsize=14)
-#    pp.savefig()
-
-#    fig, ax = plt.subplots(figsize=(4,4))
-#    plt.plot(np.array(time_sim)*dt, np.array(V[i1:i2])/Qv, color='#1f77b4')
-#    plt.xlabel('Days')
-#    plt.ylabel('Concentration (ind.L-1)')
-#    leg_vec=[ 'Virus']
-#    bottom, top = plt.ylim()
-#    #plt.ylim((0,top))
-#    plt.yscale('log')
-#    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-#    plt.title(title)
-#    plt.xticks(fontsize=14)
-#    plt.yticks(fontsize=14)
-#    pp.savefig()
-
-
+# jacobian of the SIVZ model
 def Jacobian_SIVZ(mu, eta, beta, phi, d, m,m2, Qv, Qp,  eps,
                        epso,phiz,eps_z, dz,dz2,CC, Ss, Is, Vs, Zs):
     Jac=np.array([[mu-d-phi*Vs/Qv-phiz*Zs-2*Ss/CC, epso, -phi*Ss/Qv,-phiz*Ss] ,
@@ -950,37 +675,17 @@ def Jacobian_SIVZ(mu, eta, beta, phi, d, m,m2, Qv, Qp,  eps,
     eigs=np.linalg.eig(Jac)
     return(eigs)
 
-def Jacob_SIV(mu, eta, beta, phi, d, m,m2, Qv, Qp,  eps,
-                       epso,phiz,eps_z, dz,dz2,CC, Ss, Is, Vs, Zs):
-    Jac=np.array([[mu-d-phi*Vs/Qv-phiz*Zs-2*Ss/CC, epso, -phi*Ss/Qv] ,
-              [phi*Vs/Qv, -1/eta-d-phiz*Zs-epso, phi*Ss/Qv],
-              [-phi*Vs/Qp, beta*Qv/(eta*Qp), -phi*Ss/Qp-m-2*m2*Vs]])
-    eigs, e_vec=np.linalg.eig(Jac)
-    eigs=[ei.real for ei in eigs]
-    gr=max(eigs)#np.where(np.absolute(eigs)==np.max(np.absolute(eigs)))
-    #gr=eigs[gr[0][0]]
-    return(gr)
 
-             
+
+# jacobian of the IV subsystem (growth rate of the virus)             
 def Jacob_IV(Qv,Qp, eta, d,m, m2,phiz, epso, beta, phi,Vs, Zs, Is, Ss):
     J=[[ (-1/eta-d-phiz*Zs-epso), phi*Ss/Qv],[beta*Qv/(eta*Qp), -phi*Ss/Qp-m-2*m2*Vs]]
     eigs, e_vec=np.linalg.eig(J)
     eigs=[ei.real for ei in eigs]
-    gr=max(eigs)#np.where(np.absolute(eigs)==np.max(np.absolute(eigs)))
-    #gr=eigs[gr[0][0]]
+    gr=max(eigs)
     return gr
-def gr_IV(Qv,Qp, eta, d,m,m2, phiz, epso, beta, phi,Vs, Zs, Is,Ss, tinv):
-    Iv=Is*Qv/Qp
-    if tinv=='zoop':
-        #grate=(1/(Iv+Vs))*(Qv/Qp)*(1/eta*(beta-1)*Is-d*Is-phiz*Zs*Is-(Qp/Qv)*m*Vs)
-        if (Iv+Vs)>0:
-            grate=(1/(Is+Vs))*(phi*Ss/Qv-Is/eta+beta*Is*Qp/Qv-d*Is-m*Vs-m2*Vs*Vs-phiz*Zs*Is-phi*Ss*Vs/Qp)
-        else:
-            grate=phi*Ss/Qv-phiz*Zs-d-m-phi*Ss/Qp
-    else:
-        grate=phi*Ss/Qv-phiz*Zs-d-m-phi*Ss/Qp
-    return grate
 
+# calculate effects of Modern Coexistence Theory form Ellner et al 2019
 def MCT_coexistence_effects_IS_on_VZ(S_aX, I_aX,Z_aX,V_aX, S_c_aX, I_c_aX, i1, i2,mu,eps, epso, ds,phiz, eps_z, dz,dz2, m,m2, phi, Qp,Qv, beta, lat_per,alph,CC, tinv):
     gZ_aX=[]
     gZ0_aX=[]
@@ -994,23 +699,7 @@ def MCT_coexistence_effects_IS_on_VZ(S_aX, I_aX,Z_aX,V_aX, S_c_aX, I_c_aX, i1, i
     gV0_cI_aX=[]
     gV0_ncovIS_aX=[]
     nsteps=len(S_aX)
-    #res=find_peaks(S_aX)
-    #res=res[0]
-    #if len(res)>1:
-    #    p1=res[0]
-    #    p2=res[1]
-    #    print('peaks found:')
-    #    print(p1)
-    #    print(p2)
-    #    print(S_aX[p1])
-    #    print(S_aX[p2])
-    #else:
-    #    p1=0
-    #    p2=len(S_aX)
-    #S_c_aX=np.mean(S_aX[p1:p2])
-    #I_c_aX=np.mean(I_aX[p1:p2])
     for t in range(nsteps):
-    #for t in range(i2-i1):
         t_rand=random.randint(0 , nsteps-1)
         if tinv=='zoop':
             gZ_aX.append(phiz*eps_z*(S_aX[t]+alph*I_aX[t])-dz)
@@ -1026,46 +715,21 @@ def MCT_coexistence_effects_IS_on_VZ(S_aX, I_aX,Z_aX,V_aX, S_c_aX, I_c_aX, i1, i
             gZ0_ncovIS_aX.append(phiz*eps_z*(S_aX[t]+alph*I_aX[t_rand])-dz-dz2*Z_aX[t])
         
         gr_aX=Jacob_IV(Qv,Qp, lat_per, ds,m,m2, phiz, epso,beta,phi, V_aX[t], Z_aX[t], I_aX[t], S_aX[t])
-        #gr_aX=gr_IV(Qv,Qp, lat_per, ds,m,m2, epso, phiz, beta, phi,V_aX[t], Z_aX[t], I_aX[t], S_aX[t], tinv)
-        #gr_aX=Jacob_SIV(mu,  lat_per,beta, phi, ds, m,m2, Qv, Qp,  eps,epso,phiz,eps_z, dz,dz2,CC, S_aX[t], I_aX[t], V_aX[t], Z_aX[t])
         gV_aX.append(gr_aX)
         
         gr0_aX=Jacob_IV(Qv,Qp, lat_per, ds,m,m2,  phiz, epso,beta,phi, V_aX[t], Z_aX[t], I_c_aX, S_c_aX)
-        #gr0_aX=gr_IV(Qv,Qp, lat_per, ds,m,m2, epso, phiz, beta, phi,V_aX[t], Z_aX[t], I_c_aX, S_c_aX, tinv)
-        #gr0_aX=Jacob_SIV(mu,  lat_per, beta,phi, ds, m,m2, Qv, Qp,  eps,epso,phiz,eps_z, dz,dz2,CC, S_c_aX, I_c_aX, V_aX[t], Z_aX[t])
         gV0_aX.append(gr0_aX)
 
         gr0_cS_aX=Jacob_IV(Qv,Qp, lat_per, ds,m,m2,  phiz, epso,beta,phi, V_aX[t], Z_aX[t], I_aX[t], S_c_aX)
-        #gr0_cS_aX=gr_IV(Qv,Qp, lat_per, ds,m,m2, epso, phiz, beta, phi,V_aX[t], Z_aX[t], I_aX[t], S_c_aX, tinv)
-        #gr0_cS_aX=Jacob_SIV(mu,  lat_per,beta, phi, ds, m,m2, Qv, Qp,  eps,epso,phiz,eps_z, dz,dz2,CC, S_c_aX, I_aX[t], V_aX[t], Z_aX[t])
         gV0_cS_aX.append(gr0_cS_aX)
 
         gr0_cI_aX=Jacob_IV(Qv,Qp, lat_per, ds,m,m2,  phiz, epso,beta, phi,V_aX[t], Z_aX[t], I_c_aX, S_aX[t])
-        #gr0_cI_aX=gr_IV(Qv,Qp, lat_per, ds,m,m2, epso, phiz, beta, phi,V_aX[t], Z_aX[t], I_c_aX, S_aX[t], tinv)
-        #gr0_cI_aX=Jacob_SIV(mu, lat_per,beta, phi, ds, m,m2, Qv, Qp,  eps,epso,phiz,eps_z, dz,dz2,CC, S_aX[t], I_c_aX, V_aX[t], Z_aX[t])
         gV0_cI_aX.append(gr0_cI_aX)
         
         gr0_ncovIS_aX=Jacob_IV(Qv,Qp, lat_per, ds,m,m2, phiz,epso, beta, phi,V_aX[t], Z_aX[t], I_aX[t], S_aX[t_rand])
-        #gr0_ncovIS_aX=gr_IV(Qv,Qp, lat_per, ds,m,m2, epso, phiz, beta, phi,V_aX[t], Z_aX[t], I_aX[t], S_aX[t_rand], tinv)
-        #gr0_ncovIS_aX=Jacob_SIV(mu, lat_per,beta, phi, ds, m,m2, Qv, Qp,  eps,epso,phiz,eps_z, dz,dz2,CC, S_aX[t_rand], I_aX[t], V_aX[t], Z_aX[t])
         gV0_ncovIS_aX.append(gr0_ncovIS_aX)
-
-        #if tinv=='zoop':
-        #    gV_aX.append(beta*Qv/(lat_per*Qp)*I_aX[t]/V_aX[t]-(m+phi*S_aX[t]*1/Qp))
-        #    gV0_aX.append(beta*Qv/(lat_per*Qp)*I_c_aX/V_aX[t]-(m+phi*S_c_aX*1/Qp))
-        #    gV0_cS_aX.append(beta*Qv/(lat_per*Qp)*I_aX[t]/V_aX[t]-(m+phi*S_c_aX*1/Qp))
-        #    gV0_cI_aX.append(beta*Qv/(lat_per*Qp)*I_c_aX/V_aX[t]-(m+phi*S_aX[t]*1/Qp))
-        #    gV0_ncovIS_aX.append(beta*Qv/(lat_per*Qp)*I_aX[t]/V_aX[t]-(m+phi*S_aX[t_rand]*1/Qp))
-        #else:
-        #    gV_aX.append(-(m+phi*S_aX[t]*1/Qp))
-        #    gV0_aX.append(-(m+phi*S_c_aX*1/Qp))
-        #    gV0_cS_aX.append(-(m+phi*S_c_aX*1/Qp))
-        #    gV0_cI_aX.append(-(m+phi*S_aX[t]*1/Qp))
-        #    gV0_ncovIS_aX.append(-(m+phi*S_aX[t_rand]*1/Qp))
-    #if S_c_aX/Qp > 1:
-    #if surv_S==1:
+        
     epsZ_0_aX=np.mean(gZ0_aX)
-    #print(epsZ_0_aX)
     epsZ_S_aX=np.mean(gZ0_cI_aX)-epsZ_0_aX
     epsZ_I_aX=np.mean(gZ0_cS_aX)-epsZ_0_aX
     epsZ_IS_aX= np.mean(gZ_aX)-(epsZ_0_aX+epsZ_S_aX+epsZ_I_aX)
@@ -1073,21 +737,17 @@ def MCT_coexistence_effects_IS_on_VZ(S_aX, I_aX,Z_aX,V_aX, S_c_aX, I_c_aX, i1, i
     epsZ_covIS_aX=epsZ_IS_aX-epsZ_icovIS_aX
 
     epsV_0_aX=np.mean(gV0_aX)
-    #print(epsV_0_aX)
     epsV_S_aX=np.mean(gV0_cI_aX)-epsV_0_aX
     epsV_I_aX=np.mean(gV0_cS_aX)-epsV_0_aX
     epsV_IS_aX= np.mean(gV_aX)-(epsV_0_aX+epsV_S_aX+epsV_I_aX)
     epsV_icovIS_aX=np.mean(gV0_ncovIS_aX)-(epsV_0_aX+epsV_S_aX+epsV_I_aX)
     epsV_covIS_aX=epsV_IS_aX-epsV_icovIS_aX
-    #else:
-    #    epsZ_0_aX, epsZ_S_aX, epsZ_I_aX, epsZ_IS_aX, epsZ_icovIS_aX, epsZ_covIS_aX=np.nan, np.nan, np.nan, np.nan, np.nan, np.nan
-    #    epsV_0_aX, epsV_S_aX, epsV_I_aX, epsV_IS_aX, epsV_icovIS_aX, epsV_covIS_aX=np.nan, np.nan, np.nan, np.nan, np.nan, np.nan
     
     effs=[epsZ_0_aX, epsZ_S_aX, epsZ_I_aX, epsZ_icovIS_aX, epsZ_covIS_aX, epsV_0_aX, epsV_S_aX, 
           epsV_I_aX, epsV_icovIS_aX, epsV_covIS_aX]
     return effs
     
-    
+# Modern coexistence theory (simulations without Z or V and invasion analysis of the effects)
 def MCT_analysis_SIVZ(mu, mui, lat_per, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, epso,phiz,eps_z,dz,dz2, CC,alph,dt, ndays, ntot):
     # absent/invading zoop
     init_conditions=[0.001, 0.001,0.001,0]
@@ -1168,6 +828,7 @@ def MCT_analysis_SIVZ(mu, mui, lat_per, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, eps
         delta_effects.append(de0)
     return delta_effects
 
+# find a period
 def find_1_period(S):
     res=find_peaks(S)
     res=res[0]
@@ -1187,18 +848,14 @@ def find_1_period(S):
                     if diff<0.1:
                         p1=p_smx
                         p2=i
-                        #print('new peaks:')
-                        #print(p1)
-                        #print(p2)
-                        #print(S[p1])
-                        #print(S[p2])
                         break
     else:
         # no period found => constant
         p1=0
-        p2=1#len(S)
+        p2=1
     return p1, p2
 
+# coexistence fitness analysis in the case of coexistence
 def coexistence_analysis_SIVZ(S, I, V, Z,mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, epso,phiz,eps_z,dz,dz2, CC,alph,dt, ndays, ntot):
     gZ=[]
     gZ0=[]
@@ -1249,9 +906,6 @@ def coexistence_analysis_SIVZ(S, I, V, Z,mu, mui, lp, beta, phi, d, m,m2, Qv, Qp
     I_c=np.mean(np.array(I[p1:p2]))
     for t in range(p1, p2):
         t_rand=random.randint(p1 , p2-1)
-        #print('hop')
-        #print(S[t]+I[t])
-        #print(phiz*eps_z*(S[t]+I[t])-dz-dz2*Z[t])
         gZ.append(phiz*eps_z*(S[t]+alph*I[t])-dz-dz2*Z[t])
         gZ0.append(phiz*eps_z*(S_c+alph*I_c)-dz-dz2*Z[t])
         gZ0_cS.append(phiz*eps_z*(S_c+alph*I[t])-dz-dz2*Z[t])
@@ -1260,32 +914,20 @@ def coexistence_analysis_SIVZ(S, I, V, Z,mu, mui, lp, beta, phi, d, m,m2, Qv, Qp
         
         
         gr=Jacob_IV(Qv,Qp, lp, d,m,m2, epso, phiz, beta, phi,V[t], Z[t], I[t], S[t])
-        #gr=beta/lp*(Qv/Qp)*I[t]/V[t]-m-phi*S[t]/Qp-m2*V[t]
         gV.append(gr)
         
         gr0=Jacob_IV(Qv,Qp, lp, d,m,m2, epso, phiz, beta, phi,V[t], Z[t], I_c, S_c)
-        #gr0=beta/lp*(Qv/Qp)*I_c/V[t]-m-phi*S_c/Qp-m2*V[t]
         gV0.append(gr0)
         
         gr0_cS=Jacob_IV(Qv,Qp, lp, d,m,m2, epso, phiz, beta, phi,V[t], Z[t], I[t], S_c)
-        #gr0_cS=beta/lp*(Qv/Qp)*I[t]/V[t]-m-phi*S_c/Qp-m2*V[t]
         gV0_cS.append(gr0_cS)
         
         gr0_cI=Jacob_IV(Qv,Qp, lp, d,m,m2, epso, phiz, beta, phi,V[t], Z[t], I_c, S[t])
-        #gr0_cI=beta/lp*(Qv/Qp)*I_c/V[t]-m-phi*S[t]/Qp-m2*V[t]
         gV0_cI.append(gr0_cI)
         
         gr0_ncovIS=Jacob_IV(Qv,Qp, lp, d,m,m2, epso, phiz, beta, phi,V[t], Z[t], I[t], S[t_rand])
-        #gr0_ncovIS=beta/lp*(Qv/Qp)*I[t]/V[t]-m-phi*S[t_rand]/Qp-m2*V[t]
         gV0_ncovIS.append(gr0_ncovIS)
 
-    #print('hop')
-    #print(S_c+I_c)
-    #print(phiz*eps_z*(S_c+I_c)-dz)
-    #print(phiz*eps_z*(S_c+I_c)-dz-dz2*Z[t])
-    #print(np.mean(gZ0))
-    #print(np.mean(gZ))
-    #print(' ')
     epsZ_0=np.mean(gZ0)
     epsZ_S=np.mean(gZ0_cI)-epsZ_0
     epsZ_I=np.mean(gZ0_cS)-epsZ_0
@@ -1296,10 +938,6 @@ def coexistence_analysis_SIVZ(S, I, V, Z,mu, mui, lp, beta, phi, d, m,m2, Qv, Qp
     epsV_0=np.mean(gV0)
     epsV_S=np.mean(gV0_cI)-epsV_0
     epsV_I=np.mean(gV0_cS)-epsV_0
-    #print('here')
-    #print(epsV_0)
-    #print(epsV_I)
-    #print(np.mean(gV0_cS))
     epsV_IS= np.mean(gV)-(epsV_0+epsV_S+epsV_I)
     epsV_icovIS=np.mean(gV0_ncovIS)-(epsV_0+epsV_S+epsV_I)
     epsV_covIS=epsV_IS-epsV_icovIS
