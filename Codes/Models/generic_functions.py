@@ -10,7 +10,7 @@ from numpy import inf
 import random as random
 from scipy.signal import find_peaks
 
-
+# function defining realistic concentrations
 def concentration_ranges(indice, otype):
     if indice in [2,3] and otype in ['upwelling', '0']:
         A_cond_low=1e8
@@ -78,25 +78,27 @@ def concentration_ranges(indice, otype):
         target_conc=target_conc_u
     return A_cond_low, A_cond_high, V_cond_low, V_cond_high, Z_cond_low, Z_cond_high, I_cond_high, I_cond_low, perc_cond_high, perc_cond_low, target_conc
 
+# target concentrations
 def target_concentrations(indice):
     if indice ==3:
         target_conc_u=[4e8, 2e9, 2e5]
-        target_conc_m=[2e8, 1e9, 1e5]#[2e8, 1e9, 5e4]
-        target_conc_o=[1e8, 6e8, 1e4]#[1e8, 5e8, 1e4]
+        target_conc_m=[2e8, 1e9, 1e5]
+        target_conc_o=[1e8, 6e8, 1e4]
     if indice==2:
         target_conc_u=[4e7, 2e9, 2e5]
-        target_conc_m=[5e7, 1e9, 1e5]#[2e8, 1e9, 5e4]
+        target_conc_m=[5e7, 1e9, 1e5]
         target_conc_o=[2e7, 6e8, 1e4]
     if indice==0:
-        target_conc_u=[4e6, 2e9, 1e5]##[1e7, 1e9, 1e5]
-        target_conc_m=[2e6, 1e9, 5e4]#[5e6, 5e8, 5e4]
-        target_conc_o=[5e5, 2e8, 5e3]#[1e6, 1e8, 1e4]
+        target_conc_u=[4e6, 2e9, 1e5]
+        target_conc_m=[2e6, 1e9, 5e4]
+        target_conc_o=[5e5, 2e8, 5e3]
     if indice==1:
-        target_conc_u=[4e7, 4e8, 1e5]#[1e8, 1e9, 1e5]
-        target_conc_m=[2e7, 2e8, 5e4]#[5e7, 5e8, 5e4]
-        target_conc_o=[1e7, 1e8, 5e3]#[1e7, 1e8, 1e4]
+        target_conc_u=[4e7, 4e8, 1e5]
+        target_conc_m=[2e7, 2e8, 5e4]
+        target_conc_o=[1e7, 1e8, 5e3]
     return target_conc_u, target_conc_m, target_conc_o
 
+# to define stability based on jacobian eigenvalues
 def check_eigs(eigs, eig_vecs, ast, ost):
     ast=1
     ost=1
@@ -120,7 +122,7 @@ def Reverse(lst):
     new_lst = lst[::-1]
     return new_lst
 
-# plot functions
+# plot functions of matrices
 def plot_without_scale(matrix, tickx, ticky, label_tickx, label_ticky, title, yl):
     fig, ax = plt.subplots(figsize=(6,6))
     ax.imshow(np.flipud(np.transpose(matrix)))
@@ -144,7 +146,6 @@ def plot_with_scale(matrix, colorcode, mi, mx, tickx, ticky, label_tickx, label_
     ax.set_xticklabels(label_tickx, rotation='vertical')
     ax.set_yticks(ticky)
     ax.set_yticklabels(label_ticky)
-    #absmax=max([np.nanmin(np.array(final_ZV_ratio)), np.nanmax(np.array(final_ZV_ratio))])
     cbar1=fig.colorbar(cm.ScalarMappable(norm=matplotlib.colors.Normalize(vmin=mi, vmax=mx),cmap=col_map), ax=ax)
     plt.xlabel('Phi')
     plt.ylabel(yl)
@@ -160,13 +161,13 @@ def plot_with_scale_bis(matrix, colorcode, mi, mx, tickx, ticky, label_tickx, la
     ax.set_xticklabels(label_tickx, rotation='vertical')
     ax.set_yticks(ticky)
     ax.set_yticklabels(label_ticky)
-    #absmax=max([np.nanmin(np.array(final_ZV_ratio)), np.nanmax(np.array(final_ZV_ratio))])
     cbar1=fig.colorbar(cm.ScalarMappable(norm=matplotlib.colors.Normalize(vmin=mi, vmax=mx),cmap=col_map), ax=ax)
     plt.xlabel('Phi')
     plt.ylabel(yl)
     plt.title(title)
     return ax
 
+# fourier transform
 def fft_data(x,dt):
     x=np.array(x)
     t=np.arange(len(x))
@@ -178,6 +179,7 @@ def fft_data(x,dt):
     module_fft0=module_fft[1:int(len(freq)/2)]
     return freq1, module_fft0
 
+# nitrogen quotas functions
 def Q_diatom(V):
     Qc=pow(10,-0.541 + 0.811*mt.log10(V))
     Qc_micro=Qc*1e-6
@@ -210,6 +212,7 @@ def Q_virus(r):
     Qn=(1e6/Na)*(16*(r-2.5)**3+36*(7.5*r**2-18.75*r+15.63))
     return Qn
 
+# encounter functions
 def phiz_encounter(rh, rz, Te):
     Tk=273.15+Te
     A=1.856*1e-11
@@ -253,6 +256,7 @@ def phivs_encounter(virus_radius, Host_volume, Te,indice):
 
     return phi_e, phi_e_a
 
+# load a vector
 def load_vector(name, sep):
     with open(name, 'r') as f:
         line =f.readline()
@@ -261,13 +265,14 @@ def load_vector(name, sep):
     f.close()
     return(l)
 
+# load a matrix
 def load_matrix(name, sep):
     with open(name, 'r') as f:
         l = [[float(num) for num in line.rstrip().split(sep)] for line in f]
     f.close()
     return(l)
 
-
+# write a matrix
 def write_matrix(mat,name, sep):
     with open(name, 'w') as f:
         for i in range(mat.shape[0]):
@@ -276,13 +281,14 @@ def write_matrix(mat,name, sep):
                 f.write(sep)
             f.write('\n')
     f.close()
+# write a vector
 def write_vector(vec,name, sep):
     with open(name, 'w') as f:
         for i in range(len(vec)):
             f.write(str(vec[i]))
             f.write(sep)
         f.write('\n')
-
+# find low and high peaks from a time series
 def find_low_and_high(vec):
     vec_peaks_h=find_peaks(vec)
     vec_peaks_l=find_peaks(-vec)
@@ -302,15 +308,18 @@ def find_low_and_high(vec):
         vec_peak_l=float("NaN")
         vec_peak_b=float("NaN")
     return vec_peak, vec_peak_l, vec_peak_b
-
+    
+# euclidean distance between 2 vectors
 def euclidean_distance(v1, v2):
     ed=mt.sqrt(sum([((v1[i]-v2[i])*100/v1[i])**2 for i in range(len(v1))]))
     return ed
-
+    
+# abosulte error between two vectors
 def absolute_error(v1,v2):
     abs_err=sum([abs((v1[i]-v2[i])*100/v1[i]) for i in range(len(v1))])
     return abs_err
-
+    
+# draw borders from a matricx filled with 1 and 0: draws border around the ones
 def draw_borders(matrix, lwd, edge_offset, colb, ax):
     # Draw borders
     rows, cols = matrix.shape
