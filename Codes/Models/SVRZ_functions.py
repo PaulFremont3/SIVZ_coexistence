@@ -8,6 +8,7 @@ import sys
 from numpy import inf
 from generic_functions import *
 
+# integration
 def dSVRZ(St,Vt,Rt, Zt, dt, mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epsr,
                       epso,phiz,eps_z, dz,dz2,CC, eps_r,eps_lr,phir,mur):
     dS=dt*( (mu-d-eps*phi*Vt/Qv-(St+Rt)/CC)*St-phiz*Zt*St-mu*eps_r*St+eps_lr*mur*Rt)
@@ -18,6 +19,7 @@ def dSVRZ(St,Vt,Rt, Zt, dt, mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,ep
     mV=eps*phi*Vt/Qv*(St/(St+Rt))+eps*phir*Vt/Qv*(Rt/(St+Rt))
     return dS, dV, dR,dZ,mZ,mV
 
+# runge kutta 4
 def rk4_SVRZ(St, Vt, Rt,Zt,dt, mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epsr,
                       epso,phiz,eps_z, dz,dz2,CC, eps_r,eps_lr,phir,mur):
     k1S, k1V, k1R,k1Z,  m1Z, m1V=dSVRZ(St,Vt,Rt, Zt,dt, mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epsr,
@@ -37,6 +39,7 @@ def rk4_SVRZ(St, Vt, Rt,Zt,dt, mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps
     mV=(1.0/6.0)*(m1V + 2*m2V + 2*m3V + m4V)
     return Stn,Vtn,Rtn,Ztn, mZ, mV 
 
+# simulation
 def simulation_SVRZ_rk4(mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epsr,
                       epso,phiz,eps_z, dz,dz2,CC,eps_r,eps_lr,phir,mur, dt, ndays, init_conditions):
     #inittial conditions
@@ -59,7 +62,6 @@ def simulation_SVRZ_rk4(mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epsr,
 
 
     for t in time_sim:
-        #print(t)
         St=S[t]
         Vt=V[t]
         Rt=R[t]
@@ -82,21 +84,19 @@ def simulation_SVRZ_rk4(mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epsr,
         mVs.append(mV)
     return S, V, R, Z, mZs, mVs
 
+# plot time series 1
 def make_1_plot(S, V, R,Z,i1,i2, title,dt, pp, Qp, Qv, Qz):
     plt.rcParams['lines.linewidth'] = 3
     #time step in day
     time_sim=range(i1, i2)
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
-    #plt.plot(np.array(time_sim)*dt, np.array(I[i1:i2])/Qp)
     plt.plot(np.array(time_sim)*dt, np.array(R[i1:i2])/Qp, color='#9467bd')
-    #plt.plot(np.array(time_sim)*dt, R[0:len(R)-1])
     plt.plot(np.array(time_sim)*dt, np.array(V[i1:i2])/Qv, color='#1f77b4')
     plt.plot(np.array(time_sim)*dt, np.array(Z[i1:i2])/Qz, color='red')
     plt.xlabel('Days')
     plt.ylabel('Concentration (ind.L-1)')
     bottom, top = plt.ylim()
-    #plt.ylim((0,top))
     plt.yscale('log')
     leg_vec=['Susceptible','Resistant' ,'Virus', 'Zooplankton']
     plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
@@ -105,7 +105,7 @@ def make_1_plot(S, V, R,Z,i1,i2, title,dt, pp, Qp, Qv, Qz):
     plt.yticks(fontsize=14)
     pp.savefig()
 
-
+# plot time series 2
 def make_plots(S, V, R,Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
     plt.rcParams['lines.linewidth'] = 3
     #time step in day
@@ -116,7 +116,6 @@ def make_plots(S, V, R,Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
     time_sim=range(i1, i2)
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, S, color='#2ca02c')
-    #plt.plot(np.array(time_sim)*dt, I[0:len(I)-1])
     plt.plot(np.array(time_sim)*dt, R, color='#9467bd')
     plt.plot(np.array(time_sim)*dt, V, color='#1f77b4')
     plt.plot(np.array(time_sim)*dt, Z, color='red')
@@ -133,7 +132,6 @@ def make_plots(S, V, R,Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
 
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, np.array(S)/Qp, color='#2ca02c')
-    #plt.plot(np.array(time_sim)*dt, I[0:len(I)-1])
     plt.plot(np.array(time_sim)*dt, np.array(R)/Qp, color='#9467bd')
     plt.plot(np.array(time_sim)*dt, np.array(V)/Qv, color='#1f77b4')
     plt.plot(np.array(time_sim)*dt, np.array(Z)/Qz, color='red')
@@ -150,14 +148,13 @@ def make_plots(S, V, R,Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
 
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, np.array(S)/Qp, color='#2ca02c')
-    #plt.plot(np.array(time_sim)*dt, I[0:len(I)-1])
     plt.plot(np.array(time_sim)*dt, np.array(R)/Qp, color='#9467bd')
     plt.plot(np.array(time_sim)*dt, np.array(V)/Qv, color='#1f77b4')
     plt.plot(np.array(time_sim)*dt, np.array(Z)/Qz, color='red')
     plt.xlabel('Days')
     plt.ylabel('Concentration (ind.L-1)')
     bottom, top = plt.ylim()
-    mini=1e-1#max([bottom, 1e-3])
+    mini=1e-1
     top=2e10
     plt.ylim((mini,top))
     plt.yscale('log')
@@ -171,7 +168,6 @@ def make_plots(S, V, R,Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
     
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, np.array(S)/Qp, color='#2ca02c')
-    #plt.plot(np.array(time_sim)*dt, I[0:len(I)-1])
     plt.plot(np.array(time_sim)*dt, np.array(R)/Qp, color='#9467bd')
     plt.plot(np.array(time_sim)*dt, np.array(V)/Qv, color='#1f77b4')
     plt.plot(np.array(time_sim)*dt, np.array(Z)/Qz, color='red')
@@ -203,7 +199,6 @@ def make_plots(S, V, R,Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
 
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, np.array(S)/Qp, color='#2ca02c')
-    #plt.plot(np.array(time_sim)*dt, np.array(V[0:len(V)-1])/Qv, color='red')
     plt.xlabel('Days')
     plt.ylabel('Concentration (ind.L-1)')
     bottom, top = plt.ylim()
@@ -248,7 +243,6 @@ def make_plots(S, V, R,Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
     plt.ylabel('Concentration (ind.L-1)')
     leg_vec=[ 'Virus']
     bottom, top = plt.ylim()
-    #plt.ylim((0,top))
     plt.yscale('log')
     plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
     plt.title(tit)
@@ -268,10 +262,8 @@ def plot_with_scale(matrix, colorcode, mi, mx, tickx, ticky, label_tickx, label_
     ax.set_xticklabels(label_tickx, rotation='vertical')
     ax.set_yticks(ticky)
     ax.set_yticklabels(label_ticky)
-    #absmax=max([np.nanmin(np.array(final_ZV_ratio)), np.nanmax(np.array(final_ZV_ratio))])
     cbar1=fig.colorbar(cm.ScalarMappable(norm=matplotlib.colors.Normalize(vmin=mi,vmax=mx),cmap=col_map), ax=ax)
     plt.xlabel('Phi')
-    #plt.ylabel('Latent period')
     plt.title(title)
 
 def plot_with_scale_bis(matrix, colorcode, mi, mx, tickx, ticky, label_tickx, label_ticky, title, norm=''):
@@ -286,10 +278,8 @@ def plot_with_scale_bis(matrix, colorcode, mi, mx, tickx, ticky, label_tickx, la
     ax.set_xticklabels(label_tickx, rotation='vertical')
     ax.set_yticks(ticky)
     ax.set_yticklabels(label_ticky)
-    #absmax=max([np.nanmin(np.array(final_ZV_ratio)), np.nanmax(np.array(final_ZV_ratio))])
     cbar1=fig.colorbar(cm.ScalarMappable(norm=matplotlib.colors.Normalize(vmin=mi,
                                                                    vmax=mx),
                                   cmap=col_map), ax=ax)
     plt.xlabel('Phi')
-    #plt.ylabel('Latent period')
     plt.title(title)
