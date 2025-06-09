@@ -12,19 +12,20 @@ from generic_functions import *
 
 
 if __name__ == '__main__':
-    indice=int(sys.argv[1])
-    otype=sys.argv[2]
-    gr_ratio=float(sys.argv[3])
-    dz2=float(sys.argv[4])
-    m2=float(sys.argv[5])
-    param=str(sys.argv[6])
-    spec_value=str(sys.argv[7])
+    indice=int(sys.argv[1]) # choose phytoplankton type
+    otype=sys.argv[2] # ocean type
+    gr_ratio=float(sys.argv[3]) # cost of resistance (between 0 and 1)
+    dz2=float(sys.argv[4]) # quadratic mortality of zooplankton
+    m2=float(sys.argv[5]) # quadratic mortality of virus
+    param=str(sys.argv[6]) #resistance type: phir or epsr
+    spec_value=str(sys.argv[7]) #specify a specific value of phi/phir or eps/epsr => plot 1d matrix. If 'no' => explore the phi/phir or eps/epsr space
     
     if spec_value!='no':
         spec_value=float(spec_value)
 
     eff=0
     type_m='SVRZ'
+    # load life history traits
     Vols=load_vector('../trait_data/Vs_5.txt', sep=' ')
     Ncs=load_vector('../trait_data/Nc_dutkiewicz_5.txt', sep=' ')
     betas=load_vector('../trait_data/model_burst_size_nn-gam.txt', sep=' ')
@@ -35,9 +36,10 @@ if __name__ == '__main__':
         rz=2.5
     elif indice in [0,1]:
         rz=5
-
+    # grazer quota
     Qz=Q_grazer(rz)
 
+    # virus quota
     r_virus=[20,80,35,35]
     Qvs=[Q_virus(r) for r in r_virus]
 
@@ -51,7 +53,7 @@ if __name__ == '__main__':
 
 
     N=4 # number of algae
-
+    # extract life history traist of smalleest of each type of pytoplankton
     if N==4:
         ind1=np.argmin(np.array(Qps[0:100]))
         ind2=np.argmin(np.array(Qps[100:200]))
@@ -96,14 +98,17 @@ if __name__ == '__main__':
         Vs=[V1, V2, V3, V4]
     print(mu_max)
 
+    # choose phytoplankton type
     typePhytos=['Diatom', 'Eukaryote', 'Synechococcus', 'Prochlorochoccus']
     typePhyto=typePhytos[indice]
 
     bs=betas[indice]
 
+    # default temperature
     Temp=20
-
     T_dep=1 # no T_dep in idealized case
+    
+    # suffix to identify output pdfs
     suffix=typePhyto+'_BS'+str(bs)+'_LOI'+str(eff)+'_GR-R'+str(gr_ratio)
     if dz2==0:
         suffix+='_no-dz2'
@@ -111,6 +116,7 @@ if __name__ == '__main__':
         suffix+='_m2-'+str(m2)
 
     R=0.5 # nutrient concentration
+    # temperature dependencey
     if otype != '0':
         suffix+='_'+otype
         tauT = 0.8
@@ -199,34 +205,8 @@ if __name__ == '__main__':
 
     print('Carying capacity')
     print(KC_s)
-    # grazing parameters
-#    S_dep=1
- #   Sc=0.226 #dutkiewicz 2020 (1.5 in umolC.L-1)
- #   if otype=='upwelling':
- #       S_l=5
- #       S_dep=pow(S_l,2)/(pow(S_l,2)+pow(Sc, 2))
- #   elif otype=='mesotrophic':
- #       S_l=1
- #       S_dep=pow(S_l,2)/(pow(S_l,2)+pow(Sc, 2))
- #   elif otype=='oligotrophic':
- #       S_l=0.2
- #       S_dep=pow(S_l,2)/(pow(S_l,2)+pow(Sc, 2))
- #   phiz=9.8*T_dep*S_dep
- #   eps_z=0.3
- #   dz=0.067*T_dep
- #   dz2=dz2*T_dep
 
-#    KC=1
-#    if otype=='upwelling':
-#        KC=5
-#    elif otype=='mesotrophic':
-#        KC=1
-#    elif otype=='oligotrophic':
-#        KC=0.2
-#    CC=KC/(mu-d)
-
-    #phis = [j*pow(10, -i)  for i in range(12, 7,-1) for j in range(1,10)]
-    #phis=phis[0:(len(phis)-8)]
+    # phi parameter sapce and resistance strength parameter space
     if indice in [1,2,3]:
         phis=list(np.logspace(-12, -8, (12-8)*9+1))
     elif indice in [0]:
@@ -237,7 +217,6 @@ if __name__ == '__main__':
         phi_over_phir=phi_over_phir[0:len(phi_over_phir)-1]
         phi_over_phir.append(0)
         del phi_over_phir[0]
-        #print(phis)
         print(phi_over_phir)
         suffix+='_'+param
     else:
@@ -247,11 +226,10 @@ if __name__ == '__main__':
         else:
             suffix+='_'+param+'-'+str(spec_value)
 
+    # parameter space
     grid_test = [(ph, ratio) for ph in phis for ratio in phi_over_phir]
 
-    #print(phis)
-    #print(phi_over_phir)
-
+    # matrices to store results (see SIVZ file for specs)
     limit_val_mat = np.zeros( (len(phis),len(phi_over_phir)) )
 
     mortality_ratios=np.zeros( (len(phis),len(phi_over_phir)) )
@@ -266,7 +244,6 @@ if __name__ == '__main__':
     o_stable_states_matrix = [np.empty( (len(phis),len(phi_over_phir)) ) for i in range(n_state)]
     f_stable_states_matrix = [np.empty( (len(phis),len(phi_over_phir)) ) for i in range(n_state)]
     for l in range(n_state):
-        #stable_states_matrix[l][:]=np.nan
         a_stable_states_matrix[l][:]=np.nan
         o_stable_states_matrix[l][:]=np.nan
         f_stable_states_matrix[l][:]=np.nan
@@ -284,8 +261,8 @@ if __name__ == '__main__':
     final_V=np.zeros( (len(phis),len(phi_over_phir)) )
     final_I=np.zeros( (len(phis),len(phi_over_phir)) )
     final_perc_inf= np.zeros( (len(phis),len(phi_over_phir)) )
-    final_perc_res= np.zeros( (len(phis),len(phi_over_phir)) )
-    final_R=np.zeros( (len(phis),len(phi_over_phir)) )
+    final_perc_res= np.zeros( (len(phis),len(phi_over_phir)) ) # percentage of resistant cells
+    final_R=np.zeros( (len(phis),len(phi_over_phir)) ) # total R
     final_pers=np.zeros( (len(phis),len(phi_over_phir)) )
     final_mods=np.zeros( (len(phis),len(phi_over_phir)) )
     final_stab=np.empty( (len(phis),len(phi_over_phir)) )
@@ -303,7 +280,7 @@ if __name__ == '__main__':
 
     to_plot=[]
 
-
+    # realistic and target concentrations
     A_cond_low, A_cond_high, V_cond_low, V_cond_high, Z_cond_low, Z_cond_high, I_cond_high, I_cond_low, perc_cond_high, perc_cond_low, target_conc=concentration_ranges(indice, otype)
 
     valid_concentrations=np.zeros( (len(phis),len(phi_over_phir)) )
@@ -316,7 +293,7 @@ if __name__ == '__main__':
     distance_to_target_V=np.zeros( (len(phis),len(phi_over_phir)) )
     distance_to_target_Z=np.zeros( (len(phis),len(phi_over_phir)) )
 
-
+    # main loop through the parameter space
     init_conditions=[0.001,0.001, 0.001, 0.001]
     for k in grid_test:
         phi=k[0]
@@ -339,6 +316,7 @@ if __name__ == '__main__':
         j0=np.where(np.array(phi_over_phir)==k[1])[0][0]
         alpha=1
         eta=0
+        # simulation
         result=simulation_SVRZ_rk4(mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epsr,
                       epso,phiz,eps_z, dz,dz2,CC,eps_r,eps_lr,phir,mur, dt, ndays, init_conditions)
     
@@ -353,7 +331,8 @@ if __name__ == '__main__':
         S = list(map(lambda x: 0 if x == float('inf') else x, S))
         R = list(map(lambda x: 0 if x == float('inf') else x, R))
         Z = list(map(lambda x: 0 if x == float('inf') else x, Z))
- 
+
+        # extract last year of simulation
         i1=int(365*(nyears-1)/dt)+1
         i2=len(V)
         Sa=np.array(S[i1:i2])
@@ -364,12 +343,13 @@ if __name__ == '__main__':
         mZa=np.array(mZ[i1:i2])
         mVa=np.array(mV[i1:i2])    
 
-
-        surv_S=np.max(Sa/Qp)>1 #or np.nanmean(Sa/Qv)>1e-50
+        # existence criterion
+        surv_S=np.max(Sa/Qp)>1 
         surv_R=np.max(Ra/Qp)>1
-        surv_V = np.max(Va/Qv)>1 #or np.nanmean(Va/Qv) > 1e-50
-        surv_Z=np.max(Za/Qz)>1 #or np.nanmean(Za/Qz) > 1e-50
+        surv_V = np.max(Va/Qv)>1 
+        surv_Z=np.max(Za/Qz)>1 
 
+        # fill matrices
         if surv_V  or surv_S or surv_R:
             final_S[i0,j0]=np.log10(np.mean(Sa))
             final_perc_res[i0,j0]= np.mean(Ra*100/(Ra+Sa))
@@ -377,9 +357,11 @@ if __name__ == '__main__':
             final_S[i0,j0]=float("NaN")
             final_perc_res[i0,j0]=float("NaN")
 
-        surv_S_bis = np.mean(Sa) > 0.00001 #or np.max(Sa/Qp)>1
-        surv_R_bis = np.mean(Ra) > 0.00001  #or np.max(Ra/Qp)>1
-        
+        # criteerion to determine if S or R is in sufficient abundance
+        surv_S_bis = np.mean(Sa) > 0.00001 
+        surv_R_bis = np.mean(Ra) > 0.00001 
+
+        # fourier analysis
         if surv_V:
             f0, modulos=fft_data(Va,dt)
             mx_m=np.max(modulos)
@@ -390,6 +372,7 @@ if __name__ == '__main__':
             final_mods[i0,j0]=float("NaN")
             final_pers[i0,j0]=float("NaN")
 
+        # final state of the system
         surv=np.nan
         if not surv_V  and not surv_Z  and not surv_S and not surv_R:
             final_state_all[i0,j0]=0
@@ -424,6 +407,7 @@ if __name__ == '__main__':
         elif surv_S and surv_V and surv_Z and surv_R:
             final_state_all[i0,j0]=10
             surv=7
+        # check if we covered all cases
         if np.isnan(surv):
             surv=0
             final_state_all[i0,j0]=0
@@ -437,9 +421,9 @@ if __name__ == '__main__':
         if surv==7 and dz2==0:
             to_plot.append(k)
 
+        # exclusion time
         t_e=float("NaN")
         if surv in [3,4]:
-         #for ti in range(len(Z)):
             Zss=np.array(Z)
             Zss=Zss[0::(48*4)]
             for indi in range(len(Zss)):
@@ -447,7 +431,6 @@ if __name__ == '__main__':
                     t_e=indi*dt*48*4/365
                     break
         elif surv ==2:
-        #for ti in range(len(V)):
             Vss=np.array(V)
             Vss=Vss[0::(48*4)]
             for indi in range(len(Vss)):
@@ -465,10 +448,10 @@ if __name__ == '__main__':
                     break
         exclusion_times[i0,j0]=t_e
 
+        # fill matrices
         states_with_VandZ=[7, 6, 5]
         if surv in states_with_VandZ:
             mVaZa=np.nanmean(Va/Za)
-            #mVaZa=list(map(lambda x: float('NaN') if x == float('-inf') else x, mVaZa))
             rat=np.log10(mVaZa)
             if rat==float('inf'):
                 final_ZV_ratio[i0,j0]=float('NaN')
@@ -506,6 +489,7 @@ if __name__ == '__main__':
         
         final_Surv[i0,j0]=surv
 
+        # comparison to realistic and target concentrations
         mean_A=np.nanmean(Sa+Ra)/Qp
         mean_V=np.nanmean(Va)/Qv
         mean_Z=np.nanmean(Za)/Qz
@@ -563,7 +547,7 @@ if __name__ == '__main__':
     final_pers[final_pers==-inf]=float("NaN")
     final_mods[final_mods==-inf]=float("NaN")
     
-
+    # time series in the case of coexistence with dz2==0
     if dz2==0:
         pp = PdfPages('SVRZ_model_phi_latent_period_time_series_coex_'+suffix+'.pdf')
         peaks_to_save=[]
@@ -618,6 +602,7 @@ if __name__ == '__main__':
         write_matrix(peaks_to_save, 'peaks_SVRZ_'+suffix+'.txt', sep=' ')
         pp.close()
 
+    # time series at given adsorption rates for resistance strength == 10 (phi/phir)
     if indice in [1,2,3]:
         phis_to_plot=[1e-12, 1e-11, 1e-10, 1e-9, 1e-8]
     else:
@@ -647,6 +632,7 @@ if __name__ == '__main__':
         make_plots(S, V, R,Z, i1, i3, tit,dt,pp, Qp, Qv, Qz)
     pp.close()
 
+    # time series at given adsorption rates for fully resistant type
     pp = PdfPages(type_m+'_model_phi_latent_period_time_series_full-res_'+suffix+'.pdf')
     for phi in phis_to_plot:
         if param=='phir':
@@ -671,6 +657,7 @@ if __name__ == '__main__':
         make_plots(S, V, R,Z, i1, i3, tit,dt,pp, Qp, Qv, Qz)
     pp.close()
 
+    # main pdf with matrices over the parameter space
     zeros_mat=np.zeros((len(phis),len(phi_over_phir)))
     pp = PdfPages(type_m+'_model_phi_versus_phir_'+suffix+'.pdf')
     if spec_value=='no':
@@ -712,7 +699,6 @@ if __name__ == '__main__':
     draw_borders(coex_mat, 1.5, 0.05, 'white', axi)
     pp.savefig()
 
-    # full plots
     mi=0
     mx=7
     cmap = matplotlib.colormaps['viridis']
@@ -727,7 +713,6 @@ if __name__ == '__main__':
 
     mi=np.nanmin(np.array(exclusion_times))
     mx=np.nanmax(np.array(exclusion_times))
-    #print(exclusion_times)
     plot_with_scale(exclusion_times, 'YlGnBu', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky , 'Exclusion time (year)', yl=ylb)
     pp.savefig()
 
@@ -759,7 +744,6 @@ if __name__ == '__main__':
     plot_with_scale_bis(final_ZV_ratio_count, rcmap, mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, 'log10(Virus/Grazer) count', yl=ylb)
     pp.savefig()
 
-    #final_Z[final_Z-mt.log10(Qz)<=0]=mt.log10(Qz)
     mi=np.nanmin(np.array(final_Z))
     mx=np.nanmax(np.array(final_Z))
     plot_with_scale(final_Z, 'Reds', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, 'Zooplankton (log10(umol.L-1))', yl=ylb)
@@ -770,13 +754,6 @@ if __name__ == '__main__':
     plot_with_scale(np.array(final_Z)-mt.log10(Qz), 'Reds', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky , 'Zooplankton (log10(ind.L-1))', yl=ylb)
     pp.savefig()
 
-
-    #final_V[final_V-mt.log10(Qv)<=0]=mt.log10(Qv)
-    #c_final_V=copy.deepcopy(final_V)
-    #c_final_V[c_final_V-mt.log10(Qv)<0]=10
-    #miV=np.nanmin(c_final_V)
-    #final_V[final_V-mt.log10(Qv)<0]=miV
-    #final_V[final_V-mt.log10(Qv)>=12]=np.nan
     mi=np.nanmin(np.array(final_V))
     mx=np.nanmax(np.array(final_V))
     plot_with_scale(final_V, 'Blues', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, 'Virus (log10(umol.L-1))', yl=ylb)
@@ -787,11 +764,7 @@ if __name__ == '__main__':
     plot_with_scale(np.array(final_V)-mt.log10(Qv), 'Blues', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky , 'Virus (log10(ind.L-1))', yl=ylb)
     pp.savefig()
 
-    #final_S[final_S-mt.log10(Qp)<0]=mt.log10(Qp)
-    #c_final_S=copy.deepcopy(final_S)
-    #c_final_S[c_final_S-mt.log10(Qp)<0]=10
-    #miS=np.nanmin(c_final_S)
-    #final_S[final_S-mt.log10(Qp)<0]=miS
+
     mi=np.nanmin(np.array(final_S))
     mx=np.nanmax(np.array(final_S))
     plot_with_scale(final_S, 'Greens', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, 'Susceptible (log10(umol.L-1))', yl=ylb)
@@ -803,11 +776,6 @@ if __name__ == '__main__':
     pp.savefig()
 
 
-    #final_R[final_R-mt.log10(Qp)<=0]=mt.log10(Qp)
-    #c_final_R=copy.deepcopy(final_R)
-    #c_final_R[c_final_R-mt.log10(Qp)<0]=10
-    #miR=np.nanmin(c_final_R)
-    #final_R[final_R-mt.log10(Qp)<0]=miR
     mi=np.nanmin(np.array(final_R))
     mx=np.nanmax(np.array(final_R))
     plot_with_scale(final_R, 'Purples', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, 'Resistant (log10(umol.L-1))', yl=ylb)
@@ -996,7 +964,6 @@ if __name__ == '__main__':
             mi=0
             mx=np.nanmax(valid_concentrations_4)
             cmap = matplotlib.colors.ListedColormap(['crimson', 'royalblue', 'gold', 'limegreen'])
-            #print(valid_concentrations_4)
             plot_with_scale(valid_concentrations_4, cmap, mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, 'Valid concentrations + % virus kill + V/A ratio', yl=ylb)
             pp.savefig()
 
@@ -1005,8 +972,6 @@ if __name__ == '__main__':
             valid_concentrations_4[cond]=2
             
             vl=distance_to_target_val[valid_concentrations_4==3]<min_d_val+10
-            #print(distance_to_target_val<min_d_val+10)
-            #print(valid_concentrations_4)
             cmap = matplotlib.colors.ListedColormap(['crimson', 'royalblue', 'gold', 'limegreen'])
             mi=0
             mx=np.nanmax(valid_concentrations_4)
