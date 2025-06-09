@@ -808,15 +808,14 @@ if __name__ == '__main__':
     plot_with_scale(final_Surv_mod,cmap_R_bis,mi,mx+2, atickx, aticky, alabel_tickx, alabel_ticky, 'State reached +LHT models', norm=norm_bis, yl=ylb)
     pp.savefig()
 
+    # theory (when dz2!=0, dv2==0 or dv2!=0)
     if dz2!=0:
         plot_with_scale(final_Surv,cmap0,mi,mx, atickx, aticky, alabel_tickx, alabel_ticky, 'State reached', norm=norm, yl=ylb)
-        #if eff=='1':
         plt.scatter(theor_surv_phi, theor_surv_lp, color='black', s=5)
         plt.scatter(theor_surv_phi_10, theor_surv_lp_10, color='red', s=2)
         pp.savefig()
 
         plot_with_scale(final_Surv,cmap0,mi,mx, atickx, aticky, alabel_tickx, alabel_ticky, 'State reached', norm=norm, yl=ylb)
-        #cols=['r', 'g', 'b', 'k']
         if m2==0:
             lsts=['dotted','dashed', 'dashdot','solid']
             for i in range(len(alphas)):
@@ -834,7 +833,6 @@ if __name__ == '__main__':
 
         zeros_mat=np.zeros((len(phis),len(lps)))
         plot_with_scale(zeros_mat,'Greys',mi,mx, atickx, aticky, alabel_tickx, alabel_ticky, 'Theoretical survival areas', yl=ylb)
-        #cols=['r', 'g', 'b', 'k']
         lsts=['dotted','dashed', 'dashdot','solid']
         for i in range(len(alphas)):
             plt.contour(np.transpose(final_Surv_alpha[i]),colors='k',linestyles=lsts[i], levels=[0,1],  extent=[-1, len(phis), -1, len(lps)], origin='upper')
