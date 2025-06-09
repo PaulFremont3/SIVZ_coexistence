@@ -346,13 +346,6 @@ if __name__ == '__main__':
   theor_surv_phi1=[]
   theor_surv_phi_over_phir1=[]
 
-  ntot=9
-  matrices_effects_v=[np.zeros( (len(phis),gsize) ) for i in range(ntot)]
-  matrices_effects_z=[np.zeros( (len(phis),gsize) ) for i in range(ntot)]
-  for i in range(ntot):
-    matrices_effects_v[i][:]=np.nan
-    matrices_effects_z[i][:]=np.nan
-
   to_plot=[]
 
   cases=np.zeros( (len(phis),gsize) ) 
@@ -673,26 +666,6 @@ if __name__ == '__main__':
         print(surv_R)
         print(surv_R_bis)
         print(surv_S_bis)
-
-    # coexistence fitness analysis in the case of coexistence
-    if surv in [5,6,7]:
-      i1=round(365*(nyears-1)/dt)
-      i2=len(V)
-      Sf=S[i1:i2]
-      If=I[i1:i2]
-      Vf=V[i1:i2]
-      Rf=R[i1:i2]
-      Zf=Z[i1:i2]
-      result_c=coexistence_analysis_SIVRZ(Sf, If, Vf,Rf, Zf,mu, mui, eta, beta, phi, ds, m,m2, Qv, Qp,eps,epso,eps_r,eps_lr,phir,mur,phiz,eps_z, dz,dz2,CC,dt, ndays, ntot)
-
-      for l in range(ntot):
-        if l==0:
-          matrices_effects_z[l][i0,j0]=sum(result_c[0:(ntot-1)])
-          matrices_effects_v[l][i0,j0]=sum(result_c[(ntot-1):(2*ntot-3)])
-        if l>0:
-          matrices_effects_z[l][i0,j0]=result_c[l-1]
-          matrices_effects_v[l][i0,j0]=result_c[ntot+l-2]
-
 
     if final_state_all[i0,j0]==10 and dz2==0:
       to_plot.append(k)
@@ -1713,76 +1686,6 @@ if __name__ == '__main__':
       if nyears==20:
         write_vector(to_write, 'optimums_'+type_m0+'_'+suffix+'.txt', ' ')
 
-  pp.close()
-
-  # coexistenc analysis
-  if param=='phir':
-    pp = PdfPages(type_m0+'_model_phi_versus_phir_'+suffix+'_coexistence.pdf')
-  elif param=='epsr':
-    pp = PdfPages(type_m0+'_model_eps_versus_epsr_'+suffix+'_coexistence.pdf')
-  elif param=='lp_phir' or param=='lp_epsr':
-    pp = PdfPages(type_m0+'_model_eps_versus_latent_period_'+suffix+'_coexistence.pdf')
-  mxs=[]
-  mis=[]
-  for l in range(ntot):
-    mat1=matrices_effects_z[l]
-    mat2=matrices_effects_v[l]
-    mat1[mat1<-100]=-100
-    mat2[mat2<-100]=-100
-    mat1[mat1>100]=100
-    mat2[mat2>100]=100
-    mxs.append(np.max(mat1))
-    mxs.append(np.max(mat2))
-
-    mis.append(np.min(mat1))
-    mis.append(np.min(mat2))
-
-  mx=max(mxs)
-  mi=min(mis)
-  amx=max([abs(mi), abs(mx)])
-  ma=amx
-  nma=-amx
-
-  cmap = matplotlib.colormaps['PuOr_r']
-  colors0 = cmap(np.linspace(0, 1, 100))
-  cmap0=matplotlib.colors.ListedColormap(colors0)
-  bounds=np.linspace(-amx, amx, 100)
-  norm = matplotlib.colors.BoundaryNorm(bounds, cmap0.N-1)
-
-  titles=['Average growth rate','Fluctuation free growth rate', 'Relative non linearity in S', 'Relative non linearity in I', 'Relative non linearity in R',
-            'S, I interaction', 'S, R interaction', 'I, R interaction','S,I,R interaction']
-  for l in range(ntot):
-    mat=matrices_effects_z[l]
-    maxi=np.nanmax(mat)
-    mini=np.nanmin(mat)
-    amx=max([abs(mini), abs(maxi)])
-    ma=amx
-    nma=-amx
-    if (maxi==mini):
-      ma=0.01
-      nma=-0.01
-    bounds=np.linspace(-amx, amx, 100)
-    norm = matplotlib.colors.BoundaryNorm(bounds, cmap0.N-1)
-    plot_with_scale(mat,cmap0,nma,ma, atickx, aticky, alabel_tickx, alabel_ticky, titles[l]+' (Z)', norm=norm, yl=ylb)
-    pp.savefig()
-  for l in range(ntot):
-    mat=matrices_effects_v[l]
-    maxi=np.nanmax(mat)
-    mini=np.nanmin(mat)
-    amx=max([abs(mini), abs(maxi)])
-    ma=amx
-    nma=-amx
-    if (maxi==mini):
-      ma=0.01
-      nma=-0.01
-    bounds=np.linspace(-amx, amx, 100)
-    print(titles[l])
-    print('max')
-    print(maxi)
-    print(mini)
-    norm = matplotlib.colors.BoundaryNorm(bounds, cmap0.N-1)
-    plot_with_scale(mat,cmap0,nma,ma, atickx, aticky, alabel_tickx, alabel_ticky, titles[l]+' (V)', norm=norm, yl=ylb)
-    pp.savefig()
   pp.close()
 
   # save only if full simulation
