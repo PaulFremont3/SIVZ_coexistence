@@ -250,36 +250,3 @@ def make_plots(S, V, R,Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
     plt.yticks(fontsize=14)
     pp.savefig()
 
-def plot_with_scale(matrix, colorcode, mi, mx, tickx, ticky, label_tickx, label_ticky, title, norm=''):
-    col_map=plt.get_cmap(colorcode)
-    col_map.set_bad(color='gray')
-    fig, ax = plt.subplots(figsize=(4,2))
-    if norm!='':
-        ax.imshow(np.flipud(np.transpose(matrix)), cmap=col_map, norm=norm)
-    else:
-        ax.imshow(np.flipud(np.transpose(matrix)), cmap=col_map)
-    ax.set_xticks(tickx)
-    ax.set_xticklabels(label_tickx, rotation='vertical')
-    ax.set_yticks(ticky)
-    ax.set_yticklabels(label_ticky)
-    cbar1=fig.colorbar(cm.ScalarMappable(norm=matplotlib.colors.Normalize(vmin=mi,vmax=mx),cmap=col_map), ax=ax)
-    plt.xlabel('Phi')
-    plt.title(title)
-
-def plot_with_scale_bis(matrix, colorcode, mi, mx, tickx, ticky, label_tickx, label_ticky, title, norm=''):
-    col_map=plt.get_cmap(colorcode)
-    col_map.set_bad(color='gray')
-    fig, ax = plt.subplots(figsize=(4,2))
-    if norm!='':
-        ax.imshow(np.flipud(np.transpose(matrix)), cmap=col_map, norm=norm)
-    else:
-        ax.imshow(np.flipud(np.transpose(matrix)), cmap=col_map, vmin=mi, vmax=mx)
-    ax.set_xticks(tickx)
-    ax.set_xticklabels(label_tickx, rotation='vertical')
-    ax.set_yticks(ticky)
-    ax.set_yticklabels(label_ticky)
-    cbar1=fig.colorbar(cm.ScalarMappable(norm=matplotlib.colors.Normalize(vmin=mi,
-                                                                   vmax=mx),
-                                  cmap=col_map), ax=ax)
-    plt.xlabel('Phi')
-    plt.title(title)
