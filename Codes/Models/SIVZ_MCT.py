@@ -203,6 +203,8 @@ if __name__ == '__main__':
     matrices_effects_stab=[np.zeros( (len(phis),len(lps)) ) for i in range(ntot)]
     invasibilty_both=np.zeros( (len(phis),len(lps)) )
     invasibilty_both_binary=np.zeros( (len(phis),len(lps)) )
+
+    # main loop trhough parameter space
     for j, k in enumerate(grid_test):
         phi=k[0]
         lp=k[1]
@@ -210,9 +212,10 @@ if __name__ == '__main__':
         i=np.where(np.array(phis)==phi)[0][0]
         j=np.where(np.array(lps)==k[1])[0][0]
 
+        # Modern Coexistence Theory analysis
         result=MCT_analysis_SIVZ(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, epso,phiz,eps_z,dz,dz2, CC,alph,dt, ndays, ntot)
 
-        
+        # fill matrices
         for l in range(ntot):
             if l==0:
                 matrices_effects_v_inv[l][i,j]=sum(result[0:(ntot-1)])
@@ -230,12 +233,7 @@ if __name__ == '__main__':
                 matrices_effects_z_inv[l][i,j]=result[ntot+l-2]
                 matrices_effects_stab[l][i,j]=np.mean(np.array([result[l-1], result[ntot+l-2]]))
         
-        #with open('follow_MCT_'+suffix+'.txt', 'a') as f:
-        #    f.write(str(j))
-        #    f.write(' ')
-        #    f.write(str(j*100/len(grid_test))+'% complete')
-        #    f.write('\n')
-        #f.close()
+    # pdf eith effects over the paraneter space
     pp = PdfPages('SIVZ_model_phi_latent_period_'+suffix+'_MCT.pdf')
     atickx=[i*9 if i>0 else 0 for i in range(5) ]
     aticky=[i*9+8 for i in range(2,-1,-1) ]
@@ -255,7 +253,7 @@ if __name__ == '__main__':
         mat2[mat2>100]=100
         mxs.append(np.max(mat1))
         mxs.append(np.max(mat2))
-        #if l>0:
+
         mat3=matrices_effects_stab[l]
         mat3[mat3<-100]=-100
         mat3[mat3>100]=100
@@ -263,7 +261,6 @@ if __name__ == '__main__':
 
         mis.append(np.min(mat1))
         mis.append(np.min(mat2))
-        #if l>0:
         mis.append(np.min(mat3))
 
     mx=max(mxs)
@@ -309,7 +306,6 @@ if __name__ == '__main__':
             nma=-0.01
         bounds=np.linspace(-amx, amx, 100)
         print(titles[l])
-        #print(mat)
         print('max')
         print(maxi)
         print(mini)
@@ -328,14 +324,10 @@ if __name__ == '__main__':
         if (maxi==mini):
             ma=0.01
             nma=-0.01
-        #print(amx)
         bounds=np.linspace(-amx, amx, 100)
         norm = matplotlib.colors.BoundaryNorm(bounds, cmap0.N-1)
         plot_with_scale(mat,cmap0,nma,ma, atickx, aticky, alabel_tickx, alabel_ticky, titles[l]+' (stab)', norm=norm)
         pp.savefig()
-
-    #print(invasibilty_both)
-    
 
     cmap = matplotlib.colormaps['PuOr_r']
     colors0 = cmap(np.linspace(0, 1, 200))
