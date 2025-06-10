@@ -30,11 +30,17 @@ In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ an
         - if param=='phir', SIVRZ_model_phi_versus_phir_*\*suffix\**.pdf, in the case extracellular resistance space is explored, coexistence diagram and other features in the parameter space
         - if param=='epsr', SIVRZ_model_eps_versus_epsr_*\*suffix\**.pdf, in the case extracellular resistance space is explored, coexistence diagram and other features in the parameter space
         - if param=='lp_phir' or param=='lp_epsr', in the case latent period space is explored (fixed intra or extra cellular resistance), coexistence diagram and other features in the parameter space
+  Note: the SVZ_molar_model_phytotypes.py, SVRZ_molar_model_phytotypes.py SIVZ_molar_model_phytotypes.py, and SIVRZ_molar_model_phytotypes.py also save as .txt files some of the matrices they generate
   - SIVRZ_functions.py : functions specific to the SIVRZ model
   - SIVZ_MCT.py: code to run the SIVZ Modern coexistence theory analysis
     - outputs:
       - SIVZ_model_phi_latent_period_*\*suffix\**_MCT.pdf, effects from MCT Theory across the parameter space
   - make_figures_scaled.py: code to create figures with same scales (from different models): => figure 5, s6, s14, and s16
+    - outputs:
+      - Scaled_PVZ_main_models.pdf
+      - Scaled_PVZ_FFT_and_Perdiod.pdf
+      - Scaled_SIVZ_coexistence.pdf
+      - Scaled_SIVZ_distances.pdf
   - SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.py: file to run the optimization of parameterization of the SIVZ and SIVRZ models with respect to target concentrations (grid search)
   - analysis_optimization.py: analyze the results of the optimization =>  generates data for table 1 and 2
 
@@ -53,5 +59,9 @@ In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ an
   - concatenate_results_optimisation_params.sh: used to concatenate rsult files from the optimisation
 
 **HOW TO RUN THE SIMULATIONS**
+1. Create in this directorry a subfolfder called model_data to store results
+2. run simulations of dynamics across the parameter space: command `./run_coexistence_simulations.sh`
+   This step will run all simulation necessary to generate figures of coexistence diagram an some data that needs to be rescaled to generate some figures
+3.  
 
 **WHERE ARE THE FIGURES FROM THE PAPER**
