@@ -48,7 +48,7 @@ in each case pdf outputs are specified and *\*suffix\** refers to a suffix to id
   - **SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.py**: file to run the optimization of parameterization of the SIVZ and SIVRZ models with respect to target concentrations (grid search)
   - **analysis_optimization.py**: analyze the results of the optimization =>  generates data for table 1 and 2
 
-##1.2 .sbatch files:
+## 1.2 .sbatch files:
 (each file contains a description of the parameters taken as inputs): to run simulations on HPC cluster
   - **run_SVZ_molar_model_phytotypes.sbatch**: runs SVZ_molar_model_phytotypes.py
   - **run_SVRZ_molar_model_phytotypes.sbatch**: runs SVRZ_molar_model_phytotypes.py
@@ -58,7 +58,7 @@ in each case pdf outputs are specified and *\*suffix\** refers to a suffix to id
   - **run_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sbatch**: runs SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.py
   - **run_analysis_optimization.sbatch**: runs analysis_optimization.py
 
-##1.3 .sh files: 
+## 1.3 .sh files: 
   - **run_coexistence_simulations.sh** : runs all simulations necessary to generate figure 2, 4, 6b-j, S5, S7, s8, s9, s10, s11, s12, s13, s17 and data for: figure 5, 3d,e, S6, s14, s16
   - **run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh**: used to run in parallel  the optimization of parameters, it divides the grid search in 50 equal chunks of parameters combinations e.g. if 10^6 parameter combination are tested, one job will test 10^6/50= 20000 combinations 
   - **concatenate_results_optimisation_params.sh**: used to concatenate rsult files from the optimisation
@@ -70,7 +70,7 @@ In a HPC cluster:
 ## 2.1. Create in this directory a subfolder called `model_data` to store results:  
 &nbsp;&nbsp;&nbsp;&nbsp;`mkdir model_data`
 
-##2.2. Run simulations of dynamics across the parameter space:  
+## 2.2. Run simulations of dynamics across the parameter space:  
 &nbsp;&nbsp;&nbsp;&nbsp;`./run_coexistence_simulations.sh`  
 &nbsp;&nbsp;&nbsp;&nbsp;This step will run all simulations necessary to generate figures of the coexistence diagram and some data that needs to be rescaled to generate some figures.
 
