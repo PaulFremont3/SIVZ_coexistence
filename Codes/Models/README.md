@@ -1,6 +1,7 @@
 In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ and SIVRZ models
 
-- Python files: 
+DESCRIPTION OF FILES
+- Python files, iun each case pdf outputs are specified and *\*suffix\** refers to a suffix to identify parameters input of the simulation (see inside .py file and .sbatch files for inputs needed): 
   - generic_functions.py: files containing functions shared by different scripts
   - SVZ_molar_model_phytotypes.py : code to run SVZ simulations and generate coexistence diagrams
       - outputs:
@@ -47,3 +48,7 @@ In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ an
   - run_coexistence_simulations.sh : runs all simulations necessary to generate figure 2, 4, 6b-j, S5, S7, s8, s9, s10, s11, s12, s13, s17 and data for: figure 5, 3d,e, S6, s14, s16
   - run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh: used to run in parallel  the optimization of parameters, it divides the grid search in 50 equal chunks of parameters combinations e.g. if 10^6 parameter combination ar tested, one job will test 10^6/50= 20000 combinations 
   - concatenate_results_optimisation_params.sh: used to concatenate rsult files from the optimisation
+
+HOW TO RUN THE SIMULATIONS
+
+WHERE ARE THE FIGURES FROM THE PAPER
