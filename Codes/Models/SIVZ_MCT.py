@@ -12,12 +12,14 @@ from SIVZ_functions import *
 
 
 if __name__ == '__main__':
-    indice=int(sys.argv[1])
-    eff=sys.argv[2]
-    otype=sys.argv[3]
-    dz2=float(sys.argv[4])
-    alph=float(sys.argv[5])
-    dv2=float(sys.argv[6])
+    indice=int(sys.argv[1]) # phytoplankton type, 0: small diatom, 1, picoeukaryote, 2, synechococcus, 3, prochlorococcus
+    eff=sys.argv[2] # loss of infection rate (0)
+    otype=sys.argv[3] # ocean type
+    dz2=float(sys.argv[4]) # quadratic mortality term of zooplankton
+    alph=float(sys.argv[5])  # strength of intraguild predation 0-1
+    dv2=float(sys.argv[6])  # quadratic mortality term of virus
+
+    # load life history traits 
     Vols=load_vector('../trait_data/Vs_5.txt', sep=' ')
     Ncs=load_vector('../trait_data/Nc_dutkiewicz_5.txt', sep=' ')
     betas=load_vector('../trait_data/model_burst_size_nn-gam.txt', sep=' ')
@@ -28,8 +30,10 @@ if __name__ == '__main__':
         rz=2.5
     elif indice in [0,1]:
         rz=5
+    # zooplankton nitrogen quota
     Qz=Q_grazer(rz)
 
+    # virus quota
     r_virus=[20,80,35,35]
     Qvs=[Q_virus(r) for r in r_virus]
 
@@ -41,24 +45,27 @@ if __name__ == '__main__':
     for i in range(200,400):
         Qps.append(Q_cyanobacteria(Vols[i]))
 
-
+    # choose the 4 smallest cells of each type (diatom, euk, syn and pro)
     N=4 # number of algae
     if N==4:
         ind1=np.argmin(np.array(Qps[0:100]))
         ind2=np.argmin(np.array(Qps[100:200]))
         ind3=np.argmin(np.array(Qps[200:300]))
         ind4=np.argmin(np.array(Qps[300:400]))
+        # quotas
         Qp1=Qps[0:100][ind1]
         Qp2=Qps[100:200][ind2]
         Qp3=Qps[200:300][ind3]
         Qp4=Qps[300:400][ind4]
 
+        # burst size
         bs1=round(betas[ind1],-1) #
         bs2=round(betas[100:200][ind2],-1)
         bs3=round(betas[200:300][ind3],-1)
         bs4=round(betas[300:400][ind4],-1)
         betas=[bs1,bs2,bs3,bs4]
 
+        # latent period
         lp1=round(lps[ind1],2)
         lp2=round(lps[100:200][ind2],2)
         lp3=round(lps[200:300][ind3],2)
@@ -68,12 +75,14 @@ if __name__ == '__main__':
 
         Qps=[Qp1,Qp2,Qp3,Qp4]
 
+        # maximum growth rate
         mu1=mu_max[0:100][ind1]
         mu2=mu_max[100:200][ind2]
         mu3=mu_max[200:300][ind3]
         mu4=mu_max[300:400][ind4]
         mu_max=[mu1,mu2,mu3,mu4]
 
+        # half saturation constant for nutrient
         Nc1=Ncs[0:100][ind1]
         Nc2=Ncs[100:200][ind2]
         Nc3=Ncs[200:300][ind3]
@@ -82,12 +91,13 @@ if __name__ == '__main__':
 
     print(mu_max)
 
+    # selct phytpplankton type
     typePhytos=['Diatom', 'Eukaryote', 'Synechococcus', 'Prochlorochoccus']
     typePhyto=typePhytos[indice]
 
     bs=betas[indice]
 
-    T_dep=1 # no T_dep in idealized case
+    
     suffix=typePhyto+'_BS'+str(round(bs, -1))+'_LOI'+eff
     if dz2==0:
         suffix+='_no-dz2'
@@ -97,6 +107,9 @@ if __name__ == '__main__':
         suffix+='dv2-'+str(dv2)
     if alph!=1:
         suffix+='_IG'+str(alph)
+
+    # Temperature dependency
+    T_dep=1 # no T_dep in idealized case
     if otype != '0':
         suffix+='_'+otype
         tauT = 0.8
@@ -137,8 +150,6 @@ if __name__ == '__main__':
     Qp=Qps[indice]
     eps=1 # adsorption efficiency coefficient
     epso=float(eff) # loss of infectivity rate
-    #eps_r=1e-6 # conversion to resistant type
-    #eps_lr=1e-6 # loss of resitance
     lat_per=lpes[indice]
 
     N_res=10 # nutrient concentration below MLD
@@ -154,7 +165,7 @@ if __name__ == '__main__':
         dN=0.01
         SN=N_res*dN
 
-
+    # carrying capacity
     KC_s=(-dN*R+SN)/mu
     CC=KC_s/(mu-d)
  
@@ -170,59 +181,22 @@ if __name__ == '__main__':
     elif otype=='oligotrophic':
         #S_l=0.2
         S_dep=pow(KC_s,2)/(pow(KC_s,2)+pow(Sc, 2))
-
-    #if pred_type=='encounter_model':
-    #    Vol_host=Vs[indice]
-    #    pi=3.14159265359
-    #    rh=pow(3*Vol_host/(4*pi),1/3)
-    #    phiz=phiz_encounter(rh, rz, Temp)
-    #    phiz=phiz*86400*1000/Qz
-    #    print(phiz)
-    #    suffix+='_encounter_model_zoop'
-    #else:
     phiz=9.8*T_dep*S_dep
     eps_z=0.3
     dz=0.067*T_dep
     dz2=dz2*T_dep
 
-    # grazing parameters
-    #S_dep=1
-    #Sc=0.226 #dutkiewicz 2020 (1.5 in umolC.L-1)
-    #if otype=='upwelling':
-    #    S_l=1
-    #    S_dep=pow(S_l,2)/(pow(S_l,2)+pow(Sc, 2))
-    #elif otype=='mesotrophic':
-    #    S_l=0.1
-    #    S_dep=pow(S_l,2)/(pow(S_l,2)+pow(Sc, 2))
-    #elif otype=='oligotrophic':
-    #    S_l=0.01
-    #    S_dep=pow(S_l,2)/(pow(S_l,2)+pow(Sc, 2))
-    #phiz=9.8*T_dep*S_dep
-    #eps_z=0.3
-    #dz=0.067*T_dep
-    #dz2=dz2*T_dep
-    #KC=1
-    #if otype=='upwelling':
-    #    KC=1
-    #elif otype=='mesotrophic':
-    #    KC=0.1
-    #elif otype=='oligotrophic':
-    #    KC=0.01
-    #CC=KC/mu
-
-    #phis = [j*pow(10, -i)  for i in range(12, 7,-1) for j in range(1,10)]
-    #phis=phis[0:(len(phis)-8)]
+    # adsorption rate parameter space
     phis=list(np.logspace(-12, -8, (12-8)*9+1))
 
-    #lps=[j*pow(10, i) for i in range(-1, 2) for j in range(1,10)]
+    #latent period parameter space
     lps=list(np.logspace(-1, 2, (2+1)*9+1))
     lps=lps[0:len(lps)-1]
 
-    #print(phis)
-    #print(phi_over_phir)
-
+    # paraemter space grid
     grid_test = [(ph, lp) for ph in phis for lp in lps]
 
+    # matrice to store effetcs from MCTs
     ntot=6
     matrices_effects_v_inv=[np.zeros( (len(phis),len(lps)) ) for i in range(ntot)]
     matrices_effects_z_inv=[np.zeros( (len(phis),len(lps)) ) for i in range(ntot)]
