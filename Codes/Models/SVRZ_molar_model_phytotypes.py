@@ -670,16 +670,8 @@ if __name__ == '__main__':
     
     mi=0
     mx=10
-    cmap = matplotlib.colormaps['viridis']
-    colors0 = cmap(np.linspace(0, 1, 11))
-    cmap0=matplotlib.colors.ListedColormap(colors0)
     bounds=[0,1,2,3,4,5,6,7,8,9,10]
     norm = matplotlib.colors.BoundaryNorm(bounds, cmap0.N-1)
-
-    plot_with_scale(final_state_all,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'State reached', norm=norm, yl=ylb)
-    pp.savefig()
-
-
     mi=0
     mx=n_state-1
     colors = list(matplotlib.colormaps.get_cmap('tab20').colors[2:(mx+2)])
@@ -688,10 +680,6 @@ if __name__ == '__main__':
     colors[10]=(0.8039, 0.5216, 0.2471)
     colors=tuple(colors)
     cmap = matplotlib.colors.ListedColormap(colors)
-    plot_with_scale(final_state_all,cmap ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'State reached', norm=norm, yl=ylb)
-    pp.savefig()
-
-    
     axi=plot_with_scale(final_state_all,cmap ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'State reached', norm=norm, yl=ylb)
     coex_mat=np.zeros( (len(phis),len(phi_over_phir)) ) 
     coex_mat[final_state_all>7]=1
@@ -699,18 +687,6 @@ if __name__ == '__main__':
     coex_mat=np.flipud(coex_mat)
     draw_borders(coex_mat, 1.5, 0.05, 'white', axi)
     pp.savefig()
-
-    mi=0
-    mx=7
-    cmap = matplotlib.colormaps['viridis']
-    colors0 = cmap(np.linspace(0, 1, 8))
-    cmap0=matplotlib.colors.ListedColormap(colors0)
-    bounds=[0,1,2,3,4,5,6,7]
-    norm = matplotlib.colors.BoundaryNorm(bounds, cmap0.N-1)
-
-    plot_with_scale(final_Surv,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Virus/Grazer Survivors', norm=norm, yl=ylb)
-    pp.savefig()
-
 
     mi=np.nanmin(np.array(exclusion_times))
     mx=np.nanmax(np.array(exclusion_times))
@@ -977,6 +953,13 @@ if __name__ == '__main__':
             mi=0
             mx=np.nanmax(valid_concentrations_4)
             plot_with_scale(valid_concentrations_4, cmap, mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, 'Valid concentrations+ % virus kill + V/A ratio', yl=ylb)
+            pp.savefig()
+
+            phi_a_index_par=np.nanargmin(np.absolute(mt.log10(phi_e_a)-np.log10(np.array(phis))))
+            valid_concentrations_4[phi_a_index_par]=4
+            cmap = matplotlib.colors.ListedColormap(['crimson', 'royalblue', 'gold', 'limegreen', 'cyan'])
+            mx=4
+            plot_with_scale(valid_concentrations_4, cmap, mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, 'Valid concentrations +  % virus kill + V/A ratio', yl=ylb)
             pp.savefig()
         else:
             phi_index_par=np.nanargmin(np.absolute(mt.log10(phi_e)-np.log10(np.array(phis))))
