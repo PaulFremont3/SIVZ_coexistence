@@ -766,6 +766,7 @@ if __name__ == '__main__':
     bounds=[0,1,2,3,4]
     norm = matplotlib.colors.BoundaryNorm(bounds, cmap0.N-1)
     mi=0
+    mx=4
     n_state_R=11
     mx_R=n_state_R-1
     colors = list(matplotlib.colormaps.get_cmap('tab20').colors[2:(mx_R+2)])
