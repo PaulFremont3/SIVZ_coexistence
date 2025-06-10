@@ -49,7 +49,7 @@ in each case pdf outputs are specified and *\*suffix\** refers to a suffix to id
   - **analysis_optimization.py**: analyze the results of the optimization =>  generates data for table 1 and 2
 
 ## 1.2. .sbatch files:
-(each file contains a description of the parameters taken as inputs): to run simulations on HPC cluster
+Each file contains a description of the parameters taken as inputs: .sbatch files are used to run simulations on a HPC cluster with slurm
   - **run_SVZ_molar_model_phytotypes.sbatch**: runs SVZ_molar_model_phytotypes.py
   - **run_SVRZ_molar_model_phytotypes.sbatch**: runs SVRZ_molar_model_phytotypes.py
   - **run_SIVZ_molar_model_phytotypes.sbatch**: runs SIVZ_molar_model_phytotypes.py
