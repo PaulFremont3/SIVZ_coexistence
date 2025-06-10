@@ -505,7 +505,7 @@ if __name__ == '__main__':
             if valid_concentrations[i0,j0]==1 and valid_concentrations_bis[i0,j0]==1 and valid_concentrations_ter[i0,j0]==1:
                 valid_concentrations_4[i0,j0]=1
 
-            distance_to_t = absolute_error(target_conc, vals_r)#mt.sqrt(sum([pow((vals_r[c]-target_conc[c])*100/target_conc[c], 2) for c in range(3)]))
+            distance_to_t = absolute_error(target_conc, vals_r)
 
             distance_to_target[i0,j0]=distance_to_t
         else:
