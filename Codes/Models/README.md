@@ -63,7 +63,7 @@ in each case pdf outputs are specified and *\*suffix\** refers to a suffix to id
   - **run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh**: used to run in parallel  the optimization of parameters, it divides the grid search in 50 equal chunks of parameters combinations e.g. if 10^6 parameter combination are tested, one job will test 10^6/50= 20000 combinations 
   - **concatenate_results_optimisation_params.sh**: used to concatenate rsult files from the optimisation
 
-# 2. HOW TO RUN THE SIMULATIONS**  
+# 2. HOW TO RUN THE SIMULATIONS
 
 In a HPC cluster:  
 
@@ -104,5 +104,6 @@ In a HPC cluster:
 &nbsp;&nbsp;&nbsp;&nbsp;`sbatch run_analysis_optimization.sbatch 0`
 
 # 3. PDF AND TXT FILES WITH THE FIGURES AND DATA FOR TABLES IN THE PAPER 
+
 (after running all simulations)
 
