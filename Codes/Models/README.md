@@ -101,9 +101,21 @@ In a HPC cluster:
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Diatom 0`
 
 ## 2.8. Run the analysis of the optimization:  
-&nbsp;&nbsp;&nbsp;&nbsp;`sbatch run_analysis_optimization.sbatch 0`
+&nbsp;&nbsp;&nbsp;&nbsp;`sbatch run_analysis_optimization.sbatch 0`  
+&nbsp;&nbsp;&nbsp;&nbsp; This will extract the best and 200 best parameter combinations for each phytoplankton type
 
 # 3. PDF AND TXT FILES WITH THE FIGURES AND DATA FOR TABLES IN THE PAPER 
 
-(after running all simulations)
+(after running all simulations)  
+
+# Figures
+- Figure 2
+  - 2a: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic.pdf
+  - 2b: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
+  - 2c: page 1 of SVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_no-dz2_m2-1800.0_mesotrophic.pdf
+  - 2d: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - 2e: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic.pdf
+  - 2f: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
+  - 2g: page 1 of SIVZ_m2_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_no-dz2_mesotrophic.pdf
+  - 2h: page 1 of SIVZ_m2_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
 
