@@ -722,27 +722,7 @@ if __name__ == '__main__':
         make_plots_SIVZ(S, I, V, Z, i1, i3,tit,dt,pp, Qp, Qv, Qz)
     pp.close()
 
-    # time series without the zooplankton
-    pp = PdfPages(type_mod+'_model_phi_latent_period_time_series_no_Z_'+suffix+'.pdf')
-    for phi in phi_to_plot:
-        tit='phi='+str(phi)
-        d=0.1
-        print(lat_per)
-        nyears0=5
-        ndays=365*nyears0
-        init_conditions=[0.01, 0.01,0.01,0]
-        result=simulation_SIVZ_rk4(mu, mui, lat_per, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, epso,phiz,eps_z,dz,dz2, CC,alph,dt, ndays , init_conditions )
-        S=result[0]
-        I=result[1]
-        V=result[2]
-        Z=result[3]
-        i1=0
-        i2=len(S)-1
-        make_plots_SIVZ(S, I, V, Z, i1, i2, tit,dt,pp, Qp, Qv, Qz)
-        i3=round((365)/dt)
-        make_plots_SIVZ(S, I, V, Z, i1, i3,tit,dt,pp, Qp, Qv, Qz)
-    pp.close()
-    
+
     if indice==1 and big=='1':
         lenx=6
     else:
