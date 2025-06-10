@@ -931,18 +931,9 @@ if __name__ == '__main__':
     pp = PdfPages(type_m0+'_model_eps_versus_epsr_'+suffix+'.pdf')    
   elif param=='lp_phir' or param=='lp_epsr':
     pp = PdfPages(type_m0+'_model_phi_versus_latent_period_'+suffix+'.pdf')
-  mi=0
-  mx=10
-  cmap = matplotlib.colormaps['viridis']
-  colors0 = cmap(np.linspace(0, 1, 11))
-  cmap0=matplotlib.colors.ListedColormap(colors0)
+
   bounds=[0,1,2,3,4,5,6,7,8,9,10]
   norm = matplotlib.colors.BoundaryNorm(bounds, cmap0.N-1)
-
-  plot_with_scale(final_state_all,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'State reached', norm=norm, yl=ylb)
-  pp.savefig()
-
-  
   mi=0
   mx=n_state-1
   colors = list(matplotlib.colormaps.get_cmap('tab20').colors[2:(mx+2)])
@@ -951,8 +942,6 @@ if __name__ == '__main__':
   colors[10]=(0.8039, 0.5216, 0.2471)
   colors=tuple(colors)
   cmap = matplotlib.colors.ListedColormap(colors)
-  plot_with_scale(final_state_all,cmap ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'State reached', norm=norm, yl=ylb)
-  pp.savefig()
 
   axi=plot_with_scale(final_state_all,cmap ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'State reached', norm=norm, yl=ylb)
   coex_mat=np.zeros( (len(phis),gsize) )
@@ -987,18 +976,6 @@ if __name__ == '__main__':
   plot_with_scale(final_state_all_mod,cmap_R_bis,mi,mx+2, atickx, aticky, alabel_tickx, alabel_ticky, 'State reached + LHT models', norm=norm_bis, yl=ylb)
   pp.savefig()
 
-  
-  mi=0
-  mx=7
-  cmap = matplotlib.colormaps['viridis']
-  colors0 = cmap(np.linspace(0, 1, 8))
-  cmap0=matplotlib.colors.ListedColormap(colors0)
-  bounds=[0,1,2,3,4,5,6,7]
-  norm = matplotlib.colors.BoundaryNorm(bounds, cmap0.N-1)
-
-  
-  plot_with_scale(final_Surv,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Virus/Grazer Survivors', norm=norm, yl=ylb)
-  pp.savefig()
 
   if type_m=='SIVRZ' and eff=='0' and dz2!=0:
     plot_with_scale(final_Surv,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Virus/Grazer Survivors', norm=norm, yl=ylb)
@@ -1013,57 +990,8 @@ if __name__ == '__main__':
       plt.contour(np.transpose(final_Surv_alpha[3]),colors='k', levels=[0,1],  extent=[-1, len(phis), -1, gsize], origin='upper')
   pp.savefig()
 
+  # theory
   if type_m=='SIVRZ' and eff=='0' and dz2!=0:
-    plot_with_scale(final_Surv,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Virus/Grazer Survivors', norm=norm, yl=ylb)
-    plt.scatter(theor_surv_phi, theor_surv_phi_over_phir, color='black', s=1, marker="o")
-    plt.scatter(theor_surv_phi0, theor_surv_phi_over_phir0, color='red', s=1, marker="^",  edgecolors='none')
-    plt.scatter(theor_surv_phi1, theor_surv_phi_over_phir1, color='blue', s=1, marker="v", edgecolors='none')
-
-    pp.savefig()
-  
-    if m2!=0:
-      plot_with_scale(final_Surv,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Virus/Grazer Survivors', norm=norm, yl=ylb)
-      plt.contour(np.transpose(final_Surv_alpha[3]),colors='k', levels=[0,1],  extent=[-1, len(phis), -1, gsize], origin='upper')
-  cmap = matplotlib.colormaps['viridis']
-  colors0 = cmap(np.linspace(0, 1, 8))
-  cmap0=matplotlib.colors.ListedColormap(colors0)
-  bounds=[0,1,2,3,4,5,6,7]
-  norm = matplotlib.colors.BoundaryNorm(bounds, cmap0.N-1)
-
-  
-  plot_with_scale(final_Surv,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Virus/Grazer Survivors', norm=norm, yl=ylb)
-  pp.savefig()
-
-  if type_m=='SIVRZ' and eff=='0' and dz2!=0:
-    plot_with_scale(final_Surv,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Virus/Grazer Survivors', norm=norm, yl=ylb)
-    plt.scatter(theor_surv_phi, theor_surv_phi_over_phir, color='black', s=1, marker="o")
-    plt.scatter(theor_surv_phi0, theor_surv_phi_over_phir0, color='red', s=1, marker="^",  edgecolors='none')
-    plt.scatter(theor_surv_phi1, theor_surv_phi_over_phir1, color='blue', s=1, marker="v", edgecolors='none')
-
-    pp.savefig()
-  
-    if m2!=0:
-      plot_with_scale(final_Surv,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Virus/Grazer Survivors', norm=norm, yl=ylb)
-      plt.contour(np.transpose(final_Surv_alpha[3]),colors='k', levels=[0,1],  extent=[-1, len(phis), -1, gsize], origin='upper')
-      plt.contour(np.transpose(final_Surv_alpha0[3]),colors='r', levels=[0,1],  extent=[-1, len(phis), -1, gsize], origin='upper')
-      plt.contour(np.transpose(final_Surv_alpha1[3]),colors='b', levels=[0,1],  extent=[-1, len(phis), -1, gsize], origin='upper')
-      pp.savefig()
-
-      plot_with_scale(final_Surv,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Virus/Grazer Survivors', norm=norm)
-      plt.contour(np.transpose(final_Surv_alpha[3]),colors='k', levels=[0,1],  extent=[-1, len(phis), -1, gsize], origin='upper')
-      plt.contour(np.transpose(final_Surv_alpha0[3]),colors='r', levels=[0,1],  extent=[-1, len(phis), -1, gsize], origin='upper')
-      plt.contour(np.transpose(final_Surv_alpha1[3]),colors='b', levels=[0,1],  extent=[-1, len(phis), -1, gsize], origin='upper')
-      plt.scatter(final_unstab_phis, final_unstab_phi_over_phirs, color='white', s=2)
-      pp.savefig()
-
-      lsts=['dotted','dashed', 'dashdot','solid']
-      plot_with_scale(zeros_mat, 'Greys', mi,mx, atickx, aticky, alabel_tickx, alabel_ticky, 'Virus/Grazer Survivors', yl=ylb)
-      for i in range(len(alphas)):
-        plt.contour(np.transpose(final_Surv_alpha[i]),colors='k',linestyles=lsts[i], levels=[0,1],  extent=[-1, len(phis), -1, gsize], origin='upper')
-        plt.contour(np.transpose(final_Surv_alpha0[i]),colors='r',linestyles=lsts[i], levels=[0,1],  extent=[-1, len(phis), -1, gsize], origin='upper')
-        plt.contour(np.transpose(final_Surv_alpha1[i]),colors='b',linestyles=lsts[i], levels=[0,1],  extent=[-1, len(phis), -1, gsize], origin='upper')
-      pp.savefig()
-
     mi=0
     mx=2
     cmap = matplotlib.colors.ListedColormap(['red', 'green','dodgerblue'])
@@ -1119,28 +1047,6 @@ if __name__ == '__main__':
       c3=np.array(c2_i*c1_i, dtype=bool)
       predicted_state[c3] = jo
       jo=jo-1
-
-    mi=0
-    mx=n_state-1
-    predicted_state[limit_val_mat==0]=np.nan
-    colors = list(matplotlib.colormaps.get_cmap('tab20').colors[2:(mx+2)])
-    cn= matplotlib.colormaps.get_cmap('tab20').colors[0]
-    colors.append(cn)
-    colors[10]=(0.8039, 0.5216, 0.2471)
-    colors=tuple(colors)
-    cmap = matplotlib.colors.ListedColormap(colors)
-    plot_with_scale_bis(predicted_state,cmap ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Predicted state', yl=ylb)
-    pp.savefig()
-
-
-    mi=0
-    mx=10
-    cmap = matplotlib.colormaps['viridis']
-    colors0 = cmap(np.linspace(0, 1, 11))
-    cmap0=matplotlib.colors.ListedColormap(colors0)
-    plot_with_scale_bis(final_state_all,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Reached state', yl=ylb)
-    pp.savefig()
-    
     
     alter_state=np.zeros((len(phis), gsize))
     u_state=np.zeros((len(phis), gsize))
@@ -1195,56 +1101,7 @@ if __name__ == '__main__':
     coex_mat=np.flipud(coex_mat)
     draw_borders(coex_mat, 1.5, 0.05, 'white', axi)
     pp.savefig()
-
-    mi=0
-    mx=10
-    cmap = matplotlib.colormaps['viridis']
-    colors0 = cmap(np.linspace(0, 1, 11))
-    cmap0=matplotlib.colors.ListedColormap(colors0)
-    plot_with_scale_bis(predicted_state,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Predicted state', yl=ylb)
-    plt.contour(np.transpose(alter_state), colors=['red', 'white'], levels=[0,1] , extent=[-1, len(phis), -1, gsize], origin='upper', linewidths=0.5)
-    plt.contourf(np.transpose(alter_state_bis), colors=['red', 'white'], levels=[0,0.9] , alpha=0.2, extent=[-1, len(phis), -1, gsize], origin='upper')
-    plt.contour(np.transpose(u_state), colors=['black', 'white'], levels=[0,1] , extent=[-1, len(phis), -1, gsize], origin='upper', linewidths=0.5)
-    plt.contourf(np.transpose(u_state_bis), colors=['black', 'white'], levels=[0,0.9] , alpha=0.2, extent=[-1, len(phis), -1, gsize], origin='upper')
-    pp.savefig()
-
-    # convert to the state from simulation
-    predicted_state_bis=np.zeros((len(phis), gsize))
-    predicted_state_bis[:]=np.nan
-    for j in range(n_state):
-      if j==0:
-        predicted_state_bis[predicted_state==j]=0
-      if j==n_state-9 or j==n_state-10:
-        predicted_state_bis[predicted_state==j]=1
-      if j==n_state-8 or j==n_state-7:
-        predicted_state_bis[predicted_state==j]=2
-      if j==n_state-5 or j==n_state-6:
-        predicted_state_bis[predicted_state==j]=3
-      if j==n_state-4:
-        predicted_state_bis[predicted_state==j]=4
-      if j==n_state-3:
-        predicted_state_bis[predicted_state==j]=5
-      if j==n_state-2 or j==n_state-2:
-        predicted_state_bis[predicted_state==j]=6
-      if j==n_state-1:
-        predicted_state_bis[predicted_state==j]=7
-
-    mi=0
-    mx=7
-    cmap = matplotlib.colormaps['viridis']
-    colors0 = cmap(np.linspace(0, 1, 8))
-    cmap0=matplotlib.colors.ListedColormap(colors0)
-    plot_with_scale_bis(predicted_state_bis,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Predicted virus/grazer survivors', yl=ylb)
-    pp.savefig()
-
-    plot_with_scale_bis(predicted_state_bis,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Predicted state virus/grazer survivors', yl=ylb)
-    plt.contour(np.transpose(alter_state), colors=['limegreen', 'white'], levels=[0,1] , extent=[-1, len(phis), -1, gsize], origin='upper', linewidths=0.5)
-    plt.contourf(np.transpose(alter_state_bis), colors=['limegreen', 'white'], levels=[0,0.9] , alpha=0.2, extent=[-1, len(phis), -1, gsize], origin='upper')
-    plt.contour(np.transpose(u_state), colors=['black', 'white'], levels=[0,1] , extent=[-1, len(phis), -1, gsize], origin='upper', linewidths=0.5)
-    plt.contourf(np.transpose(u_state_bis), colors=['black', 'white'], levels=[0,0.9] , alpha=0.2, extent=[-1, len(phis), -1, gsize], origin='upper')
-    pp.savefig()
     
-
   mi=np.nanmin(np.array(exclusion_times))
   mx=np.nanmax(np.array(exclusion_times))
   plot_with_scale(exclusion_times, 'YlGnBu', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky , 'Exclusion time (year)', yl=ylb)
@@ -1257,8 +1114,6 @@ if __name__ == '__main__':
 
   mi=0
   mx=100
-  plot_with_scale_bis(mortality_ratios, 'nipy_spectral', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, '% virus induced death', yl=ylb)
-  pp.savefig()
   plot_with_scale_bis(mortality_ratios, 'nipy_spectral', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, '% virus induced death', yl=ylb)
   pp.savefig()
   plot_with_scale_bis(mortality_ratios_Z, 'nipy_spectral', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, '% zoop induced death', yl=ylb)
@@ -1439,9 +1294,6 @@ if __name__ == '__main__':
   mi=0
   mx=1
   cmap = matplotlib.colors.ListedColormap(['green', 'red'])
-  plot_with_scale(final_stab, cmap, mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, 'Equilibrium type', yl=ylb)
-  pp.savefig()
-
   plot_with_scale(cases, cmap, mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, 'Approx type', yl=ylb)
   pp.savefig()
 
@@ -1451,11 +1303,6 @@ if __name__ == '__main__':
   distance_to_target_bis[distance_to_target_bis>mx]=mx
   plot_with_scale_bis(distance_to_target_bis, 'inferno', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, 'Distance to target concentrations', yl=ylb)
   pp.savefig()
-
-  if param=='lp_phir' or param=='lp_epsr':
-    plot_with_scale_bis(distance_to_target_bis, 'inferno', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky, 'Distance to target concentrations', yl=ylb)
-    plt.scatter(phi_index_par, len(lps)-lp_index_par-1, color='limegreen', s=5)
-    pp.savefig()
 
   mi=np.nanmin(np.array(distance_to_target_A))
   mx=np.nanmax(np.array(distance_to_target_A))
