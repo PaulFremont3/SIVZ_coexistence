@@ -435,30 +435,19 @@ if __name__ == '__main__':
     # main pdf with matrices plots in the explored parameter sapce
     pp = PdfPages('SVZ_model_phi_latent_period_'+suffix+'.pdf')
     ylb='Latent period'
-    mi=0
-    mx=4
-    cmap = matplotlib.colormaps['viridis']
-    colors0 = cmap(np.linspace(0, 1, 5))
-    cmap0=matplotlib.colors.ListedColormap(colors0)
     bounds=[0,1,2,3,4]
     norm = matplotlib.colors.BoundaryNorm(bounds, cmap0.N-1)
-    plot_with_scale(final_Surv,cmap0,mi,mx, atickx, aticky, alabel_tickx, alabel_ticky, 'State reached', norm=norm, yl=ylb)
-    pp.savefig()
-
     mi=0
+    mx=4
     n_state_R=11
     mx_R=n_state_R-1
     colors = list(matplotlib.colormaps.get_cmap('tab20').colors[2:(mx_R+2)])
     cn= matplotlib.colormaps.get_cmap('tab20').colors[0]
     colors.append(cn)
-    print(len(colors))
     idis=[0,2,6,4,9]
     colors=[colors[idi] for idi in idis]
     colors=tuple(colors)
     cmap_R= matplotlib.colors.ListedColormap(colors)
-    plot_with_scale(final_Surv,cmap_R,mi,mx, atickx, aticky, alabel_tickx, alabel_ticky, 'State reached', norm=norm, yl=ylb)
-    pp.savefig()
-
     axi=plot_with_scale(final_Surv,cmap_R,mi,mx, atickx, aticky, alabel_tickx, alabel_ticky, 'State reached', norm=norm, yl=ylb)
     coex_mat=np.zeros( (len(phis),len(lps)) )
     coex_mat[final_Surv==4]=1
@@ -478,12 +467,12 @@ if __name__ == '__main__':
 
     mi=np.nanmin(np.array(final_Z))
     mx=np.nanmax(np.array(final_Z))
-    plot_with_scale(final_Z, 'Reds', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky , 'Grazer (log10(umol.L-1))', yl=ylb)
+    plot_with_scale(final_Z, 'Reds', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky , 'Zooplankton (log10(umol.L-1))', yl=ylb)
     pp.savefig()
 
     mi=np.nanmin(np.array(final_Z)-mt.log10(Qz))
     mx=np.nanmax(np.array(final_Z)-mt.log10(Qz))
-    plot_with_scale(np.array(final_Z)-mt.log10(Qz), 'Reds', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky , 'Grazer (log10(ind.L-1))', yl=ylb)
+    plot_with_scale(np.array(final_Z)-mt.log10(Qz), 'Reds', mi, mx, atickx, aticky, alabel_tickx, alabel_ticky , 'Zooplankton (log10(ind.L-1))', yl=ylb)
     pp.savefig()
 
     mi=np.nanmin(np.array(final_V))
