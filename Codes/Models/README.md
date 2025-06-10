@@ -297,4 +297,23 @@ In a HPC cluster:
   - S13s: page 7 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
   - S13t: page 9 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
 - **Figure S14**
+  - S14a to S14f: page 13 to 18 of Scaled_PVZ_main_models.pdf
+  - S14g and S14h: page 22 and 23 of Scaled_PVZ_main_models.pdf
+  - S14i: page 44 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-10.0_mesotrophic.pdf
+  - S14j: page 44 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-0.0_mesotrophic.pdf
+- **Figure S15**
+  - S15a to S15d: page 1,2,4,5 of hist_abundances_Syn_Pro_virus_percentage_infected.pdf
+  - S15e: page 3 of hist_abundances_Syn_Pro_virus_percentage_infected.pdf
+- **Figure S16**
+  - S16a to S16i: page 1 to 9 of Scaled_SIVZ_distances.pdf
+- **Figure S17**
+  - S17a: page 48 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - S17b: page 59 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-10.0_mesotrophic.pdf
+  - S17c: page 59 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-10.0_mesotrophic.pdf
+  - S17d: page 49 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - S17e: page 60 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-10.0_mesotrophic.pdf
+  - S17f: page 60 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-10.0_mesotrophic.pdf
+  - S17g: page 50 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - S17h: page 61 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-10.0_mesotrophic.pdf
+  - S17i: page 61 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-10.0_mesotrophic.pdf
 
