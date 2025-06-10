@@ -1,7 +1,7 @@
 In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ and SIVRZ models
 
 **DESCRIPTION OF FILES**
-- Python files, iun each case pdf outputs are specified and *\*suffix\** refers to a suffix to identify parameters input of the simulation (see inside .py file and .sbatch files for inputs needed): 
+- Python files, in each case pdf outputs are specified and *\*suffix\** refers to a suffix to identify parameters input of the simulation (see inside .py file and .sbatch files for inputs needed for each files): 
   - generic_functions.py: files containing functions shared by different scripts
   - SVZ_molar_model_phytotypes.py : code to run SVZ simulations and generate coexistence diagrams
       - outputs:
