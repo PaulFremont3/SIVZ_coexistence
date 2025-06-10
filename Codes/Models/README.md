@@ -1,4 +1,5 @@
-In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ and SIVRZ models and the parameter otpimization procedure for 4 types of phytoplankton: *Prochlorococcus*, *Synechococcus*, a picoeukaryote, a small diatom
+In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ and SIVRZ models and the parameter otpimization procedure for 4 types of phytoplankton: *Prochlorococcus*, *Synechococcus*, a picoeukaryote, a small diatom.  
+
 All simulations were run on the Zaratan HPC cluster of the University of Maryland (https://hpcc.umd.edu/hpcc/zaratan.html)
 
 **1. DESCRIPTION OF FILES**  
