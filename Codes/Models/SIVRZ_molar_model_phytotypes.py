@@ -24,10 +24,6 @@ if __name__ == '__main__':
   phi_ratio=float(sys.argv[9]) # specify fixed resistance strength in case param==lp_epsr or param==lp_phir. if 0 => full resistance
 
   print(sys.argv)
-  if m2!=0:
-    type_m0=type_m+'_'+str(int(m2))
-  else:
-    type_m0=type_m
   # load life history traits 
   Vols=load_vector('../trait_data/Vs_5.txt', sep=' ')
   Ncs=load_vector('../trait_data/Nc_dutkiewicz_5.txt', sep=' ')
@@ -122,6 +118,8 @@ if __name__ == '__main__':
   suffix=typePhyto+'_LP'+str(lp)+'_BS'+str(bs)+'_LOI'+eff+'_GR-R'+gr_ratio
   if dz2==0:
       suffix+='_no-dz2'
+  if m2 !=0:
+      suffix+='_m2-'+str(m2)
   if param=='lp_phir':
       suffix+='_lp_phi-ratio-'+str(phi_ratio)
   elif param=='lp_epsr':
