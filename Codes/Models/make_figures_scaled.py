@@ -12,7 +12,7 @@ from scipy.signal import find_peaks
 from generic_functions import *
 
 if __name__ == '__main__':
-    mods=str(sys.argv[1])
+    mods=str(sys.argv[1]) #  main_models or ocean_types (only main_models is necessary to generate the figures in the paper)
 
     if mods=='main_models':
         suffixes=['SIVZ_m2_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.txt', 'SIVRZ_1800_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-10.0_mesotrophic.txt', 'SIVRZ_1800_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-0.0_mesotrophic.txt']
@@ -51,6 +51,7 @@ if __name__ == '__main__':
 
         return datas, mx, mi_f
 
+    # load data
     datas_a, mx_a, mi_a=read_data(files_algae, 3)
     datas_v, mx_v, mi_v=read_data(files_virus, 5)
     datas_z, mx_z, mi_z=read_data(files_zoop, 3)
@@ -72,6 +73,7 @@ if __name__ == '__main__':
     alabel_ticky= [lps[i-8] for i in atickyr]
 
     ylb='Latent period'
+    # pdf for tracers concentrations, ZV ratio and NPP
     pp=PdfPages('Scaled_PVZ_'+mods+'.pdf')
     for j,d in enumerate(datas_a):
         mi=mi_a
@@ -124,7 +126,7 @@ if __name__ == '__main__':
 
 
     
-    # supp figure fft analysis
+    # Fourier analysis
     suffixes=['SIVZ_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic.txt','SIVZ_Prochlorochoccus_BS20.0_LOI0_mesotrophic.txt','SIVZ_m2_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.txt', 'SIVRZ_1800_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-10.0_mesotrophic.txt']
     titles=['SIVZ_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic','SIVZ_Prochlorochoccus_BS20.0_LOI0_mesotrophic','SIVZ_m2_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic', 'SIVRZ_1800_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-10.0_mesotrophic']
 
@@ -145,6 +147,7 @@ if __name__ == '__main__':
 
     mx_per, mi_per=np.nanmax(np.array(mx_pers)), np.nanmin(np.array(mi_pers))
 
+    # Fourier pdf
     pp=PdfPages('Scaled_PVZ_FFT_and_Perdiod.pdf')
     for j,d in enumerate(datas_fft):
         mi=mi_fft
@@ -161,19 +164,11 @@ if __name__ == '__main__':
     
     files_coexistence_SIVZ= ['coexistence_analysis_V_SIVZ_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic_Fluctuation_free_growth_rate.txt', 'coexistence_analysis_V_SIVZ_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic_Relative_non_linearity_I.txt']
     data_coex, mx_coex, mi_coex=read_data(files_coexistence_SIVZ, -100000000000000000000000000)
-    #print(mi_coex)
-    #print(mx_coex)
-    #print('')
 
-    #for i in range(2):
-        #print(np.nanmax(data_coex[i]))
-        #print(np.nanmin(data_coex[i]))
-        #print(' ')
-
+    # Coexistence analysis
     pp=PdfPages('Scaled_SIVZ_coexistence.pdf')
     for j,d in enumerate(data_coex):
         dat=abs(d)
-        #print(np.log10(d))
         dat[dat<1e-1]=1e-1
         cmap = matplotlib.colormaps['PuOr_r']
         colors0 = cmap(np.linspace(0, 1, 200))
@@ -190,9 +185,7 @@ if __name__ == '__main__':
         pp.savefig()
     for j,d in enumerate(data_coex):
         dat=abs(d)
-        #print(np.log10(d))
-        #dat[dat<1e-1]=1e-1
-        dat[dat>100]=100#np.nan
+        dat[dat>100]=100#
         cmap = matplotlib.colormaps['PuOr_r']
         colors0 = cmap(np.linspace(0, 1, 200))
         if j==0:
@@ -232,7 +225,7 @@ if __name__ == '__main__':
     mi_distance=min(mi_distances)
     amx=max([abs(mi_distance),abs(mx_distance)])
     
-    #amx=
+    # distances to specififc targets (A, Z and V) (A stands for Algae/Phytoplankton)
     pp=PdfPages('Scaled_SIVZ_distances.pdf')
     for j,d in enumerate(data_distances):
         plot_with_scale_bis(d, 'coolwarm', -amx, amx, atickx, aticky, alabel_tickx, alabel_ticky, files_distances[j], yl=ylb)
