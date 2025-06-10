@@ -84,6 +84,7 @@ def make_plots(S, V, Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
     V=V[i1:i2]
     Z=Z[i1:i2]
     time_sim=range(i1, i2)
+    # molar time series
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, S, color='#2ca02c')
     plt.plot(np.array(time_sim)*dt, V, color='#1f77b4')
@@ -99,7 +100,7 @@ def make_plots(S, V, Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
     plt.yticks(fontsize=14)
     pp.savefig()
 
-
+    # count time series
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
     plt.plot(np.array(time_sim)*dt, np.array(V[i1:i2])/Qv, color='#1f77b4')
