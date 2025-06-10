@@ -195,4 +195,10 @@ In a HPC cluster:
   - 6i: page 67 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-10.0_mesotrophic.pdf
   - 6j: page 67 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-10.0_mesotrophic.pdf
 # Tables
-
+- **Table 1**
+  - Best parameters: SIVZ_optimum_fit_*\*phyto-type\**_intracellular.txt where *\*phyto-type\** is Prochlorococcus, Synechococcus, Eukaryote and Diatom
+  - Parameter ranges: SIVZ_range_fit_*\*phyto-type\**_intracellular.txt where *\*phyto-type\** is Prochlorococcus, Synechococcus, Eukaryote and Diatom
+- **Table 2**
+  - Minimum total error: SIVZ_optimum_fit_*\*phyto-type\**_intracellular.txt
+  - Error range: SIVZ_range_fit_*\*phyto-type\**_intracellular.txt
+  - Reached concentrations: SIVZ_optimum_fit_errors_tracers_*\*phyto-type\**_intracellular.txt
