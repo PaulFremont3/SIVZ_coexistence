@@ -122,7 +122,7 @@ if __name__ == '__main__':
     suffix=typePhyto+'_BS'+str(round(bs, -1))+'_LOI'+eff
     if m2!=0:
         suffix+='_m2-'+str(m2)
-        type_mod='SIVZ_m2'
+        type_mod='SIVZ'
     else:
         type_mod='SIVZ'
     if dz2==0:
