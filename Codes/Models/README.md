@@ -62,7 +62,8 @@ All simulations were run on the Zaratan HPC cluster of the University of Marylan
 
 **2. HOW TO RUN THE SIMULATIONS**  
 
-In a HPC cluster:
+In a HPC cluster:  
+
 **2.1.** Create in this directory a subfolder called `model_data` to store results:  
 &nbsp;&nbsp;&nbsp;&nbsp;`mkdir model_data`
 
