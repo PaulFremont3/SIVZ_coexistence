@@ -354,7 +354,7 @@ if __name__ == '__main__':
             c_u=S_star_u>0 and I_star_u>0 and V_star_u>0 and Z_star_u> 0 and case_u==1
             c_m=S_star_m>0 and I_star_m>0 and V_star_m>0 and Z_star_m> 0 and case_m==1
             c_o= S_star_o>0 and I_star_o>0 and V_star_o>0 and Z_star_o>0 and case_o==1
-            c_val=(c_u and c_m and c_o)
+            c_val=(c_m and c_o)
         elif type_m in ['SIVRZ', 'SIVRZ_intra']:
             if m2!=0:
                 S_star_u, I_star_u, V_star_u, R_star_u, Z_star_u, case_u=equilibrium1_SIVRZ_m2(mus[0], mui, lp, beta, phi_u, d*T_deps[0], m*T_deps[0],m2*T_deps[0], Qv, Qp,Qz,  eps,epsr, epso,eps_r,eps_lr,phir_u,mur,phizs[0],eps_z,dz*T_deps[0],dz2*T_deps[0], CCs[0], alpha)
@@ -379,7 +379,7 @@ if __name__ == '__main__':
             c_u=S_star_u>0 and I_star_u>0 and V_star_u>0 and Z_star_u> 0 and R_star_u>0 and case_u==1
             c_m=S_star_m>0 and I_star_m>0 and V_star_m>0 and Z_star_m> 0 and R_star_m>0 and case_m==1
             c_o= S_star_o>0 and I_star_o>0 and V_star_o>0 and Z_star_o>0 and R_star_o>0 and case_o==1
-            c_val=(c_u and c_m and c_o) 
+            c_val=(c_m and c_o) 
 
         # check positivity of equilibrium in both the mesotrophic and oligotrophic environment
         if c_val:
