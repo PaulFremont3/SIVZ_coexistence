@@ -4,10 +4,15 @@ In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ an
   - generic_functions.py: files containing functions shared by different scripts
   - SVZ_molar_model_phytotypes.py : code to run SVZ simulations and generate coexistence diagrams
       - outputs:
-        - SVZ_model_phi_latent_period_time_series_*\*suffix\**.pdf: time series
+        - SVZ_model_phi_latent_period_time_series_*\*suffix\**.pdf: time series for different adsorption rates
         - SVZ_model_phi_latent_period_*\*suffix\**.pdf: coexistence diagram and other ecological features in the parameter space
   - SVZ_functions.py : functions specific to the SVZ model
   - SVRZ_molar_model_phytotypes.py : code to run SVRZ simulations and generate coexistence diagrams
+    - outputs:
+      - if dz2==0, SVRZ_model_phi_latent_period_time_series_coex_*\*suffix\**.pdf: if the quadratic mortality term of the zooplankton is !=0: time series in the case case of coexistence
+      - SVRZ_model_phi_latent_period_time_series_*\*suffix\**.pdf: time series for different adsorption rates with phi/phir=10
+      - SVRZ_model_phi_latent_period_time_series_full-res_*\*suffix\**.pdf: time series for different adsorption rates with phir=10 (full resistance)
+      - SVRZ_model_phi_versus_phir_*\*suffix\**.pdf: coexistence diagram and other ecological features in the parameter space
   - SVRZ_functions.py : functions specific to the SVRZ model
   - SIVZ_molar_model_phytotypes.py : code to run SIVZ simulations and generate coexistence diagrams
   - SIVZ_functions.py : functions specific to the SIVZ model
