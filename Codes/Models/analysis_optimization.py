@@ -26,7 +26,7 @@ def load_matrix_str(name, sep):
     return(l)
 
 if __name__ == '__main__':
-    POM=str(sys.argv[1])
+    POM=str(sys.argv[1]) # 0
     indices=[0,1,2,3]
     names_alga=['Diatom', 'Eukaryote', 'Synechococcus', 'Prochlorochoccus']
     r_virus=[20,80,35,35]
@@ -45,6 +45,7 @@ if __name__ == '__main__':
 
     type_rs=['intracellular']
     to_loop=[(ind, type_r) for ind in indices for type_r in type_rs]
+    # lopp through all 4 phytoplankton types
     for k in to_loop:
         print(k)
         indice=k[0]
@@ -57,8 +58,10 @@ if __name__ == '__main__':
         if not os.path.exists(filename):
             continue
         type_a=names_alga[indice]
+        # load result of optimization procedure
         data = load_matrix_str(filename, ' ')
         print(len(data))
+        # load header of optimization procedure
         if POM=='0':
             columns = load_vector_str('SIVZ_'+type_r+'_res_optimization_header.txt', ' ')
         else:
@@ -87,19 +90,15 @@ if __name__ == '__main__':
 
 
         unique_venvs = df['valid_envs'].unique()
-        #df = df[(df['valid_envs'] == '111') | (df['valid_envs'] == '011')]
 
-        print(df.shape)
-        #if indice in [2,3]:
-        #    to_opt='ER_o'
-        #elif indice in [0,1]:
-        #    to_opt='ER_m'
         to_opt='ER_av'
+        # top 200 minimum average absolute error
         df=df.nsmallest(200, to_opt)
         df.loc[:,'phi/phir']=phi_th/df['phi']
-        #Find the row with the minimum value of Var6
+        #Find the row with the minimum value of average absolute error
         min_row = df[df[to_opt] == df[to_opt].min()]
 
+        # names of variable to extract
         if type_r=='intracellular':
             vars_name=['phi','phi/phir','eps' ,'dv', 'dv2', 'dz2', 'cost', 'ED_u', 'ED_m', 'ED_o', 'ED_av', 'ER_u', 'ER_m', 'ER_o', 'ER_av']
             vars_name_bis=['phi', 'eps' ,'dv', 'dv2', 'dz2', 'cost']
@@ -136,7 +135,7 @@ if __name__ == '__main__':
             else:
                 best_match=min_row.iloc[:, np.r_[0:7, 8:16, min_row.shape[1]-1]]
         
-        #best_match.loc[:,'phi/phir']=phi_th/best_match['phi']
+        # save best parameters and ranges of the 200 best performing parameter combination
         if POM=='0':
             best_match.to_csv('SIVZ_optimum_fit_'+type_a+'_'+type_r+'.txt', sep=' ', index=False)
             data_ranges_tow.to_csv('SIVZ_range_fit_'+type_a+'_'+type_r+'.txt', sep=' ', index=False)
@@ -144,7 +143,7 @@ if __name__ == '__main__':
             best_match.to_csv('SIVZ_optimum_fit_'+type_a+'_'+type_r+'_POM.txt', sep=' ', index=False)
             data_ranges_tow.to_csv('SIVZ_range_fit_'+type_a+'_'+type_r+'_POM.txt', sep=' ', index=False)
 
-        # errors to target concentrations
+        # errors and errors ranges to target concentrations for the best and the 200 best paramter combination
         target_conc_u, target_conc_m, target_conc_o=target_concentrations(indice)
         target_concs=[target_conc_u, target_conc_m, target_conc_o]
         trs=['P', 'V', 'Z', 'Inf', 'PK']
@@ -169,7 +168,8 @@ if __name__ == '__main__':
             err_to_tracers.to_csv('SIVZ_optimum_fit_errors_tracers_'+type_a+'_'+type_r+'.txt', sep=' ', index=False)
         else:
             err_to_tracers.to_csv('SIVZ_optimum_fit_errors_tracers_'+type_a+'_'+type_r+'_POM.txt', sep=' ', index=False)
-        
+
+        # pdf of histograms of parameters distribution
         # Define the number of bins (20 breaks)
         num_bins = 20
         if POM=='0':
@@ -216,10 +216,6 @@ if __name__ == '__main__':
 
                 fig, ax = plt.subplots(figsize=(4,4))
                 # Plot the histogram
-                #print(data)
-                #if length(data)==1 or var(data)==0:
-                #    plt.hist(data, bins=bins, edgecolor='black', alpha=0.7, color='grey')
-                
                 sns.kdeplot(data, fill=True, color='grey', alpha=0.3)
             
                 # Add a vertical line at a specific point (e.g., 0.5)
@@ -255,6 +251,7 @@ if __name__ == '__main__':
                 pp.savefig()
         pp.close()
 
+        # pdf correlograms between prameters for the 200 best paramters combination
         if POM=='0':
             pp = PdfPages('parameters_correlogram_optimization_'+type_a+'_'+type_r+'.pdf')
         else:
