@@ -1,4 +1,5 @@
-In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ and SIVRZ models
+In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ and SIVRZ models.  
+All simulations were run on the Zaratan cluster of the University of Maryland (https://hpcc.umd.edu/hpcc/zaratan.html)
 
 **DESCRIPTION OF FILES**
 - Python files, in each case pdf outputs are specified and *\*suffix\** refers to a suffix to identify parameters input of the simulation (see inside .py file and .sbatch files for inputs needed for each files): 
@@ -59,19 +60,27 @@ In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ an
   - **concatenate_results_optimisation_params.sh**: used to concatenate rsult files from the optimisation
 
 **HOW TO RUN THE SIMULATIONS**
+In a HPC cluster:
 1. Create in this directorry a subfolfder called model_data to store results: `mkdir model_data`
 2. run simulations of dynamics across the parameter space: command `./run_coexistence_simulations.sh`
    This step will run all simulation necessary to generate figures of coexistence diagram an some data that needs to be rescaled to generate some figures  
-   Run times  
-   SVZ and SVRZ simulations across the adsorption rate parameter space ~ 3 minutes  
-   SIVZ and SIVRZ simulations across the adsorption rate and latent period parameter space ~ 2h30 to 3 hours  
-   SVRZ and SIVRZ across the adsorption rate and resistance strenght parameter space ~ 3 hour 30  
+   Run times:  
+   - SVZ and SVRZ simulations across the adsorption rate parameter space ~ 3 minutes  
+   - SIVZ and SIVRZ simulations across the adsorption rate and latent period parameter space ~ 2h30 to 3 hours  
+   - SVRZ and SIVRZ across the adsorption rate and resistance strenght parameter space ~ 3 hour 30  
    Before running all together, eventually check individually each type of job (SVZ, SIVZ, SVRZ and SIVRZ) to see whether it works  
 4. Generate scaled figures: `python make_figures_scaled.py main_models`
    This will generate figures that need to be scaled (plots saved data from the model_data/ folder)  
 5. Create in this directory a subfolder called results_optimization_params to store parameter optimization results: `mkdir results_optimization_params/`  
 6. Grid search to optimize parameters to target concentrations: `./run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh 0`  
-  This will run the optimization of parameters to minimize distance to target concentration for the four phytoplankton types considered in the study: a small diatom, a picoeukaryote, a synechococcus and a prochlorococcus  
-7.  
+  This will run the optimization of parameters to minimize distance to target concentration for the four phytoplankton types considered in the study: a small diatom, a picoeukaryote, a synechococcus and a prochlorococcus
+  Results are stored in the results_optimization_params/ folder
+7. Concatenate files of optimization results:  
+   `./concatenate_results_optimisation_params.sh SIVZ intracellular Synechococcus 0`  
+   `./concatenate_results_optimisation_params.sh SIVZ intracellular Prochlorochoccus 0`  
+   `./concatenate_results_optimisation_params.sh SIVZ intracellular Eukaryote 0`  
+   `./concatenate_results_optimisation_params.sh SIVZ intracellular Diatom 0`
+8. Run the analysis of the optimization:
+  `sbatch run_analysis_optimization.sbatch 0`
 
 **WHERE ARE THE FIGURES FROM THE PAPER**
