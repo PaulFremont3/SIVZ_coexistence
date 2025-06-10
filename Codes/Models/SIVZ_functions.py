@@ -575,6 +575,7 @@ def make_plots_SIVZ(S, I, V, Z,i1,i2, title,dt, pp, Qp, Qv, Qz):
     plt.rcParams['lines.linewidth'] = 3
     #time step in day
     time_sim=range(i1, i2)
+    # molar time series
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, S[i1:i2], color='#2ca02c')
     plt.plot(np.array(time_sim)*dt, I[i1:i2], color='#ff7f0e')
@@ -593,6 +594,7 @@ def make_plots_SIVZ(S, I, V, Z,i1,i2, title,dt, pp, Qp, Qv, Qz):
     plt.yticks(fontsize=14)
     pp.savefig()
 
+    #count time series
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
     plt.plot(np.array(time_sim)*dt, np.array(I[i1:i2])/Qp, color='#ff7f0e')
