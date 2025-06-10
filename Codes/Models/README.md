@@ -33,7 +33,7 @@ In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ an
   - SIVRZ_functions.py : functions specific to the SIVRZ model
   - SIVZ_MCT.py: code to run the SIVZ Modern coexistence theory analysis
     - outputs:
-      -  
+      -   
   - make_figures_scaled.py: code to create figures with same scales (from different models): => figure 5, s6, s14, and s16
   - SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.py: file to run the optimization of parameterization of the SIVZ and SIVRZ models with respect to target concentrations (grid search)
   - analysis_optimization.py: analyze the results of the optimization =>  generates data for table 1 and 2
