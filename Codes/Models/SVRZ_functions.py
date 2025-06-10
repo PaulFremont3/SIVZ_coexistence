@@ -114,6 +114,7 @@ def make_plots(S, V, R,Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
     R=R[i1:i2]
     Z=Z[i1:i2]
     time_sim=range(i1, i2)
+  # molar time series
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, S, color='#2ca02c')
     plt.plot(np.array(time_sim)*dt, R, color='#9467bd')
@@ -121,8 +122,8 @@ def make_plots(S, V, R,Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
     plt.plot(np.array(time_sim)*dt, Z, color='red')
     plt.xlabel('Days')
     plt.ylabel('Concentration (mmolN.L-1)')
-    bottom, top = plt.ylim()
-    plt.ylim((0,top))
+    plt.ylim((1e-7,0.5))
+    plt.yscale('log')
     plt.title(tit)
     leg_vec=['Susceptible', 'Resistant', 'Virus', 'Zooplankton']
     plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
@@ -130,42 +131,7 @@ def make_plots(S, V, R,Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
     plt.yticks(fontsize=14)
     pp.savefig()
 
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, np.array(S)/Qp, color='#2ca02c')
-    plt.plot(np.array(time_sim)*dt, np.array(R)/Qp, color='#9467bd')
-    plt.plot(np.array(time_sim)*dt, np.array(V)/Qv, color='#1f77b4')
-    plt.plot(np.array(time_sim)*dt, np.array(Z)/Qz, color='red')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (ind.L-1)')
-    bottom, top = plt.ylim()
-    plt.yscale('log')
-    leg_vec=['Susceptible', 'Resistant' ,'Virus', 'Zooplankton']
-    plt.title(tit)
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, np.array(S)/Qp, color='#2ca02c')
-    plt.plot(np.array(time_sim)*dt, np.array(R)/Qp, color='#9467bd')
-    plt.plot(np.array(time_sim)*dt, np.array(V)/Qv, color='#1f77b4')
-    plt.plot(np.array(time_sim)*dt, np.array(Z)/Qz, color='red')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (ind.L-1)')
-    bottom, top = plt.ylim()
-    mini=1e-1
-    top=2e10
-    plt.ylim((mini,top))
-    plt.yscale('log')
-    leg_vec=['Susceptible', 'Resistant' ,'Virus', 'Zooplankton']
-    plt.title(tit)
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
-    
+  # count time series
     fig, ax = plt.subplots(figsize=(4,4))
     plt.plot(np.array(time_sim)*dt, np.array(S)/Qp, color='#2ca02c')
     plt.plot(np.array(time_sim)*dt, np.array(R)/Qp, color='#9467bd')
@@ -183,70 +149,3 @@ def make_plots(S, V, R,Z, i1, i2, tit,dt,pp, Qp, Qv, Qz):
     plt.xticks(fontsize=14)
     plt.yticks(fontsize=14)
     pp.savefig()
-
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, S, color='#2ca02c')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (mmolN.L-1)')
-    bottom, top = plt.ylim()
-    plt.ylim((0,top))
-    leg_vec=['Susceptible']
-    plt.title(tit)
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, np.array(S)/Qp, color='#2ca02c')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (ind.L-1)')
-    bottom, top = plt.ylim()
-    plt.ylim((0,top))
-    leg_vec=['Susceptible']
-    plt.title(tit)
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
-
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, Z, color='red')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (mmolN.L-1)')
-    bottom, top = plt.ylim()
-    plt.ylim((0,top))
-    leg_vec=['Zooplankton']
-    plt.title(tit)
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, np.array(V), color='#9467bd')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (mmol.L-1)')
-    leg_vec=[ 'Virus']
-    bottom, top = plt.ylim()
-    plt.ylim((0,top))
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.title(tit)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, np.array(V)/Qv, color='#9467bd')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (ind.L-1)')
-    leg_vec=[ 'Virus']
-    bottom, top = plt.ylim()
-    plt.yscale('log')
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.title(tit)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
