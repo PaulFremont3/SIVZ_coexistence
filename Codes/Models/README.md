@@ -70,20 +70,20 @@ In a HPC cluster:
    - SVZ and SVRZ simulations across the adsorption rate parameter space ~ 3 minutes  
    - SIVZ and SIVRZ simulations across the adsorption rate and latent period parameter space ~ 2h30 to 3 hours  
    - SVRZ and SIVRZ across the adsorption rate and resistance strenght parameter space ~ 3 hour 30  
-   Before running all together, eventually check individually each type of job (SVZ, SIVZ, SVRZ and SIVRZ) to see whether it works  
-**2.4.** Generate scaled figures: `python make_figures_scaled.py main_models`
+   Before running all together, eventually check individually each type of job (SVZ, SIVZ, SVRZ and SIVRZ) to see whether it works   
+**2.4.** Generate scaled figures: `python make_figures_scaled.py main_models`  
    This will generate figures that need to be scaled (plots saved data from the model_data/ folder)  
 **2.5.** Create in this directory a subfolder called results_optimization_params to store parameter optimization results: `mkdir results_optimization_params/`  
 **2.6.** Grid search to optimize parameters to target concentrations: `./run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh 0`  
-  This will run the optimization of parameters to minimize distance to target concentration for the four phytoplankton types considered in the study: a small diatom, a picoeukaryote, a synechococcus and a prochlorococcus
-  Results are stored in the results_optimization_params/ folder
-**2.7.** Concatenate files of optimization results:  
+  This will run the optimization of parameters to minimize distance to target concentration for the four phytoplankton types considered in the study: a small diatom, a picoeukaryote, a *Synechococcus* and a *Prochlorococcus*    
+  Results are stored in the results_optimization_params/ folder  
+**2.7.** Concatenate files of optimization results:     
    `./concatenate_results_optimisation_params.sh SIVZ intracellular Synechococcus 0`  
    `./concatenate_results_optimisation_params.sh SIVZ intracellular Prochlorochoccus 0`  
-   `./concatenate_results_optimisation_params.sh SIVZ intracellular Eukaryote 0`  
-   `./concatenate_results_optimisation_params.sh SIVZ intracellular Diatom 0`
-**2.8.** Run the analysis of the optimization:
-  `sbatch run_analysis_optimization.sbatch 0`
+   `./concatenate_results_optimisation_params.sh SIVZ intracellular Eukaryote 0`    
+   `./concatenate_results_optimisation_params.sh SIVZ intracellular Diatom 0`  
+**2.8.** Run the analysis of the optimization:  
+  `sbatch run_analysis_optimization.sbatch 0`  
 
 **3. PDF AND TXT FILES WITH THE FIGURES AND DATA FOR TABLES IN THE PAPER** (after running all simulations)
 
