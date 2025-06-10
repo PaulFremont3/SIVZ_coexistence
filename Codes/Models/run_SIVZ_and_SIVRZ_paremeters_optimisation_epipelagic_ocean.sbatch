@@ -4,9 +4,6 @@
 #SBATCH --mem-per-cpu=6GB                        # Memory per core
 #SBATCH  --time=00:45:00                        # Duration of the job (Ex: 10 mins)
 #SBATCH -o run_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean-%j.out                        # Combined output and error messages file
-#SBATCH --mail-type=FAIL              # Mail preferences
-#SBATCH --mail-user=pfremont@umd.edu       # E-mail address for notifications
-
 
 python SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.py $1 $2 $3 $4
 
