@@ -109,7 +109,7 @@ In a HPC cluster:
 (after running all simulations)  
 
 # Figures
-- Figure 2
+- **Figure 2**
   - 2a: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic.pdf
   - 2b: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
   - 2c: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_no-dz2_m2-1800.0_mesotrophic.pdf
@@ -134,4 +134,5 @@ In a HPC cluster:
   - 2v: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-0.0_mesotrophic.pdf
   - 2w: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_no-dz2_m2-1800_lp_phi-ratio-0.0_mesotrophic.pdf
   - 2x: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-0.0_mesotrophic.pdf
+- **Figure 3**
 
