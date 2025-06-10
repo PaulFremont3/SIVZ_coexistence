@@ -88,13 +88,16 @@ In a HPC cluster:
 ## 2.5. Create a subfolder to store parameter optimization results:  
 &nbsp;&nbsp;&nbsp;&nbsp;`mkdir results_optimization_params/`
 
-## 2.6. Grid search to optimize parameters to target concentrations:  
+## 2.6. Generate figures of distributions of measured abundances of *Prochlorococcus* and *Synechococcus*, their virus and the percentage of infected cells from Carlson *et al.* 2022.
+&nbsp;&nbsp;&nbsp;&nbsp;`Rscript histogram_abundances.R`
+
+## 2.7. Grid search to optimize parameters to target concentrations:  
 &nbsp;&nbsp;&nbsp;&nbsp;`./run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;This will run optimization of parameters to minimize distance to target concentrations for the four phytoplankton types considered in the study:  
 &nbsp;&nbsp;&nbsp;&nbsp;a small diatom, a picoeukaryote, a *Synechococcus*, and a *Prochlorococcus*.  
 &nbsp;&nbsp;&nbsp;&nbsp;Results are stored in the `results_optimization_params/` folder.
 
-## 2.7. Concatenate files of optimization results:  
+## 2.8. Concatenate files of optimization results:  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Synechococcus 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Prochlorochoccus 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Eukaryote 0`  
