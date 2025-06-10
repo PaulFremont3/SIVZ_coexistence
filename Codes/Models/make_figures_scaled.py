@@ -148,7 +148,7 @@ if __name__ == '__main__':
     mx_per, mi_per=np.nanmax(np.array(mx_pers)), np.nanmin(np.array(mi_pers))
 
     # Fourier pdf
-    pp=PdfPages('Scaled_PVZ_FFT_and_Perdiod.pdf')
+    pp=PdfPages('Scaled_PVZ_FFT_and_Period.pdf')
     for j,d in enumerate(datas_fft):
         mi=mi_fft
         mx=mx_fft
