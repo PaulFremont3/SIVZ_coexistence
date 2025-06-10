@@ -11,7 +11,7 @@ In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ an
   - SIVRZ_molar_model_phytotypes.py : code to run SIVRZ simulations and generate coexistence diagrams
   - SIVRZ_functions.py : functions specific to the SIVRZ model
   - SIVZ_MCT.py: code to run the SIVZ Modern coexistence theory analysis
-  - make_figures_scaled.py: code to create figures with comparable scales (from different models): => figure 5, s6, and s14
+  - make_figures_scaled.py: code to create figures with same scales (from different models): => figure 5, s6, s14, and s16
   - SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.py: file to run the optimization of parameterization of the SIVZ and SIVRZ models with respect to target concentrations (grid search)
   - analysis_optimization.py: analyze the results of the optimization =>  generates data for table 1 and 2
 
@@ -25,6 +25,6 @@ In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ an
   - run_analysis_optimization.sbatch: runs analysis_optimization.py
 
 - .sh files: 
-  - run_coexistence_simulations.sh : runs all simulations necessary to generate figure 2, 3d,e, 4, 6b-j, S5, S7, s8, s9, s10, s11, s12, s13, s16, s17 and data for: figure 5, S6, s14
+  - run_coexistence_simulations.sh : runs all simulations necessary to generate figure 2, 4, 6b-j, S5, S7, s8, s9, s10, s11, s12, s13, s17 and data for: figure 5, 3d,e, S6, s14, s16
   - run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh: used to run in parallel  the optimization of parameters, it divides the grid search in 50 equal chunks of parameters combinations e.g. if 10^6 parameter combination ar tested, one job will test 10^6/50= 20000 combinations 
   - concatenate_results_optimisation_params.sh: used to concatenate rsult files from the optimisation
