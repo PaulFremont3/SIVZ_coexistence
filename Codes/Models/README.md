@@ -4,8 +4,8 @@ In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ an
   - generic_functions.py: files containing functions shared by different scripts
   - SVZ_molar_model_phytotypes.py : code to run SVZ simulations and generate coexistence diagrams
       - outputs:
-        - SVZ_model_phi_latent_period_time_series_*suffix*.pdf: time series
-        - SVZ_model_phi_latent_period_*suffix*.pdf: coexistence diagram and other ecological features in the parameter space
+        - SVZ_model_phi_latent_period_time_series_**suffix**.pdf: time series
+        - SVZ_model_phi_latent_period_**suffix**.pdf: coexistence diagram and other ecological features in the parameter space
   - SVZ_functions.py : functions specific to the SVZ model
   - SVRZ_molar_model_phytotypes.py : code to run SVRZ simulations and generate coexistence diagrams
   - SVRZ_functions.py : functions specific to the SVRZ model
