@@ -194,7 +194,9 @@ In a HPC cluster:
   - 6h: page 56 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
   - 6i: page 67 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-10.0_mesotrophic.pdf
   - 6j: page 67 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-10.0_mesotrophic.pdf
+
 # Tables
+
 - **Table 1**
   - Best parameters: SIVZ_optimum_fit_*\*phyto-type\**_intracellular.txt where *\*phyto-type\** is Prochlorococcus, Synechococcus, Eukaryote and Diatom
   - Parameter ranges: SIVZ_range_fit_*\*phyto-type\**_intracellular.txt where *\*phyto-type\** is Prochlorococcus, Synechococcus, Eukaryote and Diatom
@@ -202,3 +204,17 @@ In a HPC cluster:
   - Minimum total error: SIVZ_optimum_fit_*\*phyto-type\**_intracellular.txt
   - Error range: SIVZ_range_fit_*\*phyto-type\**_intracellular.txt
   - Reached concentrations: SIVZ_optimum_fit_errors_tracers_*\*phyto-type\**_intracellular.txt
+
+# Supplementary figures
+
+- **Figure S1** to **Figure S4**: see trait_data folder
+- **Figure S5** SIVZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic.pdf
+  - S5a: page 5, 7 and 8
+  - S5b: page 50, 52 and 53
+- **Figure S6** Scaled_PVZ_FFT_and_Period.pdf
+  - S6a to S6h: page 1 to 8
+- **Figure S7**
+  - S7a: page 1 and 3 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-10.0.pdf
+  - S7b: page 33 and 35 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-10.0.pdf
+  - S7c: page 1 and 3 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-fullres.pdf
+  - S7d: page 33 and 35 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-fullres.pdf
