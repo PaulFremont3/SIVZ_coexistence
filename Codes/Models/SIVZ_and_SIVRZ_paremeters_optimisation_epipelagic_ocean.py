@@ -15,18 +15,14 @@ import os
 import time
 import psutil
 import gc
-#import tracemalloc
 
 if __name__ == '__main__':
+    indice=int(sys.argv[1]) # phytoplankton type
+    type_m=str(sys.argv[2]) # model type SIVZ, SIVZ_intra, SIVRZ or SIVRZ_intra
+    POM=str(sys.argv[3]) # 0 or 1 
+    chunk=str(sys.argv[4]) # chunk
 
-    #tracemalloc.start()
-
-    indice=int(sys.argv[1])
-    type_m=str(sys.argv[2])
-    POM=str(sys.argv[3])
-    chunk=str(sys.argv[4])
-    #print(sys.argv)
-
+    # lost life history traits
     Vols=load_vector('../trait_data/Vs_5.txt', sep=' ')
     Ncs=load_vector('../trait_data/Nc_dutkiewicz_5.txt', sep=' ')
     betas=load_vector('../trait_data/model_burst_size_nn-gam.txt', sep=' ')
@@ -37,8 +33,10 @@ if __name__ == '__main__':
         rz=5
     elif indice in [2,3]:
         rz=2.5
+    # zooplankton quota 
     Qz=Q_grazer(rz)
 
+    # virus quota
     r_virus=[20,80,35,35]
     Qvs=[Q_virus(r) for r in r_virus]
 
@@ -50,6 +48,7 @@ if __name__ == '__main__':
     for i in range(200, 400):
         Qps.append(Q_cyanobacteria(Vols[i]))
 
+    # choose the 4 smallest phytoplankton type of each subgroup (pro, syn, euk, diatom)
     N=4 # number of algae
 
     if N==4:
@@ -57,18 +56,20 @@ if __name__ == '__main__':
         ind2=np.argmin(np.array(Qps[100:200]))
         ind3=np.argmin(np.array(Qps[200:300]))
         ind4=np.argmin(np.array(Qps[300:400]))
-
+        #quotas
         Qp1=Qps[0:100][ind1]
         Qp2=Qps[100:200][ind2]
         Qp3=Qps[200:300][ind3]
         Qp4=Qps[300:400][ind4]
 
-        bs1=round(betas[ind1],-1) #
+        # burst size
+        bs1=round(betas[ind1],-1) 
         bs2=round(betas[100:200][ind2],-1)
         bs3=round(betas[200:300][ind3],-1)
         bs4=round(betas[300:400][ind4],-1)
         betas=[bs1,bs2,bs3,bs4]
 
+        # latent period
         lp1=round(lps[ind1],2)
         lp2=round(lps[100:200][ind2],2)
         lp3=round(lps[200:300][ind3],2)
@@ -78,24 +79,28 @@ if __name__ == '__main__':
 
         Qps=[Qp1,Qp2,Qp3,Qp4]
 
+        # maximum growth rates
         mu1=mu_max[0:100][ind1]
         mu2=mu_max[100:200][ind2]
         mu3=mu_max[200:300][ind3]
         mu4=mu_max[300:400][ind4]
         mu_max=[mu1,mu2,mu3,mu4]
 
+        # half saturation constants
         Nc1=Ncs[0:100][ind1]
         Nc2=Ncs[100:200][ind2]
         Nc3=Ncs[200:300][ind3]
         Nc4=Ncs[300:400][ind4]
         Ncs=[Nc1, Nc2, Nc3, Nc4]
 
+        # vcell olumes
         V1=Vols[0:100][ind1]
         V2=Vols[100:200][ind2]
         V3=Vols[200:300][ind3]
         V4=Vols[300:400][ind4]
         Vs=[V1, V2, V3, V4]
 
+    # choose phytoplankton type
     typePhytos=['Diatom', 'Eukaryote', 'Synechococcus', 'Prochlorochoccus']
     typePhyto=typePhytos[indice]
 
@@ -134,19 +139,11 @@ if __name__ == '__main__':
 
     N_res=10 
     dNs=[0.5, 0.05, 0.01]
-    #KCs=[(-dNs[i]*Rs[i]+dNs[i]*N_res)*(Rs[i]+Nc)/(mu*Rs[i]) for i in range(n_env)]
     # grazing parameters
     Sc=0.226 #dutkiewicz 2020 (1.5 in umolC.L-1)
-    #S_deps=[pow(R,2)/(pow(R,2)+pow(Sc, 2)) for R in Rs]
-
     eps_z=0.3
     dz=0.067
     phiz=9.8
-    #phizs=[phiz*T_deps[i]*S_deps[i] for i in range(n_env)]
-
-
-    # carryng capacity
-    #CCs=[Rs[i]/(mus[i]-d*T_deps[i]) for i in range(n_env)]
 
     # exploring parameters:
     # adsorption rate
@@ -188,21 +185,7 @@ if __name__ == '__main__':
 
     alpha=1
 
-#    if POM=='0':
-#        param_space_SIVZ=[(phi, m, m2, dz2, cost) for phi in phis for m in ms for m2 in m2s for dz2 in dz2s for cost in cost_res]
-#        param_space_SIVZ_intra=[(phi, eps, m, m2, dz2, cost) for phi in phis for eps in epss for m in ms for m2 in m2s for dz2 in dz2s for cost in cost_res]
-#        param_space_SIVRZ=[(phi, m, m2, dz2, res, cost) for phi in phis for m in ms for m2 in m2s for dz2 in dz2s for res in res_ratios for cost in cost_res]
-#    elif POM=='1':
-#        param_space_SIVZ=[(phi, m, m2, dz2, cost, Pc) for phi in phis for m in ms for m2 in m2s for dz2 in dz2s for cost in cost_res for Pc in POMc]
-#        param_space_SIVZ_intra=[(phi, eps, m, m2, dz2, cost, Pc) for phi in phis for eps in epss for m in ms for m2 in m2s for dz2 in dz2s for cost in cost_res for Pc in POMc]
-#        param_space_SIVRZ=[(phi, m, m2, dz2, res, cost, Pc) for phi in phis for m in ms for m2 in m2s for dz2 in dz2s for res in res_ratios for cost in cost_res for Pc in POMc]
-#    if type_m=='SIVZ':
-#        param_space=param_space_SIVZ
-#    elif type_m=='SIVZ_intra':
-#        param_space=param_space_SIVZ_intra
-#    elif type_m in ['SIVRZ', 'SIVRZ_intra']:
-#        param_space=param_space_SIVRZ
-
+    # searcg grid
     if POM=='0':
         if type_m=='SIVZ':
             param_space=[(phi, m, m2, dz2, cost) for phi in phis for m in ms for m2 in m2s for dz2 in dz2s for cost in cost_res]
@@ -217,54 +200,13 @@ if __name__ == '__main__':
             param_space=[(phi, eps, m, m2, dz2, cost, Pc) for phi in phis for eps in epss for m in ms for m2 in m2s for dz2 in dz2s for cost in cost_res for Pc in POMc]
         elif type_m in ['SIVRZ', 'SIVRZ_intra']:
             param_space=[(phi, m, m2, dz2, res, cost, Pc) for phi in phis for m in ms for m2 in m2s for dz2 in dz2s for res in res_ratios for cost in cost_res for Pc in POMc]
-    #print(len(param_space))
-    #if type_m=='SIVZ':
-    #    param_space=param_space_SIVZ
-    #elif type_m=='SIVZ_intra':
-    #    param_space=param_space_SIVZ_intra
-    #elif type_m in ['SIVRZ', 'SIVRZ_intra']:
-    #    param_space=param_space_SIVRZ
-
+    
+    # realistic concentration ranges and targtes
     A_cond_low_o, A_cond_high_o, V_cond_low_o, V_cond_high_o, Z_cond_low_o, Z_cond_high_o, I_cond_high_o, I_cond_low_o, perc_cond_high_o, perc_cond_low_o, target_conc_o=concentration_ranges(indice, 'oligotrophic')
     A_cond_low_m, A_cond_high_m, V_cond_low_m, V_cond_high_m, Z_cond_low_m, Z_cond_high_m, I_cond_high_m, I_cond_low_m, perc_cond_high_m, perc_cond_low_m, target_conc_m=concentration_ranges(indice, 'mesotrophic')
     A_cond_low_u, A_cond_high_u, V_cond_low_u, V_cond_high_u, Z_cond_low_u, Z_cond_high_u, I_cond_high_u, I_cond_low_u, perc_cond_high_u, perc_cond_low_u, target_conc_u=concentration_ranges(indice, 'upwelling')
 
-    #snapshot = tracemalloc.take_snapshot()
-    #print(len(param_space))
-    #with open('test_size.txt', 'a') as f1:
-    #    f1.write(str(sys.getsizeof(param_space)/1e9))
-    #    f1.write('\n')
-    #    f1.write(str(psutil.Process().memory_info().rss / 1e9)+ "GB used")
-    #    f1.write('\n')
-    #    total_numpy_memory = sum(arr.nbytes for arr in gc.get_objects() if isinstance(arr, np.ndarray))
-    #    f1.write(f"Total NumPy memory: {total_numpy_memory / 1e9:.3f} GB")
-        #large_objects = [obj for obj in gc.get_objects() if isinstance(obj, (list, dict, tuple)) and sys.getsizeof(obj) > 1e7]  # 10MB+
-        #for obj in large_objects:
-        #    f.write(type(obj), sys.getsizeof(obj))
-         #List large objects (over 10MB) and print type, size, and a reference to the object
-    #    def print_large_objects(f1):
-    #        for obj in gc.get_objects():
-    #            size = sys.getsizeof(obj)
-    #            if size > 1e7:  # Objects over 10MB
-    #                try:
-    #                    # Trying to find the name or some reference
-    #                    f1.write(f"Type: {type(obj)}, Size: {size / 1e6:.2f} MB, Object: {obj}")
-    #                except Exception as e:
-    #                    f1.write(f"Exception while inspecting object: {e}")
-    #    print_large_objects(f1)
-    #f.close()
-    
-    #with open('test_size.txt', 'a') as f:
-    #    for stat in snapshot.statistics('traceback')[:5]:  # Top 5 memory consumers
-    #        f.write(f"Memory block of {stat.size / 1024**2:.2f} MB allocated at:")
-    #        f.write('\n')
-    #    for line in stat.traceback.format():
-    #        f.write(line)
-    #        f.write('\n')
-    #f.close()
-    #print(sys.getsizeof(param_space))
-    # SIVZ 1 (extracellular phi change)
-    
+    # column names of output file and output file
     if type_m=='SIVZ':
         if POM=='0':
             column_names=['valid_envs','phi', 'dv', 'dv2', 'dz2','cost', 'ED_tot','ED_u', 'ED_m','ED_o','ED_av','ER_u', 'ER_m', 'ER_o' ,'ER_av','P_u','V_u', 'Z_u', 'Inf_u','PK_u','P_m','V_m', 'Z_m', 'Inf_m','PK_m','P_o','V_o', 'Z_o', 'Inf_o','PK_o']
@@ -300,7 +242,8 @@ if __name__ == '__main__':
             elif type_m=='SIVRZ_intra':
                 write_vector(column_names,'SIVRZ_intracellular_res_optimization_header_POM.txt', sep=' ')
                 file_name='results_optimization_params/SIVRZ_intracellular_res_optimization_'+typePhyto+'_'+chunk+'_POM.txt'
-
+    
+    # if the output file exists, remove it
     if os.path.exists(file_name):
         os.remove(file_name)  # Remove the file
         print(f"{file_name} has been removed.")
@@ -311,6 +254,7 @@ if __name__ == '__main__':
 
     ncols=len(column_names)
 
+    # parameter space corresponding to the chunk (subparameter space explored)
     n_chunks=50
     chunk_size=round(len(param_space)/n_chunks)
     if chunk==str(n_chunks):
@@ -319,27 +263,13 @@ if __name__ == '__main__':
     else:
         i1=chunk_size*(int(chunk)-1)
         i2=chunk_size*(int(chunk)-1)+chunk_size+1
-    #with open('follow_size_p.txt' , 'a') as f:
-    #    f.write(str(len(param_space)))
-    #f.close()
-
     param_space=param_space[i1:i2]
     
     leno=len(phis)*len(epss)*len(m2s)*len(ms)*len(cost_res)*len(dz2s)
-    with open('follow_size_p.txt' , 'a') as f:
-        f.write('\n')
-        f.write(str(len(param_space)))
-        f.write('\n')
-        f.write(str(chunk_size))
-        f.write('\n')
-        f.write(str(leno))
-    f.close()
     print(chunk_size)
+
+    # main lopp through the parameter space expored
     for j,k in enumerate(param_space):
-        #with open('test_size.txt', 'a') as f:
-        #    f.write(str(sys.getsizeof(param_space)/1e9))
-        #    f.write(str(psutil.Process().memory_info().rss / 1e9)+ "GB used")
-        #f.close()
         if type_m=='SIVZ':
             phi=k[0]
             m=k[1]
@@ -424,10 +354,7 @@ if __name__ == '__main__':
             c_u=S_star_u>0 and I_star_u>0 and V_star_u>0 and Z_star_u> 0 and case_u==1
             c_m=S_star_m>0 and I_star_m>0 and V_star_m>0 and Z_star_m> 0 and case_m==1
             c_o= S_star_o>0 and I_star_o>0 and V_star_o>0 and Z_star_o>0 and case_o==1
-            #c_val=c_u and c_m and c_o
             c_val=(c_u and c_m and c_o)
-            #if indice==0:
-            #    c_val=c_u and c_m
         elif type_m in ['SIVRZ', 'SIVRZ_intra']:
             if m2!=0:
                 S_star_u, I_star_u, V_star_u, R_star_u, Z_star_u, case_u=equilibrium1_SIVRZ_m2(mus[0], mui, lp, beta, phi_u, d*T_deps[0], m*T_deps[0],m2*T_deps[0], Qv, Qp,Qz,  eps,epsr, epso,eps_r,eps_lr,phir_u,mur,phizs[0],eps_z,dz*T_deps[0],dz2*T_deps[0], CCs[0], alpha)
@@ -453,15 +380,11 @@ if __name__ == '__main__':
             c_m=S_star_m>0 and I_star_m>0 and V_star_m>0 and Z_star_m> 0 and R_star_m>0 and case_m==1
             c_o= S_star_o>0 and I_star_o>0 and V_star_o>0 and Z_star_o>0 and R_star_o>0 and case_o==1
             c_val=(c_u and c_m and c_o) 
-            #if indice==0:
-            #    c_val=c_u and c_m
-        #if (c_u or c_o or c_m):
-        #    print(str(int(c_u)) + str(int(c_o))+str(int(c_m)))
-        #    print('')
+
+        # check positivity of equilibrium in both the mesotrophic and oligotrophic environment
         if c_val:
             v1=target_conc_o+target_conc_m+target_conc_u
             v2=[(S_star_o+I_star_o+R_star_o)/Qp, V_star_o/Qv, Z_star_o/Qz, (S_star_m+I_star_m+R_star_m)/Qp, V_star_m/Qv, Z_star_m/Qz, (S_star_u+I_star_u+R_star_u)/Qp, V_star_u/Qv, Z_star_u/Qz]
-            
             
             #euclidean distance for each env and tot distance
             ed_tot=euclidean_distance(v1, v2)
@@ -469,40 +392,22 @@ if __name__ == '__main__':
             ed_u=euclidean_distance(v1[6:9], v2[6:9])
             ed_m=euclidean_distance(v1[3:6], v2[3:6])
             ed_o=euclidean_distance(v1[0:3], v2[0:3])
-            
-            
-            #give more weigth to the oligotrophic for cyano
-            #if indice in [2,3]:
-            #    ed_av=(ed_u+ed_m+4*ed_o)/6
-            ## give more weigth to the mesotrophic for euk and diatom
-            #elif indice in [0,1]:
-            #    er_av=(ed_u+4*ed_m+ed_o)/6
 
             if indice in [2,3]:
                 ed_av=(ed_m+ed_o)/2
             elif indice in [0,1]:
                 ed_av=(2*ed_m+ed_o)/3
-            #ed_av=(ed_u+ed_m+ed_o)/3
-            #if indice==0:
-            #    ed_av=(ed_u+ed_m)/2
-
+                
+            # absolute error to target for each env 
             er_u=absolute_error(v1[6:9], v2[6:9])
             er_m=absolute_error(v1[3:6], v2[3:6])
             er_o=absolute_error(v1[0:3], v2[0:3])
-            
+
+            # consider only oligotrophic and mesotrophic env for average distance, give more weitgh to mesotrophic environment for diatom and eukaryote
             if indice in [2,3]:
                 er_av=(er_m+er_o)/2
             elif indice in [0,1]:
                 er_av=(2*er_m+er_o)/3
-            #give more weigth to the oligotrophic for cyano
-            #if indice in [2,3]:
-            #    er_av=(er_u+er_m+4*er_o)/6
-            ## give more weigth to the mesotrophic for euk and diatom
-            #elif indice in [0,1]:
-            #    er_av=(er_u+4*er_m+er_o)/6
-
-            #if indice==0:
-            #    er_av=(er_u+er_m)/2
 
             perc_inf_o=I_star_o*100/(I_star_o+S_star_o+R_star_o)
             perc_inf_m=I_star_m*100/(I_star_m+S_star_m+R_star_m)
@@ -521,7 +426,7 @@ if __name__ == '__main__':
             perc_kill_u=mV_u/(mV_u+mZ_u+d*T_deps[0])
 
         
-            # chack validity for each env
+            # chack for each env if equilibrium concentration are in the range of realistic concentration 
             val_u=0
             if (S_star_u+I_star_u+R_star_u)/Qp > A_cond_low_u and (S_star_u+I_star_u+R_star_u)/Qp<A_cond_high_u and V_star_u/Qv>V_cond_low_u and V_star_u/Qv<V_cond_high_u and Z_star_u/Qz>Z_cond_low_u and Z_star_u/Qz<Z_cond_high_u and perc_inf_u>I_cond_low_u and perc_inf_u<I_cond_high_u and perc_kill_u>perc_cond_low_u and perc_kill_u<perc_cond_high_u:
                 val_u=1
@@ -532,30 +437,15 @@ if __name__ == '__main__':
             if  (S_star_o+I_star_o+R_star_o)/Qp > A_cond_low_o and (S_star_o+I_star_o+R_star_o)/Qp<A_cond_high_o and V_star_o/Qv>V_cond_low_o and V_star_o/Qv<V_cond_high_o and Z_star_o/Qz>Z_cond_low_o and Z_star_o/Qz<Z_cond_high_o and perc_inf_o>I_cond_low_o and perc_inf_o<I_cond_high_o and perc_kill_o>perc_cond_low_o and perc_kill_o<perc_cond_high_o:
                 val_o=1
 
-            #if val_o==1 or val_m==1 or val_u==1:
-            #    print(str(val_o)+str(val_m)+str(val_u))
-            #    print((S_star_m+I_star_m)/Qp > A_cond_low_m)
-            #    print((S_star_m+I_star_m)/Qp<A_cond_high_m)
-            #    print(V_star_m/Qv>V_cond_low_m)
-            #    print(V_star_m/Qv<V_cond_high_m)
-            #    print(Z_star_m/Qz>Z_cond_low_m)
-            #    print(Z_star_m/Qz<Z_cond_high_m)
-            #    print(perc_inf_m>I_cond_low_m)
-            #    print(perc_inf_m<I_cond_high_m)
-            #    print(perc_kill_m>perc_cond_low_m)
-            #    print(perc_kill_m<perc_cond_high_m)
-            #    print(perc_kill_m)
-            #    print(perc_kill_o)
-            #    print(perc_kill_u)
-            #    print('')
-
-            val_t=val_u+val_m+val_o
+            val_t=val_m+val_o
             valid_envs=str(val_u)+str(val_m)+str(val_o)
             valid_eq=0
 
-            if val_t>=2:
+            # valid if oligotrophic and mesotrophic equilibria are both in the realistic range
+            if val_t==2:
                 valid_eq=1
-            
+
+            # write to file
             if valid_eq==1:
                 if type_m=='SIVZ':
                     if POM=='0':
@@ -585,20 +475,3 @@ if __name__ == '__main__':
                                 f.write(str(fl))
                                 f.write(' ')
                             f.write('\n')
-
-    #    with open(follow_file, 'w') as ff:
-    #        ff.write(str(j))
-    #        ff.write(str(' '))
-    #        ff.write(str(len(param_space)))
-    #    ff.close()
-
-
-        
-
-
-
-            
-
-
-
-
