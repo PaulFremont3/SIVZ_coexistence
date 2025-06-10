@@ -2,7 +2,7 @@ In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ an
 
 All simulations were run on the Zaratan HPC cluster of the University of Maryland (https://hpcc.umd.edu/hpcc/zaratan.html)
 
-# 1. DESCRIPTION OF FILES  
+# 1. FILES DESCRIPTION
 
 ## 1.1. Python files:
 in each case pdf outputs are specified and *\*suffix\** refers to a suffix to identify parameters input of the simulation (see inside .py file and .sbatch files for inputs needed for each files): 
