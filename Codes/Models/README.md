@@ -2,6 +2,7 @@ In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ an
 All simulations were run on the Zaratan cluster of the University of Maryland (https://hpcc.umd.edu/hpcc/zaratan.html)
 
 **1. DESCRIPTION OF FILES**  
+
 **1.1 Python files:** in each case pdf outputs are specified and *\*suffix\** refers to a suffix to identify parameters input of the simulation (see inside .py file and .sbatch files for inputs needed for each files): 
   - **generic_functions.py**: files containing functions shared by different scripts
   - **SVZ_molar_model_phytotypes.py** : code to run SVZ simulations and generate coexistence diagrams
@@ -60,6 +61,7 @@ All simulations were run on the Zaratan cluster of the University of Maryland (h
   - **concatenate_results_optimisation_params.sh**: used to concatenate rsult files from the optimisation
 
 **2. HOW TO RUN THE SIMULATIONS**  
+
 In a HPC cluster:  
 **2.1.** Create in this directorry a subfolfder called model_data to store results: `mkdir model_data`
 **2.2.** run simulations of dynamics across the parameter space: command `./run_coexistence_simulations.sh`
@@ -84,3 +86,4 @@ In a HPC cluster:
   `sbatch run_analysis_optimization.sbatch 0`
 
 **3. WHERE ARE THE FIGURES FROM THE PAPER**
+
