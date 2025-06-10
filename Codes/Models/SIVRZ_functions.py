@@ -431,7 +431,7 @@ def equilibrium1_SIVRZ(mu, mui, lp, beta, phi, ds, m,m2, Qv, Qp,Qz,  eps,epsr, e
     
     return S_star, I_star, V_star, R_star, Z_star
 
-
+# equilibrium SIVRZ with alpha=0
 def equilibrium1_SIVRZ_bis(mu, mui, eta, beta, phi, ds, m,m2, Qv, Qp,Qz,  eps,epsr, epso,eps_r,eps_lr,phir,mur,phiz,eps_z,dz,dz2, CC, alpha):
     gr=phiz
     a=mur-mu
@@ -765,47 +765,6 @@ def make_plots_SIVRZ(S, I, V, R, Z, i1, i2, tit,dt, pp, Qp, Qv, Qz):
     plt.xlabel('Days')
     plt.ylabel('Concentration (ind.L-1)')
     plt.yscale('log')
-    bottom, top = plt.ylim()
-    top=min([top, 1e20])
-    plt.ylim((bottom,top))
-    leg_vec=['Susceptible', 'Infected','Resistant' ,'Virus', 'Zooplankton']
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.title(tit)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
-    mxs=np.array([np.max(np.array(S[i1:i2])/Qp),np.max(np.array(R[i1:i2])/Qp) ,np.max(np.array(I[i1:i2])/Qp), np.max(np.array(V[i1:i2])/Qv), np.max(np.array(Z[i1:i2])/Qz)])
-    maxi=10*np.max(mxs) 
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
-    plt.plot(np.array(time_sim)*dt, np.array(I[i1:i2])/Qp, color='#ff7f0e')
-    plt.plot(np.array(time_sim)*dt, np.array(R[i1:i2])/Qp, color= '#9467bd')
-    plt.plot(np.array(time_sim)*dt, np.array(V[i1:i2])/Qv, color='#1f77b4')
-    plt.plot(np.array(time_sim)*dt, np.array(Z[i1:i2])/Qz, color='red')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (ind.L-1)')
-    plt.yscale('log')
-    bottom, top = plt.ylim()
-    mini=1e-1
-    top=2e10
-    plt.ylim((mini,top))
-    leg_vec=['Susceptible', 'Infected','Resistant' ,'Virus', 'Zooplankton']
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.title(tit)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
-    plt.plot(np.array(time_sim)*dt, np.array(I[i1:i2])/Qp, color='#ff7f0e')
-    plt.plot(np.array(time_sim)*dt, np.array(R[i1:i2])/Qp, color= '#9467bd')
-    plt.plot(np.array(time_sim)*dt, np.array(V[i1:i2])/Qv, color='#1f77b4')
-    plt.plot(np.array(time_sim)*dt, np.array(Z[i1:i2])/Qz, color='red')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (ind.L-1)')
-    plt.yscale('log')
     mini=1
     maxi=5e10
     plt.ylim((mini,maxi))
@@ -816,110 +775,7 @@ def make_plots_SIVRZ(S, I, V, R, Z, i1, i2, tit,dt, pp, Qp, Qv, Qz):
     plt.yticks(fontsize=14)
     pp.savefig()
 
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
-    plt.plot(np.array(time_sim)*dt, np.array(I[i1:i2])/Qp, color='#ff7f0e')
-    plt.plot(np.array(time_sim)*dt, np.array(R[i1:i2])/Qp, color= '#9467bd')
-    plt.plot(np.array(time_sim)*dt, np.array(V[i1:i2])/Qv, color='#1f77b4')
-    plt.plot(np.array(time_sim)*dt, np.array(Z[i1:i2])/Qz, color='red')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (ind.L-1)')
-    plt.yscale('log')
-    bottom, top = plt.ylim()
-    top=min([top, 1e20])
-    plt.ylim((1,top))
-    leg_vec=['Susceptible', 'Infected','Resistant' ,'Virus', 'Zooplankton']
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.title(tit)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
     
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, S[i1:i2], color='#2ca02c')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (mmolN.L-1)')
-    bottom, top = plt.ylim()
-    top=min([top, 1e20])
-    plt.ylim((0,top))
-    leg_vec=['Susceptible']
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.title(tit)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
-    fig, ax = plt.subplots(figsize=(4,4))    
-    plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (ind.L-1)')
-    bottom, top = plt.ylim()
-    top=min([top, 1e20])
-    plt.ylim((0,top))
-    leg_vec=['Susceptible']
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.title(tit)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, np.array(S[i1:i2])/Qp, color='#2ca02c')
-    plt.plot(np.array(time_sim)*dt, np.array(I[i1:i2])/Qp, color='#ff7f0e')
-    plt.plot(np.array(time_sim)*dt, np.array(R[i1:i2])/Qp, color= '#9467bd')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (ind.L-1)')
-    bottom, top = plt.ylim()
-    top=min([top, 1e20])
-    plt.ylim((0,top))
-    leg_vec=['Susceptible', 'Infected', 'Resistant']
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.title(tit)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, Z[i1:i2], color='red')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (mmolN.L-1)')
-    bottom, top = plt.ylim() 
-    top=min([top, 1e20])
-    plt.ylim((0,top))
-    leg_vec=['Zooplankton']
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.title(tit)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, np.array(Z[i1:i2])/Qz, color='red')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (ind.L-1)')
-    bottom, top = plt.ylim()
-    top=min([top, 1e20])
-    plt.yscale('log')
-    leg_vec=['Zooplankton']
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.title(tit)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
-
-    fig, ax = plt.subplots(figsize=(4,4))
-    plt.plot(np.array(time_sim)*dt, np.array(V[i1:i2])/Qv, color='#1f77b4')
-    plt.xlabel('Days')
-    plt.ylabel('Concentration (ind.L-1)')
-    leg_vec=[ 'Virus']
-    top=min([top, 1e20])
-    bottom, top = plt.ylim() 
-    plt.ylim((0,top))
-    plt.legend(leg_vec,bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0., ncol=4, fontsize=6)
-    plt.title(tit)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    pp.savefig()
 
 # jacobian
 def Jacobian_SIVRZ(mu, mui, eta, beta, phi, ds, m,m2, Qv, Qp,  eps,epsr, epso,eps_r,eps_lr,phir,mur,phiz,eps_z, dz,dz2,CC, Ss, Is, Vs, Rs, Zs):
