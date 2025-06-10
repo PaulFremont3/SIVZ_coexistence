@@ -1,7 +1,7 @@
 In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ and SIVRZ models.  
 All simulations were run on the Zaratan cluster of the University of Maryland (https://hpcc.umd.edu/hpcc/zaratan.html)
 
-**1. DESCRIPTION OF FILES**
+**1. DESCRIPTION OF FILES**  
 1.1 Python files, in each case pdf outputs are specified and *\*suffix\** refers to a suffix to identify parameters input of the simulation (see inside .py file and .sbatch files for inputs needed for each files): 
   - **generic_functions.py**: files containing functions shared by different scripts
   - **SVZ_molar_model_phytotypes.py** : code to run SVZ simulations and generate coexistence diagrams
