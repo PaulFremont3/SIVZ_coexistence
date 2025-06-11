@@ -46,7 +46,7 @@ Practically in the study, only the life history trait of the smallest phytoplank
 `sbatch run_best_model_ml.sbatch lm LP`  
 `sbatch run_best_model_ml.sbatch rf LP`  
 ## 2.2. Generate life history traits data of phytoplankton
-Compile the c++ file generate_traits.cpp:  
+Compile the c++ script `generate_traits.cpp`:  
 `g++ generate_traits.cpp -o generate_traits.exe`  
 Generate the trait data:
 `./generate_traits.exe`
