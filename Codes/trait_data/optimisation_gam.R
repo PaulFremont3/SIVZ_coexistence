@@ -40,7 +40,7 @@ best_models_gam<-function(id){
     # run LOOCV
     score_list <- lapply(samples_list, FUN = cv_gam, i=i, nsp=nsp, df_full=df_full)
 
-    # collext model performance
+    # collect model performance
     rmse_list <- NULL
     rmse_list_bis <- NULL
     cor_list <- NULL
