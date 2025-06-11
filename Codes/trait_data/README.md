@@ -20,7 +20,7 @@ R libraries: mgcv, nnet, Metrics
       - trait_values_size_structured_foodweb.pdf: pdf with the trait values for the 400 phytoplankton types (see .cpp). In this study, only the smallest of each phytoplankton groups are used.
 
 ## 1.2. .cpp script
- - generate_traits.cpp (along with functions.h): cpp file to generate randomly 400 phytoplankton types (based on their volumes) and their life history traits: 100 diatom, 100 eukaryotes, 100 Synechococcus and 100 Prochlorococcus
+ - generate_traits.cpp (along with functions.h): cpp file to generate randomly 400 phytoplankton types and their life history traits (based on their volumes): 100 diatom, 100 eukaryotes, 100 Synechococcus and 100 Prochlorococcus
  
 ## 1.3. .sbatch file
   - run_best_model_ml.sbatch: to run the best_model_ml.R script (see arguments inside)
