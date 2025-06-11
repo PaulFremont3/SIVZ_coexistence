@@ -96,7 +96,7 @@ In a HPC cluster:
 
 ## 2.4. Generate scaled figures:  
 &nbsp;&nbsp;&nbsp;&nbsp;`python make_figures_scaled.py main_models`  
-&nbsp;&nbsp;&nbsp;&nbsp;This will generate figures that need to be scaled (plots saved in the `model_data/` folder).
+&nbsp;&nbsp;&nbsp;&nbsp;This will generate figures that need to be scaled (necessary data previously saved in the `model_data/` folder).
 
 ## 2.5. Generate figures of distributions of measured abundances of *Prochlorococcus* and *Synechococcus*, their virus and the percentage of infected cells from Carlson *et al.* 2022.
 &nbsp;&nbsp;&nbsp;&nbsp;`Rscript histogram_abundances.R`
