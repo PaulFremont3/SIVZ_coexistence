@@ -53,7 +53,7 @@ Generate the trait data:
 ## 2.3. Generate life history traits of viruses
 `Rscript traits_for_simulation.R`
 
-# 3. PDF FILES WITH THE FIGURES IN THE PAPER
+# 3. MANUSCRIPT FIGURE PANELS (PDFs)
 - **Figure S1**
   - S1a: page 4 of model_vs_data_BS_host_volume_lm.pdf
   - S1b: page 4 of model_vs_data_BS_host_volume_gam.pdf
