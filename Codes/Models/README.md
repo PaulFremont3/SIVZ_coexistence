@@ -70,7 +70,7 @@ Each file contains a description of the parameters taken as inputs: .sbatch file
 ## 1.4. .sh files: 
   - **run_coexistence_simulations.sh** : runs all simulations necessary to generate figure 2, 4, 6b-j, S5, S7, s8, s9, s10, s11, s12, s13, s17 and data for: figure 5, 3d,e, S6, s14, s16
   - **run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh**: used to run in parallel  the optimization of parameters, it divides the grid search in 50 equal chunks of parameters combinations e.g. if 10^6 parameter combination are tested, one job will test 10^6/50= 20000 combinations 
-  - **concatenate_results_optimisation_params.sh**: used to concatenate rsult files from the optimisation
+  - **concatenate_results_optimisation_params.sh**: used to concatenate result files from the optimization
 
 ## 1.5. .txt files:
   - carlson_data_cyanobacteria.txt: count concentration of *Prochlorococcus* and *Synechococcus* from Carlson *et al.* 2022
