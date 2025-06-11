@@ -11,4 +11,4 @@ The folder `Codes/` contains two subfolder: `Models/` and `trait_data/`. The fol
 Each subfolder contains a README.md that:
 1. Describes each files
 2. Explain how to run the codes
-3. Explain where the figure panels are in the generated pdfs
+3. Explain where the figure panels are in the generated pdfs and data for tables
