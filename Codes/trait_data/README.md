@@ -2,6 +2,8 @@ This folder contains all R codes necessary to generate life history traits model
 
 All simulations were run on the Zaratan HPC cluster of the University of Maryland (https://hpcc.umd.edu/hpcc/zaratan.html).
 
+R libraries: mgcv, nnet, Metrics
+
 # 1. FILES DESCRIPTION
 
 ## 1.1. R scripts
@@ -14,11 +16,16 @@ All simulations were run on the Zaratan HPC cluster of the University of Marylan
       - pred_vs_data_*\*variable\**__*\*model\**.pdf:  model versus data pdf
       - model_vs_data_*\*variable\**_host_volume_*\*model\**.pdf: model and data versus volume of host pdf
   - traits_for_simulation.R save final predictions of the model
+    - output:
+      - trait_values_size_structured_foodweb.pdf: pdf with the trait values for the 400 phytoplankton types (see .cpp). In this study, only the smallest of each phytoplankton groups are used.
+
+## 1.2. .cpp script
+ - generate_traits.cpp (along with functions.h): cpp file to generate randomly 400 phytoplankton types (based on their volumes) and their life history traits: 100 diatom, 100 eukaryotes, 100 Synechococcus and 100 Prochlorococcus
  
-## 1.2 .sbatch file
+## 1.3. .sbatch file
   - run_best_model_ml.sbatch: to run the best_model_ml.R script (see arguments inside)
 
-## 1.3. .txt files
+## 1.4. .txt files
   - Vs_5.txt: 400 random volumes of 100 diatom, 100 eukaryotes, 100 Synechococcus and 100 Prochlorococcus
   - mumax_dutkiewicz_5.txt: maximum growth rates of the 400 random phytoplankton based on allometric relationship Dutkiewicz *et al.* 2020
   - Nc_dutkiewicz_5.txt: half saturation constant of the 400 random phytoplankton based on allometric relationship from Dutkiewicz *et al.* 2020 (https://bg.copernicus.org/articles/17/609/2020/)
