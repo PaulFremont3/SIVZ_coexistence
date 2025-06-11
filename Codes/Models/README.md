@@ -43,7 +43,7 @@ For each file, pdf outputs are specified and *\*suffix\** refers to a suffix to 
   - **SIVRZ_functions.py** : functions specific to the SIVRZ model
   - **SIVZ_MCT.py**: code to run the SIVZ Modern coexistence theory analysis
     - outputs:
-      - SIVZ_model_phi_latent_period_*\*suffix\**_MCT.pdf, effects from MCT Theory across the parameter space
+      - SIVZ_model_phi_latent_period_*\*suffix\**_MCT.pdf, effects from Modern Coexistence Theory (MCT, Ellner *et al.* 2019, https://onlinelibrary.wiley.com/doi/abs/10.1111/ele.13159) across the parameter space
   - **make_figures_scaled.py**: code to create figures with same scales (from different models): => figure 5, s6, s14, and s16
     - outputs:
       - Scaled_PVZ_main_models.pdf
