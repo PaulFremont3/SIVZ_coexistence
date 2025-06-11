@@ -1,4 +1,5 @@
 best_models_nn<-function(id,  df_full){
+  # model training function
   optimisation_nn <- function(i, nnetGrid, variables, df_full, id){
     flag <- TRUE
     nn_model <- NULL
@@ -10,9 +11,8 @@ best_models_nn<-function(id,  df_full){
                              maxit=nnetGrid[i,3], trace=F, linout=T),
       error=function(e) flag <- FALSE
     )
-    #test3<- nn_model$fitted.values[,2]
-    #TSSs <- 0
-    # Performing 15 cross-validations to calculate the mean AUC (area under ROC curve) which is the parameter we chose to optimize
+
+    # cross validation function: fit the model on a subset and compute evaluation metrics on the test set
     cv_nn <- function(sample,i, id){
       df3 <- df_full[sample,]
       test_set <- !(c(1:nrow(df_full)) %in% sample)
@@ -26,7 +26,8 @@ best_models_nn<-function(id,  df_full){
       co <- cor(df_full[test_set,id],preds, method = 'pearson' )
       return(c(rms, co))
     }
-    
+
+    # divide the data set LOOCV
     set.seed(42)
     to_test=1:dim(df_full)[1]
     to_test=to_test[!(to_test %in% to_rem)]
@@ -38,8 +39,10 @@ best_models_nn<-function(id,  df_full){
       samples_list[[co]] <- samples
       co=co+1
     }
+    # run LOOCV
     score_list <- lapply(samples_list, FUN = cv_nn, i=i, id=id)
-    
+
+     # collect model performance
     rmse_list <- NULL
     cor_list <- NULL
     for (vector in score_list){
@@ -54,12 +57,14 @@ best_models_nn<-function(id,  df_full){
     }
     optimisation_nn <- list(RMSEs, CORs, nn_model)
   }
-  
+
+  # main loop over the hyperparameter space
   m_core <- NULL
   m_rmse <- NULL
   mods <- NULL
   for (i in 1:dim(nnetGrid)[1]){ #
     set.seed(42)
+    # LOOCV for a given combination of hyperparameter
     vec <- optimisation_nn(i, nnetGrid = nnetGrid , variables=variables, df_full = df_full, id=id)
     m_rmse <- append(m_rmse, vec[[1]])
     m_core <- append(m_core, vec[[2]])
@@ -72,11 +77,9 @@ best_models_nn<-function(id,  df_full){
   } else{
     best_model <- c(NA,NA,NA,NA, NA)
   }
-  # } else{
-  #   best_model <- c(id, NA,NA,NA,NA, NA, NA, NaN)
-  # }
-  #write(id, paste('follow_nn_',,'.txt', sep=''), append=T)
+
   b_mod <- mods[[g]]
+  # return the best model and its performance
   return(list(best_model, b_mod))
 }
   
