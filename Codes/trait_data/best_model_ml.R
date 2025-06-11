@@ -5,12 +5,14 @@ source('optimisation_lm.R')
 source('optimisation_rf.R')
 library('mgcv')
 library('nnet')
-library('neuralnet')
 library('Metrics')
+
+# load data
 u=read.table('edwards_2018.txt',sep = '\t', header = T)
 
-to_predict=commandArgs(trailingOnly = T)[1]
-model_type=commandArgs(trailingOnly = T)[2]
+
+to_predict=commandArgs(trailingOnly = T)[1] # variable to predict (burst size, BS or latent period, LP)
+model_type=commandArgs(trailingOnly = T)[2] # gam, nn, lm or rf
 if (to_predict=='BS'){
 	df_full=data.frame(y=log10(u$Burst.size), log10Vhost=log10(u$Host.cell.volume..cubic.microns.), RVirus=u$Virus.particle.size..nm., VirusType=u$Virus.type, HostType=u$Host.taxon, Temperature=u$Temperature..ºC., env=u$Environment)
 	lab_ax=paste('log10(',to_predict,')', sep='')
@@ -18,15 +20,16 @@ if (to_predict=='BS'){
 	df_full=data.frame(y=log10(u$Latent.period..hr.), log10Vhost=log10(u$Host.cell.volume..cubic.microns.), RVirus=u$Virus.particle.size..nm., VirusType=u$Virus.type, HostType=u$Host.taxon, Temperature=u$Temperature..ºC., env=u$Environment)
 	lab_ax=paste('log10(',to_predict,')', sep='')
 }
-#df_full=df_full[df_full$env=='Marine',]
+
 df_full$HostType[df_full$HostType %in% c("Prasinophyte"  , "Haptophyte",     "Dinoflagellate" )]="Eukaryote"
 
+# remove rows with NAs
 is_na_rows=apply(df_full, 1, FUN = function(x){u=sum(is.na(x)); return(ifelse(u==0, T, F))})
-
 df_full=df_full[is_na_rows,]
 
-variables_to_check=c('HostType', 'VirusType')
 
+# remove underrepresented type in the dataset
+variables_to_check=c('HostType', 'VirusType')
 to_rem=NULL
 for (var in variables_to_check){
   u_var=unique(df_full[[var]])
@@ -40,6 +43,7 @@ for (var in variables_to_check){
 }
 to_rem=NULL
 
+# remove underrepresented pairs of virus type/host type
 df_full$pairs=paste(df_full$VirusType, df_full$HostType, sep='_')
 pairs=unique(df_full$pairs)
 for (phv in pairs){
@@ -49,7 +53,8 @@ for (phv in pairs){
   }
 }
 
-if (model_type %in% c('nn', 'nnet')){
+# for nn convert quantitative variables in 1/0 binaries
+if (model_type %in% c('nn')){
 	cat_vars=c('HostType', 'VirusType')
 	for (cvar in cat_vars){
   	flags = data.frame(Reduce(cbind,lapply(unique(df_full[[cvar]]), function(x){(df_full[[cvar]] == x)*1})
@@ -70,6 +75,7 @@ colors=c('deepskyblue',  'red',  'green')
 unique_Htype=unique(df_full$HostType)
 df_full$color=colors[match(df_full$HostType,unique_Htype)]
 
+# define hyperparameter grids for the type of model
 id=1
 if (model_type=='gam'){
 	gamGrid <-  expand.grid(nsplines = seq(from = -5, to = 3, by = 1))
@@ -84,11 +90,6 @@ if (model_type=='gam'){
 	gamGrid <-  expand.grid(nsplines = seq(from = 0, to = 0, by = 1))
         variables=2:5
         score_list <- best_models_lm(1)
-} else if (model_type=='nnet'){
-	nnetGrid <-  expand.grid(hidden = seq(from = 1, to = 4, by = 1),
-                         decay = c(10^(-2:-3)),
-                         mxit = c(1000000, 5000000), size=seq(from = 1, to = 7, by = 1))
-	score_list <- best_models_nnet(id,  model_formula, df_full)
 } else if (model_type=='rf'){
 	rfGrid <-  expand.grid(mtry = seq(from = 1, to = 7, by = 1),
                        ntree = c(seq(1, 10, by= 2) %o% 10^(2:3)))
@@ -99,19 +100,14 @@ if (model_type=='gam'){
 
 mod=score_list[[2]]
 
+# save model performance (and the model)
 saveRDS(score_list, paste(to_predict,'_',model_type, '_result.rds', sep=''))
 
 colors=c('deepskyblue',  'red',  'green')
 unique_Htype=unique(df_full$HostType)
 df_full$color=colors[match(df_full$HostType,unique_Htype)]
-#plot(df_full$y, mod$fitted.values, col=df_full$color, pch=19 )
 
-#variables=2:6
-#score_list <- best_models_gam(1)
-
-mod=score_list[[2]]
-
-
+# pdf with x-y plot of model versus data (BS or LP), Figure S2 and S4
 pdf(paste('pred_vs_data_',to_predict,'_',model_type,'.pdf', sep=''))
 if (model_type=='rf'){
   fitted=mod$predicted
@@ -139,21 +135,16 @@ rms=rmse(x,y)
 title(paste('r=',round(co$estimate,2),',pval=',co$p.value, 'rmse=', rms ))
 
 dev.off()
-#print(mean(abs(mod$residuals)))
-#print(mean(abs(gam_model$residuals)))
-
-
 
 df_full$pairs=paste(df_full$VirusType, df_full$HostType, sep='_')
 
+# pdf with model prediction and data against host volume (Figure S1 and S3)
 pdf(paste('model_vs_data_',to_predict,'_host_volume_',model_type,'.pdf', sep=''))
 pairs=unique(df_full$pairs)
 all_pred_data=rep(list(NULL), length(pairs))
 all_data=rep(list(NULL), length(pairs))
-#if (to_predict=='BS')
 col_grads=list('dsDNA_Eukaryote'=colorRampPalette(colors = c("lightblue",  'blue'))(100), 'dsDNA_Cyanobacteria'=colorRampPalette(colors = c("pink",  'red'))(100), 'ssDNA (partial ds)_Diatom'=colorRampPalette(colors = c("lightgreen",  'green'))(100), 'ssRNA_Diatom'=colorRampPalette(colors = c("mediumpurple1",  'mediumpurple4'))(100) ,
                colorRampPalette(colors = c("grey",  'black'))(100))
-#names(col_grads)=pairs
 for (phv in pairs){
   vt=strsplit(phv, split = '_')[[1]][1]
   ht=strsplit(phv, split = '_')[[1]][2]
@@ -203,7 +194,6 @@ for (phv in pairs){
     print(grid)
     pred_bs=stats::predict(mod, newdata = grid, type='response')
   } 
-  #pred_bs=matrix(pred_bs, nrow=length(lin_seq_hostsize), ncol=length(lin_seq_virus))
   
   col_virus_size=(grid$RVirus-min(grid$RVirus))*99/(max(grid$RVirus)-min(grid$RVirus))+1
   col_grad=colorRampPalette(colors = c("yellow", "orange", 'red'))(100)
@@ -225,10 +215,8 @@ for (phv in pairs){
   if (i==1){
     co=col_grads[[phv]]
     plot(all_pred_data[[phv]][[2]], all_pred_data[[phv]][[1]], pch=19, ylim=c(min(df_full$y), max(df_full$y)), xlim= c(min(df_full$log10Vhost),max(df_full$log10Vhost))   , col=co[all_pred_data[[phv]][[3]]], ylab=lab_ax, xlab="log10(Vhost)" )
-    #points(all_data[[phv]][[2]], all_data[[phv]][[1]], pch=8, cex=2, col=col_grads[[phv]][all_data[[phv]][[3]]])
   } else{
     points(all_pred_data[[phv]][[2]], all_pred_data[[phv]][[1]], pch=19, col=col_grads[[phv]][all_pred_data[[phv]][[3]]])
-    #points(all_data[[phv]][[2]], all_data[[phv]][[1]], pch=8, cex=2, col=col_grads[[phv]][all_data[[phv]][[3]]])
   }
   i=i+1 
 }
@@ -236,6 +224,5 @@ for (phv in pairs){
   points(all_data[[phv]][[2]], all_data[[phv]][[1]], pch=8, cex=2, col=col_grads[[phv]][all_data[[phv]][[3]]])
 }
 dev.off()
-
-
+# save the model
 saveRDS(mod,paste(to_predict,'_',model_type, '_model.rds', sep=''))
