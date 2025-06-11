@@ -4,3 +4,10 @@ Frémont *et al.*, *Mechanisms of Coexistence Between Photosynthetic Marine Micr
 
 ## Download:
 git clone https://github.com/PaulFremont3/SIVZ_coexistence/
+
+The folder codes contains two subfolder: Models/ and trait_data/. The folder trait_data/ allow the generation of pdfs necessary to generate figure S1 to S4 (life history trait models) and the folder Models/ allow the generation of pdfs necessary to generate all other figures, tables and supplementary figures.
+
+Each subfolder contains a README.md that:
+1. Describes each files
+2. Explain how to run the codes
+3. Explain where the figure panels are in the generated pdfs
