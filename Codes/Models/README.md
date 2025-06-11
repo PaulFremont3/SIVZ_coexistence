@@ -10,7 +10,7 @@ Python libraries: numpy, matplotlib, math, sys, copy, scipy, random
 # 1. FILES DESCRIPTION
 
 ## 1.1. Python files:
-in each case pdf outputs are specified and *\*suffix\** refers to a suffix to identify parameters input of the simulation (see inside .py file and .sbatch files for inputs needed for each files): 
+in each case pdf outputs are specified and *\*suffix\** refers to a suffix to identify parameters input of the simulation (see inside .py file and .sbatch files for inputs needed for each files). When specified, pdf outputs can depend on the input parameters: 
   - **generic_functions.py**: files containing functions shared by different scripts
   - **SVZ_molar_model_phytotypes.py** : code to run SVZ simulations and generate coexistence diagrams
       - outputs:
