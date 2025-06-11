@@ -1,6 +1,6 @@
 best_models_rf<-function(id,  df_full){
+  # model training function
   optimisation_rf <- function(i, rfGrid, variables, df_full, id){
-    #print(ido)
     flag <- TRUE
     rf_model <- NULL
     # Fitting the model on the whole dataset
@@ -10,13 +10,10 @@ best_models_rf<-function(id,  df_full){
                                              proximity =T, mtry=rfGrid[i,1], ntree = rfGrid[i,2]),
       error=function(e) flag <- FALSE
     )
-    #test3<- nn_model$fitted.values[,2]
-    #TSSs <- 0
-    # Performing 15 cross-validations to calculate the mean AUC (area under ROC curve) which is the parameter we chose to optimize
+    # cross validation function: fit the model on a subset and compute evaluation metrics on the test set
     cv_rf <- function(sample,i, ido){
       df3 <- df_full[sample,]
       test_set <- !(c(1:nrow(df_full)) %in% sample)
-     # print(ido)
       set.seed(42)
       rf_model_cv <- randomForest::randomForest(y=df3[,ido], x=df3[,variables],data = df3, importance=T,
                                                 proximity =T, mtry=rfGrid[i,1], ntree = rfGrid[i,2])
@@ -25,7 +22,8 @@ best_models_rf<-function(id,  df_full){
       co <- cor(df_full[test_set,ido],preds, method = 'pearson' )
       return(c(rms, co))
     }
-    
+
+     # divide the data set for LOOCV
     set.seed(42)
     to_test=1:dim(df_full)[1]
     to_test=to_test[!(to_test %in% to_rem)]
@@ -37,8 +35,10 @@ best_models_rf<-function(id,  df_full){
       samples_list[[co]] <- samples
       co=co+1
     }
+    # run LOOCV
     score_list <- lapply(samples_list, FUN = cv_rf, i=i, ido=id)
-    
+
+    # collect model performance
     rmse_list <- NULL
     cor_list <- NULL
     for (vector in score_list){
@@ -53,18 +53,20 @@ best_models_rf<-function(id,  df_full){
     }
     optimisation_rf <- list(RMSEs, CORs, rf_model)
   }
-  
+
+  # main loop over hyperparameter space
   m_core <- NULL
   m_rmse <- NULL
   mods <- NULL
   for (i in 1:dim(rfGrid)[1]){ #
     set.seed(42)
-   # print(id)
+    # LOOCV for a given combination of hyperparameter
     vec <- optimisation_rf(i, rfGrid = rfGrid , variables=variables, df_full = df_full, id=id)
     m_rmse <- append(m_rmse, vec[[1]])
     m_core <- append(m_core, vec[[2]])
     mods[[i]] <- vec[[3]]
   }
+  
   # Finding the parameters combination for which the mean auc of the cross-validation is maximized
   g <- which.min(m_rmse)
   if (length(g)>0){
@@ -72,11 +74,9 @@ best_models_rf<-function(id,  df_full){
   } else{
     best_model <- c(NA,NA,NA, NA)
   }
-  # } else{
-  #   best_model <- c(id, NA,NA,NA,NA, NA, NA, NaN)
-  # }
-  #write(id, paste('follow_nn_',,'.txt', sep=''), append=T)
+
   b_mod <- mods[[g]]
+  # return best model and its performance
   return(list(best_model, b_mod))
 }
   
