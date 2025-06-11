@@ -85,11 +85,11 @@ In a HPC cluster:
 &nbsp;&nbsp;&nbsp;&nbsp;`python make_figures_scaled.py main_models`  
 &nbsp;&nbsp;&nbsp;&nbsp;This will generate figures that need to be scaled (plots saved in the `model_data/` folder).
 
-## 2.5. Create a subfolder to store parameter optimization results:  
-&nbsp;&nbsp;&nbsp;&nbsp;`mkdir results_optimization_params/`
-
-## 2.6. Generate figures of distributions of measured abundances of *Prochlorococcus* and *Synechococcus*, their virus and the percentage of infected cells from Carlson *et al.* 2022.
+## 2.5. Generate figures of distributions of measured abundances of *Prochlorococcus* and *Synechococcus*, their virus and the percentage of infected cells from Carlson *et al.* 2022.
 &nbsp;&nbsp;&nbsp;&nbsp;`Rscript histogram_abundances.R`
+
+## 2.6. Create a subfolder to store parameter optimization results:  
+&nbsp;&nbsp;&nbsp;&nbsp;`mkdir results_optimization_params/`
 
 ## 2.7. Grid search to optimize parameters to target concentrations:  
 &nbsp;&nbsp;&nbsp;&nbsp;`./run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh 0`  
