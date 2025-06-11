@@ -7,30 +7,30 @@ R libraries: mgcv, nnet, Metrics
 # 1. FILES DESCRIPTION
 
 ## 1.1. R scripts
-  - optimisation_lm.R: cross validation function looped through the hyperparameter space for the linear model
-  - optimisation_nn.R: cross validation function looped through the hyperparameter space for the single layer neural network model
-  - optimisation_rf.R: cross validation function looped through the hyperparameter space for the random forest model
-  - optimisation_gam.R: cross validation function looped through the hyperparameter space for the gam model
-  - best_model_ml.R: generic code to launch either the optimisation of lm, nn, rf or gam model and generates figure s1 to s4
+  - `optimisation_lm.R`: cross validation function looped through the hyperparameter space for the linear model
+  - `optimisation_nn.R`: cross validation function looped through the hyperparameter space for the single layer neural network model
+  - `optimisation_rf.R`: cross validation function looped through the hyperparameter space for the random forest model
+  - `optimisation_gam.R`: cross validation function looped through the hyperparameter space for the gam model
+  - `best_model_ml.R`: generic code to launch either the optimisation of lm, nn, rf or gam model and generates figure s1 to s4
     - output:
       - pred_vs_data_*\*variable\**__*\*model\**.pdf:  model versus data pdf
       - model_vs_data_*\*variable\**_host_volume_*\*model\**.pdf: model and data versus volume of host pdf
-  - traits_for_simulation.R save final predictions of the model
+  - `traits_for_simulation.R` save final predictions of the model
     - output:
       - trait_values_size_structured_foodweb.pdf: pdf with the trait values for the 400 phytoplankton types (see .cpp). In this study, only the smallest of each phytoplankton groups are used.
 
 ## 1.2. .cpp script
- - generate_traits.cpp (along with functions.h): cpp file to generate randomly 400 phytoplankton types and their life history traits (based on their volumes): 100 diatom, 100 eukaryotes, 100 Synechococcus and 100 Prochlorococcus
+ - `generate_traits.cpp` (goes with `functions.h`): cpp file to generate randomly 400 phytoplankton types and their life history traits (based on their volumes): 100 diatom, 100 eukaryotes, 100 Synechococcus and 100 Prochlorococcus
  
 ## 1.3. .sbatch file
-  - run_best_model_ml.sbatch: to run the best_model_ml.R script (see arguments inside)
+  - `run_best_model_ml.sbatch`: to run the best_model_ml.R script (see arguments inside)
 
 ## 1.4. .txt files
-  - Vs_5.txt: 400 random volumes of 100 diatom, 100 eukaryotes, 100 Synechococcus and 100 Prochlorococcus
-  - mumax_dutkiewicz_5.txt: maximum growth rates of the 400 random phytoplankton based on allometric relationship Dutkiewicz *et al.* 2020
-  - Nc_dutkiewicz_5.txt: half saturation constant of the 400 random phytoplankton based on allometric relationship from Dutkiewicz *et al.* 2020 (https://bg.copernicus.org/articles/17/609/2020/)
-  - model_burst_size_nn-gam.txt: burst size model generated from the life history trait model of this study (nn for burst size of eukaryotes, Synechococcus and Prochlorococcus and gam for burst size of diatom)
-  - model_latent_period_nn-gam.txt: burst size model generated from the life history trait model of this study (nn for latent period)
+  - `Vs_5.txt`: 400 random volumes of 100 diatom, 100 eukaryotes, 100 Synechococcus and 100 Prochlorococcus
+  - `mumax_dutkiewicz_5.txt`: maximum growth rates of the 400 random phytoplankton based on allometric relationship Dutkiewicz *et al.* 2020
+  - `Nc_dutkiewicz_5.txt`: half saturation constant of the 400 random phytoplankton based on allometric relationship from Dutkiewicz *et al.* 2020 (https://bg.copernicus.org/articles/17/609/2020/)
+  - `model_burst_size_nn-gam.txt`: burst size model generated from the life history trait model of this study (nn for burst size of eukaryotes, Synechococcus and Prochlorococcus and gam for burst size of diatom)
+  - `model_latent_period_nn-gam.txt`: burst size model generated from the life history trait model of this study (nn for latent period)
 Practically in the study, only the life history trait of the smallest phytoplankton of each group is used.
 
 # 2. RUN THE SIMULATIONS
@@ -49,7 +49,7 @@ Practically in the study, only the life history trait of the smallest phytoplank
 Compile the c++ script `generate_traits.cpp`:  
 `g++ generate_traits.cpp -o generate_traits.exe`  
 Generate the trait data:
-`./generate_traits.exe`
+`./generate_traits.exe 5` (5 is the random seed)
 ## 2.3. Generate life history traits data of viruses
 `Rscript traits_for_simulation.R`
 
