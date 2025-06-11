@@ -1,4 +1,4 @@
-This github repository contains code and data to replicate the study:
+This repository contains all data and code needed to reproduce the figures and tables in the paper:
 
 Frémont *et al.*, *Mechanisms of Coexistence Between Photosynthetic Marine Microorganisms, Their Viruses, and Grazers: Toward Integration in Ocean Ecosystem Models*.
 
@@ -12,3 +12,5 @@ Each subfolder contains a `README.md` that:
 1. Describes each files
 2. Explain how to run the codes
 3. Explain where the figure panels are in the generated pdfs and data for tables
+
+**Note**: The code generates additional outputs beyond those presented in the paper.
