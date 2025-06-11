@@ -10,6 +10,9 @@ All simulations were run on the Zaratan HPC cluster of the University of Marylan
   - optimisation_rf.R: cross validation function for the random forest model
   - optimisation_gam.R: cross validation function for the gam model
   - best_model_ml.R: generic code to launch either the optimisation of lm, nn, rf or gam model and generates figure s1 to s4
+    - output:
+      - pred_vs_data_*\*variable\**__*\*model\**.pdf:  model versus data pdf
+      - model_vs_data_*\*variable\**_host_volume_*\*model\**.pdf: model and data versus volume of host pdf
   - traits_for_simulation.R save final predictions of the model
  
 ## 1.2 .sbatch file
@@ -30,15 +33,37 @@ Practically in the study, only the life history trait of the smallest phytoplank
 `sbatch run_best_model_ml.sbatch gam BS`  
 `sbatch run_best_model_ml.sbatch lm BS`  
 `sbatch run_best_model_ml.sbatch rf BS`  
-- Latent period:
-`sbatch run_best_model_ml.sbatch nn BS`  
-`sbatch run_best_model_ml.sbatch gam BS`  
-`sbatch run_best_model_ml.sbatch lm BS`  
-`sbatch run_best_model_ml.sbatch rf BS`  
+- Latent period:  
+`sbatch run_best_model_ml.sbatch nn LP`  
+`sbatch run_best_model_ml.sbatch gam LP`  
+`sbatch run_best_model_ml.sbatch lm LP`  
+`sbatch run_best_model_ml.sbatch rf LP`  
 ## 2.2. Generate life history traits of phytoplankton
 Compile the c++ file generate_traits.cpp:  
 `g++ generate_traits.cpp -o generate_traits.exe`  
 Generate the trait data:
 `./generate_traits.exe`
+## 2.3. Generate life history traits of viruses
+`Rscript traits_for_simulation.R`
 
 # 3. PDF FILES WITH THE FIGURES IN THE PAPER
+- **Figure S1**
+  - S1a: page 4 of model_vs_data_BS_host_volume_lm.pdf
+  - S1b: page 4 of model_vs_data_BS_host_volume_gam.pdf
+  - S1c: page 4 of model_vs_data_BS_host_volume_rf.pdf
+  - S1d: page 4 of model_vs_data_BS_host_volume_nn.pdf
+- **Figure S2**
+  - S2a: page 1 of pred_vs_data_BS_lm.pdf
+  - S2b: page 1 of pred_vs_data_BS_gam.pdf
+  - S2c: page 1 of pred_vs_data_BS_rf.pdf
+  - S2d: page 1 of pred_vs_data_BS_nn.pdf
+- **Figure S3**
+  - S3a: page 4 of model_vs_data_LP_host_volume_lm.pdf
+  - S3b: page 4 of model_vs_data_LP_host_volume_gam.pdf
+  - S3c: page 4 of model_vs_data_LP_host_volume_rf.pdf
+  - S3d: page 4 of model_vs_data_LP_host_volume_nn.pdf
+- **Figure S4**
+  - S4a: page 1 of pred_vs_data_LP_lm.pdf
+  - S4b: page 1 of pred_vs_data_LP_gam.pdf
+  - S4c: page 1 of pred_vs_data_LP_rf.pdf
+  - S4d: page 1 of pred_vs_data_LP_nn.pdf
