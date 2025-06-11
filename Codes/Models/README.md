@@ -107,9 +107,9 @@ In a HPC cluster:
 &nbsp;&nbsp;&nbsp;&nbsp;`sbatch run_analysis_optimization.sbatch 0`  
 &nbsp;&nbsp;&nbsp;&nbsp; This will extract the best and 200 best parameter combinations for each phytoplankton type
 
-# 3. PDF AND TXT FILES WITH THE FIGURES AND DATA FOR TABLES IN THE PAPER 
+# 3. MANUSCRIPT FIGURE PANELS AND TABLE DATA (PDFs and TXTs) 
 
-(after running all simulations)  
+After running all simulations, the following .pdf and .txt files contain the figure panels and data to generate figure 2 to 6, figure S5 to S17 and Table 1 and 2.  
 
 ## 3.1. Figures
 - **Figure 2**
