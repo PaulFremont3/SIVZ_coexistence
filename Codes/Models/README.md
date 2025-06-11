@@ -54,7 +54,7 @@ For each file, pdf outputs are specified and *\*suffix\** refers to a suffix to 
   - **analysis_optimization.py**: analyze the results of the optimization =>  generates data for table 1 and 2
 
 ## 1.2. R file
-  - histogram_abundances.R: generate the histogram of count concentratins of *Prochlorococcus*, *Synechococcus*, their viruses and percentage of infected cells (Data from Carlson *et al.* 2022).
+  - histogram_abundances.R: generate the histogram of count concentrations of *Prochlorococcus*, *Synechococcus*, their viruses and percentage of infected cells (Data from Carlson *et al.* 2022).
     - output: hist_abundances_Syn_Pro_virus_percentage_infected.pdf    
 
 ## 1.3. .sbatch files:
