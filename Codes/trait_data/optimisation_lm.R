@@ -1,4 +1,5 @@
 best_models_lm<-function(id){
+  # model training function
   optimisation_gam <- function(i, gamGrid, variables, nsp, df_full){
     flag <- TRUE
     gam_model <- NULL
