@@ -11,26 +11,26 @@ Python libraries: numpy, matplotlib, math, sys, copy, scipy, random
 
 ## 1.1. Python scripts:
 For each file, pdf outputs are specified and *\*suffix\** refers to a suffix to identify parameters input of the simulation (see inside .py file and .sbatch files for inputs needed for each files). When specified, pdf outputs can depend on the input parameters: 
-  - **generic_functions.py**: files containing functions shared by different scripts
-  - **SVZ_molar_model_phytotypes.py** : code to run SVZ simulations and generate coexistence diagrams
+  - `generic_functions.py`: files containing functions shared by different scripts
+  - `SVZ_molar_model_phytotypes.py` : code to run SVZ simulations and generate coexistence diagrams
       - outputs:
         - SVZ_model_phi_latent_period_time_series_*\*suffix\**.pdf: time series for different adsorption rates
         - SVZ_model_phi_latent_period_*\*suffix\**.pdf: coexistence diagram and other features in the parameter space
-  - **SVZ_functions.py** : functions specific to the SVZ model
-  - **SVRZ_molar_model_phytotypes.py** : code to run SVRZ simulations and generate coexistence diagrams
+  - `SVZ_functions.py` : functions specific to the SVZ model
+  - `SVRZ_molar_model_phytotypes.py` : code to run SVRZ simulations and generate coexistence diagrams
     - outputs:
       - if dz2==0  (dz2 is an input parameter), SVRZ_model_phi_latent_period_time_series_coex_*\*suffix\**.pdf: if the quadratic mortality term of the zooplankton is 0: time series in the case of coexistence
       - SVRZ_model_phi_latent_period_time_series_*\*suffix\**.pdf: time series for different adsorption rates with phi/phir=10
       - SVRZ_model_phi_latent_period_time_series_full-res_*\*suffix\**.pdf: time series for different adsorption rates with phir=10 (full resistance)
       - SVRZ_model_phi_versus_phir_*\*suffix\**.pdf: coexistence diagram and other features in the parameter space
-  - **SVRZ_functions.py** : functions specific to the SVRZ model
-  - **SIVZ_molar_model_phytotypes.py** : code to run SIVZ simulations and generate coexistence diagrams
+  - `SVRZ_functions.py` : functions specific to the SVRZ model
+  - `SIVZ_molar_model_phytotypes.py` : code to run SIVZ simulations and generate coexistence diagrams
     - outputs:
       - if dz2==dv2==0 (dz2 and dv2 are input parameters), SIVZ_model_phi_latent_period_time_series_coex_*\*suffix\**.pdf: if the quadratic mortality terms are 0, time series in the case of coexistence
       - SIVZ_model_phi_latent_period_time_series_*\*suffix\**.pdf: time series for different adsorption rates, fixed latent period (life history trait model)
       - SIVZ_model_phi_latent_period_*\*suffix\**.pdf: coexistence diagram and other features in the parameter space
-  - **SIVZ_functions.py** : functions specific to the SIVZ model
-  - **SIVRZ_molar_model_phytotypes.py** : code to run SIVRZ simulations and generate coexistence diagrams
+  - `SIVZ_functions.py` : functions specific to the SIVZ model
+  - `SIVRZ_molar_model_phytotypes.py` : code to run SIVRZ simulations and generate coexistence diagrams
     - outputs:
       - SIVRZ_model_phi_latent_period_time_series_coex_*\*suffix\**.pdf: if the quadratic mortality terms are 0, time series in the case of coexistence
       - if param=='phir' or param=='epsr' (param is an input parameter), SIVRZ_model_phi_latent_period_time_series_*\*suffix\**.pdf, in case the resistance strength parameter space is explored, time series for different adsorption rates with phi/phir=10
@@ -40,41 +40,41 @@ For each file, pdf outputs are specified and *\*suffix\** refers to a suffix to 
         - if param=='epsr', SIVRZ_model_eps_versus_epsr_*\*suffix\**.pdf, in the case extracellular resistance space is explored, coexistence diagram and other features in the parameter space
         - if param=='lp_phir' or param=='lp_epsr', in the case latent period space is explored (fixed intra or extra cellular resistance), coexistence diagram and other features in the parameter space
   Note: the SVZ_molar_model_phytotypes.py, SVRZ_molar_model_phytotypes.py SIVZ_molar_model_phytotypes.py, and SIVRZ_molar_model_phytotypes.py also save as .txt files some of the matrices they generate
-  - **SIVRZ_functions.py** : functions specific to the SIVRZ model
-  - **SIVZ_MCT.py**: code to run the SIVZ Modern coexistence theory analysis
+  - `SIVRZ_functions.py` : functions specific to the SIVRZ model
+  - `SIVZ_MCT.py`: code to run the SIVZ Modern coexistence theory analysis
     - outputs:
       - SIVZ_model_phi_latent_period_*\*suffix\**_MCT.pdf, effects from Modern Coexistence Theory (MCT, Ellner *et al.* 2019, https://onlinelibrary.wiley.com/doi/abs/10.1111/ele.13159) across the parameter space
-  - **make_figures_scaled.py**: code to create figures with same scales (from different models): => figure 5, s6, s14, and s16
+  - `make_figures_scaled.py`: code to create figures with same scales (from different models): => figure 5, s6, s14, and s16
     - outputs:
       - Scaled_PVZ_main_models.pdf
       - Scaled_PVZ_FFT_and_Perdiod.pdf
       - Scaled_SIVZ_coexistence.pdf
       - Scaled_SIVZ_distances.pdf
-  - **SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.py**: file to run the optimization of parameterization of the SIVZ and SIVRZ models with respect to target concentrations (grid search)
-  - **analysis_optimization.py**: analyze the results of the optimization =>  generates data for table 1 and 2
+  - `SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.py`: file to run the optimization of parameterization of the SIVZ and SIVRZ models with respect to target concentrations (grid search)
+  - `analysis_optimization.py`: analyze the results of the optimization =>  generates data for table 1 and 2
 
 ## 1.2. R script
-  - histogram_abundances.R: generate the histogram of count concentrations of *Prochlorococcus*, *Synechococcus*, their viruses and percentage of infected cells (Data from Carlson *et al.* 2022).
+  - `histogram_abundances.R`: generate the histogram of count concentrations of *Prochlorococcus*, *Synechococcus*, their viruses and percentage of infected cells (Data from Carlson *et al.* 2022).
     - output: hist_abundances_Syn_Pro_virus_percentage_infected.pdf    
 
 ## 1.3. .sbatch files:
 Each file contains a description of the parameters taken as inputs: .sbatch files are used to run simulations on a HPC cluster with slurm
-  - **run_SVZ_molar_model_phytotypes.sbatch**: runs SVZ_molar_model_phytotypes.py
-  - **run_SVRZ_molar_model_phytotypes.sbatch**: runs SVRZ_molar_model_phytotypes.py
-  - **run_SIVZ_molar_model_phytotypes.sbatch**: runs SIVZ_molar_model_phytotypes.py
-  - **run_SIVRZ_molar_model_phytotypes.sbatch**: runs SIVRZ_molar_model_phytotypes.py
-  - **run_SIVZ_MCT.sbatch** runs SIVZ_MCT.py
-  - **run_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sbatch**: runs SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.py
-  - **run_analysis_optimization.sbatch**: runs analysis_optimization.py
+  - `run_SVZ_molar_model_phytotypes.sbatch`: runs `SVZ_molar_model_phytotypes.py`
+  - `run_SVRZ_molar_model_phytotypes.sbatch`: runs `SVRZ_molar_model_phytotypes.py`
+  - `run_SIVZ_molar_model_phytotypes.sbatch`: runs `SIVZ_molar_model_phytotypes.py`
+  - `run_SIVRZ_molar_model_phytotypes.sbatch`: runs `SIVRZ_molar_model_phytotypes.py`
+  - `run_SIVZ_MCT.sbatch` runs `SIVZ_MCT.py`
+  - `run_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sbatch`: runs `SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.py`
+  - `run_analysis_optimization.sbatch`: runs `analysis_optimization.py`
 
 ## 1.4. .sh scripts: 
-  - **run_coexistence_simulations.sh** : runs all simulations necessary to generate figure 2, 4, 6b-j, S5, S7, s8, s9, s10, s11, s12, s13, s17 and data for: figure 5, 3d,e, S6, s14, s16
-  - **run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh**: used to run in parallel  the optimization of parameters, it divides the grid search in 50 equal chunks of parameters combinations e.g. if 10^6 parameter combination are tested, one job will test 10^6/50= 20000 combinations 
-  - **concatenate_results_optimisation_params.sh**: used to concatenate result files from the optimization
+  - `run_coexistence_simulations.sh` : runs all simulations necessary to generate figure 2, 4, 6b-j, S5, S7, s8, s9, s10, s11, s12, s13, s17 and data for: figure 5, 3d,e, S6, s14, s16
+  - `run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh`: used to run in parallel  the optimization of parameters, it divides the grid search in 50 equal chunks of parameters combinations e.g. if 10^6 parameter combination are tested, one job will test 10^6/50= 20000 combinations 
+  - `concatenate_results_optimisation_params.sh`: used to concatenate result files from the optimization
 
 ## 1.5. .txt files:
-  - carlson_data_cyanobacteria.txt: count concentration of *Prochlorococcus* and *Synechococcus* from Carlson *et al.* 2022
-  - carlson_data_virus_and_percentage_infected.txt: count concentrations of cyanophages and percentage of infected cells (*Prochlorococcus* and *Synechococcus*) from Carlson *et al.* 2022
+  - `carlson_data_cyanobacteria.txt`: count concentration of *Prochlorococcus* and *Synechococcus* from Carlson *et al.* 2022
+  - `carlson_data_virus_and_percentage_infected.txt`: count concentrations of cyanophages and percentage of infected cells (*Prochlorococcus* and *Synechococcus*) from Carlson *et al.* 2022
 
 # 2. RUN THE SIMULATIONS
 
