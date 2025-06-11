@@ -2,6 +2,8 @@ In this directory: all python codes to run simulations of the SVZ, SIVZ, SVRZ an
 
 All simulations were run on the Zaratan HPC cluster of the University of Maryland (https://hpcc.umd.edu/hpcc/zaratan.html)
 
+Python libraries: numpy, matplotlib, math, sys, copy, scipy, random
+
 # 1. FILES DESCRIPTION
 
 ## 1.1. Python files:
