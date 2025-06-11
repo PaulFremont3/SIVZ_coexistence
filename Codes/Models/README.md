@@ -32,7 +32,7 @@ in each case pdf outputs are specified and *\*suffix\** refers to a suffix to id
   - **SIVZ_functions.py** : functions specific to the SIVZ model
   - **SIVRZ_molar_model_phytotypes.py** : code to run SIVRZ simulations and generate coexistence diagrams
     - outputs:
-      - SIVRZ_model_phi_latent_period_time_series_coex_*\*suffix\**.pdf: if the quadratic mortality terms are 0, time series in the case case of coexistence
+      - SIVRZ_model_phi_latent_period_time_series_coex_*\*suffix\**.pdf: if the quadratic mortality terms are 0, time series in the case of coexistence
       - if param=='phir' or param=='epsr' (param is an input parameter), SIVRZ_model_phi_latent_period_time_series_*\*suffix\**.pdf, in case the resistance strength parameter space is explored, time series for different adsorption rates with phi/phir=10
       - if param=='phir' or param=='epsr', SIVRZ_model_phi_latent_period_time_series_full-res_*\*suffix\**.pdf', in case the resistance strength parameter space is explored, time series for different adsorption rates with phir=0 (full resistance)
       - Main pdf:
