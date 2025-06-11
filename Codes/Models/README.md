@@ -69,6 +69,10 @@ Each file contains a description of the parameters taken as inputs: .sbatch file
   - **run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh**: used to run in parallel  the optimization of parameters, it divides the grid search in 50 equal chunks of parameters combinations e.g. if 10^6 parameter combination are tested, one job will test 10^6/50= 20000 combinations 
   - **concatenate_results_optimisation_params.sh**: used to concatenate rsult files from the optimisation
 
+## 1.5. .txt files:
+  - carlson_data_cyanobacteria.txt: count concentration of *Prochlorococcus* and *Synechococcus* from Carlson *et al.* 2022
+  - carlson_data_virus_and_percentage_infected.txt: count concentrations of cyanophages and percentage of infected cells (*Prochlorococcus* and *Synechococcus*) from Carlson *et al.* 2022
+
 # 2. RUN THE SIMULATIONS
 
 In a HPC cluster:  
