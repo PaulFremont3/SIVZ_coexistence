@@ -10,6 +10,7 @@ best_models_gam<-function(id){
                              control = mgcv::gam.control(epsilon = 10^-6)),
       error=function(e) flag <- FALSE
     )
+    # cross validation function: fit the model on a subset and compute evaluation metrics on the test set
     cv_gam <- function(sample,i, nsp, df_full){
       df3 <- df_full[sample,]
       test_set <- !(c(1:nrow(df_full)) %in% sample)
@@ -17,8 +18,6 @@ best_models_gam<-function(id){
       gam_model_cv <- mgcv::gam(y ~ s(log10Vhost, k=nsp)   + s(RVirus, k=nsp)+VirusType+HostType ,
                                 data = df3)
       preds <- stats::predict(gam_model_cv, df_full[test_set,variables], type='response')
-      #print(length(preds))
-      #print(preds)
       rms <- Metrics::rmse(actual=10^df_full[test_set,id], predicted=10^preds)
       rms_bis <- Metrics::rmse(actual=df_full[test_set,id], predicted=preds)
       co <- cor(df_full[test_set,id],preds, method = 'pearson' )
@@ -26,7 +25,8 @@ best_models_gam<-function(id){
     }
     
     set.seed(42)
-    
+
+    # divide the data set LOOCV
     to_test=1:dim(df_full)[1]
     to_test=to_test[!(to_test %in% to_rem)]
     samples_list <- rep(list(NULL), length(to_test))
@@ -37,8 +37,10 @@ best_models_gam<-function(id){
       samples_list[[co]] <- samples
       co=co+1
     }
+    # run LOOCV
     score_list <- lapply(samples_list, FUN = cv_gam, i=i, nsp=nsp, df_full=df_full)
-    
+
+    # collext model performance
     rmse_list <- NULL
     rmse_list_bis <- NULL
     cor_list <- NULL
@@ -50,7 +52,6 @@ best_models_gam<-function(id){
     RMSEs <- mean(rmse_list, na.rm=T)
     RMSEs_bis <- mean(rmse_list_bis, na.rm=T)
     CORs <- mean(cor_list, na.rm=T)
-    #print(cor_list)
     if (flag == FALSE || is.null(gam_model)) {
       RMSEs <- NA
       RMSEs_bis <- NA
@@ -61,21 +62,22 @@ best_models_gam<-function(id){
   
   set.seed(42)
   df_full <- as.data.frame(df_full)
-  
+
+  # main loop over the hyperparameter space
   m_core <- NULL
   m_rmse <- NULL
   m_rmse_bis <- NULL
   mods <- list()
   for (i in 1:dim(gamGrid)[1]){
     set.seed(42)
+    # LOOCV for a given combination of hyperparameter
     vec <- optimisation_gam(i, gamGrid = gamGrid , variables=variables, nsp = gamGrid[i,1], df_full=df_full)
     m_rmse <- append(m_rmse, vec[[1]])
     m_rmse_bis <- append(m_rmse_bis, vec[[3]])
     m_core <- append(m_core, vec[[2]])
     mods[[i]] <- vec[[4]]
   }
-  #print(m_rmse)
-  #print(m_core)
+
   # Finding the parameters combination for which the mean auc of the cross-validation is maximized
   g <- which.min(m_rmse_bis)
   if (length(g)>0){
@@ -85,6 +87,8 @@ best_models_gam<-function(id){
   }
   b_mod <- mods[[g]]
   print(id)
+
+  # return the best model and its performance
   return(list(best_model,b_mod ))
   
 }
