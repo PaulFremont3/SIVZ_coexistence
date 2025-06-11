@@ -34,7 +34,7 @@ R libraries: mgcv, nnet, Metrics
 Practically in the study, only the life history trait of the smallest phytoplankton of each group is used.
 
 # 2. RUN THE SIMULATIONS
-## 2.1. Train modles of viral life history traits
+## 2.1. Train models of viral life history traits
 - Burst size:  
 `sbatch run_best_model_ml.sbatch nn BS`  
 `sbatch run_best_model_ml.sbatch gam BS`  
@@ -45,12 +45,12 @@ Practically in the study, only the life history trait of the smallest phytoplank
 `sbatch run_best_model_ml.sbatch gam LP`  
 `sbatch run_best_model_ml.sbatch lm LP`  
 `sbatch run_best_model_ml.sbatch rf LP`  
-## 2.2. Generate life history traits of phytoplankton
+## 2.2. Generate life history traits data of phytoplankton
 Compile the c++ file generate_traits.cpp:  
 `g++ generate_traits.cpp -o generate_traits.exe`  
 Generate the trait data:
 `./generate_traits.exe`
-## 2.3. Generate life history traits of viruses
+## 2.3. Generate life history traits data of viruses
 `Rscript traits_for_simulation.R`
 
 # 3. MANUSCRIPT FIGURE PANELS (PDFs)
