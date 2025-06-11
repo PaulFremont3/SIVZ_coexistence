@@ -25,11 +25,11 @@ Practically in the study, only the life history trait of the smallest phytoplank
 
 # 2. RUN THE SIMULATIONS
 ## 2.1. Train modles of viral life history traits
-- Burst size:
-`sbatch run_best_model_ml.sbatch nn BS`
-`sbatch run_best_model_ml.sbatch gam BS`
-`sbatch run_best_model_ml.sbatch lm BS`
-`sbatch run_best_model_ml.sbatch rf BS`
+- Burst size:  
+`sbatch run_best_model_ml.sbatch nn BS`  
+`sbatch run_best_model_ml.sbatch gam BS`  
+`sbatch run_best_model_ml.sbatch lm BS`  
+`sbatch run_best_model_ml.sbatch rf BS`  
 - Latent period:
 `sbatch run_best_model_ml.sbatch nn BS`  
 `sbatch run_best_model_ml.sbatch gam BS`  
