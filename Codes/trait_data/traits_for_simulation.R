@@ -1,7 +1,7 @@
 library('nnet')
 library('mgcv')
 
-
+# load data
 u=read.table('edwards_2018.txt',sep = '\t', header = T)
 
 to_predict='BS'
@@ -13,7 +13,8 @@ if (to_predict=='BS'){
   df_full=data.frame(y=log10(u$Latent.period..hr.), log10Vhost=log10(u$Host.cell.volume..cubic.microns.), RVirus=u$Virus.particle.size..nm., VirusType=u$Virus.type, HostType=u$Host.taxon, Temperature=u$Temperature..ºC., env=u$Environment)
   lab_ax=paste('log10(',to_predict,')', sep='')
 }
-#df_full=df_full[df_full$env=='Marine',]
+
+# remove under represented data
 df_full$HostType[df_full$HostType %in% c("Prasinophyte"  , "Haptophyte",     "Dinoflagellate" )]="Eukaryote"
 
 is_na_rows=apply(df_full, 1, FUN = function(x){u=sum(is.na(x)); return(ifelse(u==0, T, F))})
@@ -58,7 +59,7 @@ if (model_type %in% c('nn', 'nnet')){
   model_formula=paste(colnames(df_full)[1], '~', predictors)
 }
 
-
+# load models
 nn_mod=readRDS('BS_nn_result.rds')
 nn_mod_BS=nn_mod[[2]]
 
@@ -77,6 +78,7 @@ lm_mod_LP=lm_mod[[2]]
 
 min_V_diatom=min(u$Host.cell.volume..cubic.microns.[u$Host.taxon=='Diatom'])
 
+# host volumes
 Host_volumes=as.numeric(read.table('Vs_5.txt'))
 Host_types=NULL
 for (i in 1:100){
@@ -90,10 +92,10 @@ for (i in 1:100){
 Host_types=c(Host_types, rep('Eukaryote', 100), rep('Cyanobacteria', 200))
 Host_types_true=c(rep('Diatom', 100,), rep('Eukaryote', 100), rep('Cyanobacteria', 200))
 
+# virus types
 Virus_type=c(rep('ssDNA (partial ds)', 100), rep('dsDNA', 300))
 
-virus_radius=25
-
+# virus quotas
 Qn_virus=function(r){
   Na=6.022140857*1e23
   Qn=(1e6/Na)*(16*(r-2.5)^3+36*(7.5*r^2-18.75*r+15.63))
@@ -106,6 +108,7 @@ Qc_virus=function(r){
   return(Qn)
 }
 
+# phytoplankton quotas
 Qn_algae=function(i, data){
   V=10^data$log10Vhost[i]
   type=data$HostType[i]
@@ -125,17 +128,14 @@ Qn_algae=function(i, data){
   return(Qn_micromol)
 }
 
-virus_radius=70
-Qv=Qn_virus(virus_radius) #~1e-11
-Qvc=Qc_virus(virus_radius)
-
+# virus radiuses
 vr_d=round(mean(df_full$RVirus[df_full$HostType=='Diatom']),0)
 vr_euk=round(mean(df_full$RVirus[df_full$HostType=='Eukaryote']),0)
 vr_cya=round(mean(df_full$RVirus[df_full$HostType=='Cyanobacteria']),0)
 virus_radius=c(rep(vr_d, 100),
                rep(vr_euk, 100), rep(vr_cya, 200) )
 
-
+# data to predict (the 400 phytoplankton types)
 new_data=data.frame(log10Vhost=log10(Host_volumes), RVirus=virus_radius,HostType=Host_types, VirusType=Virus_type, stringsAsFactors = F)
 new_data_gam=new_data
 
@@ -164,7 +164,7 @@ if (model_type=='nn'){
   new_data$VirusType=NULL
 }
 
-
+# generate preditions
 pred_BS=10^stats::predict(nn_mod_BS, newdata=new_data)[,1]
 pred_LP=10^stats::predict(nn_mod_LP, newdata=new_data)[,1]
 
