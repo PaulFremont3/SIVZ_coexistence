@@ -8,4 +8,4 @@ Generates pdfs to create Figure S1 to S4 and some data used in `Models/`
 
 In each subdirectory is a `README.md` describing precisely how to run the scripts, the pdfs it generates and where the panel of each figure in the paper can be found.
 
-The scripts from the two subdirectory can be run independently from each other (the scripts in Models take some data generated in trait_data/ as input but they are already pre-generated)
+The scripts from the two subdirectory can be run independently from each other (the scripts in `Models/` take some data generated in `trait_data/` as input but they are already pre-generated so each subdirectory is independent)
