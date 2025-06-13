@@ -653,11 +653,11 @@ if __name__ == '__main__':
         else:
             vl=vl[0]
         to_write=[min_d, phi_min, min_d_val, phi_min_val, vl]
-    if nyears==20:
+    if nyears==25:
         write_vector(to_write, 'optimums_SVZ_'+suffix+'.txt', ' ')
     
     exclusion_times=np.transpose(exclusion_times)
-    if nyears==20:
+    if nyears==25:
         write_matrix(exclusion_times, 'exclusion_times_SVZ_'+suffix+'.txt', ' ')
 
 
