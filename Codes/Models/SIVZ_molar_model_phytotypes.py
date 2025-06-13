@@ -860,7 +860,12 @@ if __name__ == '__main__':
                 predicted_state_bis[predicted_state==j]=4
 
         mi=0
-        mx=4        
+        mx=4
+        alter_state_bis=copy.deepcopy(alter_state)
+        alter_state_bis[alter_state_bis==1]=2
+        alter_state_bis[alter_state_bis==0]=1
+        alter_state_bis[alter_state_bis==2]=0
+
         axi=plot_with_scale(predicted_state_bis,cmap_R ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Predicted state', norm=norm, yl=ylb)
         plt.contour(np.transpose(alter_state), colors=['limegreen', 'white'], levels=[0,1] , extent=[-1, len(phis), -1, len(lps)], origin='upper', linewidths=0.5)
         plt.contourf(np.transpose(alter_state_bis), colors=['limegreen', 'white'], levels=[0,0.9] , alpha=0.2, extent=[-1, len(phis), -1, len(lps)], origin='upper')
