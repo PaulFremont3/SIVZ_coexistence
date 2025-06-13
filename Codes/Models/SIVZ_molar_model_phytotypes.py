@@ -870,6 +870,10 @@ if __name__ == '__main__':
         plt.contour(np.transpose(alter_state), colors=['limegreen', 'white'], levels=[0,1] , extent=[-1, len(phis), -1, len(lps)], origin='upper', linewidths=0.5)
         plt.contourf(np.transpose(alter_state_bis), colors=['limegreen', 'white'], levels=[0,0.9] , alpha=0.2, extent=[-1, len(phis), -1, len(lps)], origin='upper')
         plt.contour(np.transpose(u_state), colors=['black', 'white'], levels=[0,1] , extent=[-1, len(phis), -1, len(lps)], origin='upper', linewidths=0.5)
+        u_state_bis=copy.deepcopy(u_state)
+        u_state_bis[u_state_bis==1]=2
+        u_state_bis[u_state_bis==0]=1
+        u_state_bis[u_state_bis==2]=0
         plt.contourf(np.transpose(u_state_bis), colors=['black', 'white'], levels=[0,0.9] , alpha=0.2, extent=[-1, len(phis), -1, len(lps)], origin='upper')
         
         coex_mat=np.zeros( (len(phis),len(lps)) )
