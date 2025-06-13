@@ -436,7 +436,7 @@ if __name__ == '__main__':
     pp = PdfPages('SVZ_model_phi_latent_period_'+suffix+'.pdf')
     ylb='Latent period'
     bounds=[0,1,2,3,4]
-    norm = matplotlib.colors.BoundaryNorm(bounds, cmap0.N-1)
+    norm = matplotlib.colors.BoundaryNorm(bounds, len(bounds)-1)
     mi=0
     mx=4
     n_state_R=11
