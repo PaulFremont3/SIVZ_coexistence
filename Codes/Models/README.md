@@ -116,7 +116,7 @@ In a HPC cluster:
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Prochlorochoccus 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Eukaryote 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Diatom 0`
-Note that the message `cat: results_optimization_params/SIVZ_intracellular_res_optimization_*\*organism\**_*\*num\**.txt: No such file or directory` is normal (no realistic concentrations found in this chunk)
+Note that the message `cat: results_optimization_params/SIVZ_intracellular_res_optimization_*organism*_*num*.txt: No such file or directory` is normal (no realistic concentrations found in this chunk)
 
 ## 2.8. Run the analysis of the optimization:  
 &nbsp;&nbsp;&nbsp;&nbsp;`sbatch run_analysis_optimization.sbatch 0`  
