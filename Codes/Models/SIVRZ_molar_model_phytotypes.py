@@ -826,7 +826,7 @@ if __name__ == '__main__':
   # time series in case of coexistence
   if dz2==0 and (param=='phir' or param=='epsr'):
     epsr=eps
-    pp = PdfPages(type_m0+'_model_phi_latent_period_time_series_coex_'+suffix+'.pdf')
+    pp = PdfPages(type_m+'_model_phi_latent_period_time_series_coex_'+suffix+'.pdf')
     for k in to_plot[0::20]:
       tit='phi='+str(k[0])+' phi/phir='+str(k[1])
       phi=k[0]
@@ -867,7 +867,7 @@ if __name__ == '__main__':
       phis_to_plot=[1e-12, 1e-11, 1e-10, 1e-9, 1e-8]
     else:
       phis_to_plot=[1e-11, 1e-10, 1e-9, 1e-8, 1e-7]
-    pp = PdfPages(type_m0+'_model_phi_latent_period_time_series_'+suffix+'.pdf')
+    pp = PdfPages(type_m+'_model_phi_latent_period_time_series_'+suffix+'.pdf')
     for phi in phis_to_plot:
       if  param=='phir': 
         phir=phi/10
@@ -894,7 +894,7 @@ if __name__ == '__main__':
     pp.close()
 
     # time series for specific values of adsorption rate with full resistance phir=0
-    pp = PdfPages(type_m0+'_model_phi_latent_period_time_series_full-res_'+suffix+'.pdf')
+    pp = PdfPages(type_m+'_model_phi_latent_period_time_series_full-res_'+suffix+'.pdf')
     for phi in phis_to_plot:
       if param=='phir':
         phir=0
@@ -924,11 +924,11 @@ if __name__ == '__main__':
   # main pdf with output matrices over the parameter space
   zeros_mat=np.zeros((len(phis),gsize))
   if param=='phir':
-    pp = PdfPages(type_m0+'_model_phi_versus_phir_'+suffix+'.pdf')
+    pp = PdfPages(type_m+'_model_phi_versus_phir_'+suffix+'.pdf')
   elif param=='epsr':
-    pp = PdfPages(type_m0+'_model_eps_versus_epsr_'+suffix+'.pdf')    
+    pp = PdfPages(type_m+'_model_eps_versus_epsr_'+suffix+'.pdf')    
   elif param=='lp_phir' or param=='lp_epsr':
-    pp = PdfPages(type_m0+'_model_phi_versus_latent_period_'+suffix+'.pdf')
+    pp = PdfPages(type_m+'_model_phi_versus_latent_period_'+suffix+'.pdf')
 
   bounds=[0,1,2,3,4,5,6,7,8,9,10]
   norm = matplotlib.colors.BoundaryNorm(bounds, len(bounds)-1)
@@ -1415,7 +1415,7 @@ if __name__ == '__main__':
         vl=vl[0]
       to_write=[min_d, phi_min,lp_min, min_d_val, phi_min_val, lp_min_val, vl]
       if nyears==20:
-        write_vector(to_write, 'optimums_'+type_m0+'_'+suffix+'.txt', ' ')
+        write_vector(to_write, 'optimums_'+type_m+'_'+suffix+'.txt', ' ')
     elif param in ['epsr', 'phir']:
       phi_index, rat_index = np.unravel_index(ind_min, distance_to_target.shape)
       min_d=distance_to_target[phi_index, rat_index]
@@ -1483,7 +1483,7 @@ if __name__ == '__main__':
         vl=vl[0]
       to_write=[min_d, phi_min,rat_min, min_d_val, phi_min_val, rat_min_val]
       if nyears==20:
-        write_vector(to_write, 'optimums_'+type_m0+'_'+suffix+'.txt', ' ')
+        write_vector(to_write, 'optimums_'+type_m+'_'+suffix+'.txt', ' ')
   else:
     if param in ['epsr', 'phir']:
       phi_index_par=np.nanargmin(np.absolute(mt.log10(phi_e)-np.log10(np.array(phis))))
@@ -1499,7 +1499,7 @@ if __name__ == '__main__':
       min_d, phi_min,rat_min, min_d_val, phi_min_val, rat_min_val, vl=np.nan,np.nan, np.nan, np.nan, np.nan, np.nan, np.nan
       to_write=[min_d, phi_min,rat_min, min_d_val, phi_min_val, rat_min_val, vl]
       if nyears==20:
-        write_vector(to_write, 'optimums_'+type_m0+'_'+suffix+'.txt', ' ')
+        write_vector(to_write, 'optimums_'+type_m+'_'+suffix+'.txt', ' ')
     elif param in ['lp_epsr', 'lp_phir']:
       phi_index_par, lp_index_par=np.nanargmin(np.absolute(mt.log10(phi_e)-np.log10(np.array(phis)))), np.nanargmin(np.absolute(lat_per-np.array(lps)))
       phi_a_index_par=np.nanargmin(np.absolute(mt.log10(phi_e_a)-np.log10(np.array(phis))))
@@ -1515,34 +1515,34 @@ if __name__ == '__main__':
       min_d, phi_min,lp_min, min_d_val, phi_min_val, lp_min_val, vl=np.nan,np.nan, np.nan, np.nan, np.nan, np.nan, np.nan
       to_write=[min_d, phi_min,lp_min, min_d_val, phi_min_val, lp_min_val, vl]
       if nyears==20:
-        write_vector(to_write, 'optimums_'+type_m0+'_'+suffix+'.txt', ' ')
+        write_vector(to_write, 'optimums_'+type_m+'_'+suffix+'.txt', ' ')
 
   pp.close()
 
   # save only if full simulation
   if nyears==20:
-    write_matrix(exclusion_times, 'exclusion_times_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(final_S-mt.log10(Qp), 'model_data/Susceptible_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(final_I-mt.log10(Qp), 'model_data/Infected_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(final_R-mt.log10(Qp), 'model_data/Resistant_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(final_SIR-mt.log10(Qp), 'model_data/Tot_algae_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(final_V-mt.log10(Qv), 'model_data/Virus_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(final_Z-mt.log10(Qz), 'model_data/Zoop_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(final_ZV_ratio, 'model_data/ZV_ratio_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(distance_to_target, 'model_data/distances_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(distance_to_target_A, 'model_data/distance_A_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(distance_to_target_V, 'model_data/distance_V_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(distance_to_target_Z, 'model_data/distance_Z_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(valid_concentrations_5, 'model_data/validation_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(final_pers, 'model_data/Period_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(final_mods, 'model_data/FFT_modulo_'+type_m0+'_'+suffix+'.txt', ' ')
-    write_matrix(npp_matrix, 'model_data/NPP_'+type_m0+'_'+suffix+'.txt', ' ')
+    write_matrix(exclusion_times, 'exclusion_times_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(final_S-mt.log10(Qp), 'model_data/Susceptible_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(final_I-mt.log10(Qp), 'model_data/Infected_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(final_R-mt.log10(Qp), 'model_data/Resistant_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(final_SIR-mt.log10(Qp), 'model_data/Tot_algae_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(final_V-mt.log10(Qv), 'model_data/Virus_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(final_Z-mt.log10(Qz), 'model_data/Zoop_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(final_ZV_ratio, 'model_data/ZV_ratio_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(distance_to_target, 'model_data/distances_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(distance_to_target_A, 'model_data/distance_A_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(distance_to_target_V, 'model_data/distance_V_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(distance_to_target_Z, 'model_data/distance_Z_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(valid_concentrations_5, 'model_data/validation_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(final_pers, 'model_data/Period_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(final_mods, 'model_data/FFT_modulo_'+type_m+'_'+suffix+'.txt', ' ')
+    write_matrix(npp_matrix, 'model_data/NPP_'+type_m+'_'+suffix+'.txt', ' ')
 
   # save theoretical matrices
-  write_matrix(final_S_th-mt.log10(Qp), 'model_data/Susceptible_th_'+type_m0+'_'+suffix+'.txt', ' ')
-  write_matrix(final_I_th-mt.log10(Qp), 'model_data/Infected_th_'+type_m0+'_'+suffix+'.txt', ' ')
-  write_matrix(final_SIR_th-mt.log10(Qp), 'model_data/Tot_algae_th_'+type_m0+'_'+suffix+'.txt', ' ')
-  write_matrix(final_V_th-mt.log10(Qv), 'model_data/Virus_th_'+type_m0+'_'+suffix+'.txt', ' ')
-  write_matrix(final_Z_th-mt.log10(Qz), 'model_data/Zoop_th_'+type_m0+'_'+suffix+'.txt', ' ')
-  write_matrix(final_R_th-mt.log10(Qp), 'model_data/Resistant_th_'+type_m0+'_'+suffix+'.txt', ' ')
-  write_matrix(final_ZV_ratio_th, 'model_data/ZV_ratio_th_'+type_m0+'_'+suffix+'.txt', ' ')
+  write_matrix(final_S_th-mt.log10(Qp), 'model_data/Susceptible_th_'+type_m+'_'+suffix+'.txt', ' ')
+  write_matrix(final_I_th-mt.log10(Qp), 'model_data/Infected_th_'+type_m+'_'+suffix+'.txt', ' ')
+  write_matrix(final_SIR_th-mt.log10(Qp), 'model_data/Tot_algae_th_'+type_m+'_'+suffix+'.txt', ' ')
+  write_matrix(final_V_th-mt.log10(Qv), 'model_data/Virus_th_'+type_m+'_'+suffix+'.txt', ' ')
+  write_matrix(final_Z_th-mt.log10(Qz), 'model_data/Zoop_th_'+type_m+'_'+suffix+'.txt', ' ')
+  write_matrix(final_R_th-mt.log10(Qp), 'model_data/Resistant_th_'+type_m+'_'+suffix+'.txt', ' ')
+  write_matrix(final_ZV_ratio_th, 'model_data/ZV_ratio_th_'+type_m+'_'+suffix+'.txt', ' ')
