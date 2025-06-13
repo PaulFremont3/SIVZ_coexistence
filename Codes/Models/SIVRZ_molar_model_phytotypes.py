@@ -931,7 +931,7 @@ if __name__ == '__main__':
     pp = PdfPages(type_m0+'_model_phi_versus_latent_period_'+suffix+'.pdf')
 
   bounds=[0,1,2,3,4,5,6,7,8,9,10]
-  norm = matplotlib.colors.BoundaryNorm(bounds, cmap0.N-1)
+  norm = matplotlib.colors.BoundaryNorm(bounds, len(bounds)-1)
   mi=0
   mx=n_state-1
   colors = list(matplotlib.colormaps.get_cmap('tab20').colors[2:(mx+2)])
@@ -972,20 +972,6 @@ if __name__ == '__main__':
   else:
     final_state_all_mod[phi_a_index_par,:]=12
   plot_with_scale(final_state_all_mod,cmap_R_bis,mi,mx+2, atickx, aticky, alabel_tickx, alabel_ticky, 'State reached + LHT models', norm=norm_bis, yl=ylb)
-  pp.savefig()
-
-
-  if type_m=='SIVRZ' and eff=='0' and dz2!=0:
-    plot_with_scale(final_Surv,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Virus/Grazer Survivors', norm=norm, yl=ylb)
-    plt.scatter(theor_surv_phi, theor_surv_phi_over_phir, color='black', s=1, marker="o")
-    plt.scatter(theor_surv_phi0, theor_surv_phi_over_phir0, color='red', s=1, marker="^",  edgecolors='none')
-    plt.scatter(theor_surv_phi1, theor_surv_phi_over_phir1, color='blue', s=1, marker="v", edgecolors='none')
-
-    pp.savefig()
-  
-    if m2!=0:
-      plot_with_scale(final_Surv,cmap0 ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Virus/Grazer Survivors', norm=norm, yl=ylb)
-      plt.contour(np.transpose(final_Surv_alpha[3]),colors='k', levels=[0,1],  extent=[-1, len(phis), -1, gsize], origin='upper')
   pp.savefig()
 
   # theory
