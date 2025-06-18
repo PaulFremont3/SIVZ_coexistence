@@ -950,30 +950,6 @@ if __name__ == '__main__':
   pp.savefig()
 
 
-  if param=='lp_phir' or param=='lp_epsr':
-    phi_index_par,phi_a_index_par, lp_index_par=np.nanargmin(np.absolute(mt.log10(phi_e)-np.log10(np.array(phis)))), np.nanargmin(np.absolute(mt.log10(phi_e_a)-np.log10(np.array(phis)))), np.nanargmin(np.absolute(lat_per-np.array(lps)))
-    final_state_all_mod=copy.deepcopy(final_state_all)
-    final_state_all_mod[phi_index_par, lp_index_par]=11
-  else:
-    phi_index_par,phi_a_index_par=np.nanargmin(np.absolute(mt.log10(phi_e)-np.log10(np.array(phis)))), np.nanargmin(np.absolute(mt.log10(phi_e_a)-np.log10(np.array(phis))))
-    final_state_all_mod=copy.deepcopy(final_state_all)
-    final_state_all_mod[phi_index_par, :]=11
-
-  colors_bis=colors+('limegreen', 'cyan')
-  cmap_R_bis= matplotlib.colors.ListedColormap(colors_bis)
-  bounds_bis=[0,1,2,3,4,5,6,7,8,9,10,11,12]
-  norm_bis = matplotlib.colors.BoundaryNorm(bounds_bis, cmap_R_bis.N-1)
-  
-  plot_with_scale(final_state_all_mod,cmap_R_bis,mi,mx+2, atickx, aticky, alabel_tickx, alabel_ticky, 'State reached + LHT model', norm=norm_bis, yl=ylb)
-  pp.savefig()
-
-  if param=='lp_phir' or param=='lp_epsr':
-    final_state_all_mod[phi_a_index_par, lp_index_par]=12
-  else:
-    final_state_all_mod[phi_a_index_par,:]=12
-  plot_with_scale(final_state_all_mod,cmap_R_bis,mi,mx+2, atickx, aticky, alabel_tickx, alabel_ticky, 'State reached + LHT models', norm=norm_bis, yl=ylb)
-  pp.savefig()
-
   # theory
   if type_m=='SIVRZ' and eff=='0' and dz2!=0:
     mi=0
