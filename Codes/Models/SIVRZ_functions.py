@@ -271,8 +271,8 @@ def equilibrium2_SIVRZ_m2(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,epsr,
 
     # decide which approximation
     g=phiz
-    a0=mu-d+eps_z*g*(dz/dz2)+beta*eps*phi/Qp*(m/m2)
-    b0=1/CC+g*g*eps_z/dz2+beta*phi*phi*eps*eps/(Qp*m2*Qv)
+    a0=mu-d+g*(dz/dz2)+phi*eps/Qp*(m/m2)
+    b0=1/CC+g*g*eps_z/dz2+beta*phi*phi*eps/(Qp*m2*Qv)
     S_star_SVZ=a0/b0
     V_star_SVZ=(beta*phi/Qp*S_star_SVZ-m)/m2
 

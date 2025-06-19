@@ -170,7 +170,7 @@ if __name__ == '__main__':
         SN=N_res*dN
 
     # carrying capacity
-    KC_s=(-dN*R+SN)/mu
+    KC_s=(-dN*R+SN)*(R+Nc)/(mu*R)
     CC=KC_s/(mu-d)
 
     # grazing parameters

@@ -205,7 +205,7 @@ if __name__ == '__main__':
     SN=N_res*dN
 
   # carrying capacity
-  KC_s=(-dN*R+SN)/mu  
+  KC_s=(-dN*R+SN)*(R+Nc)/(mu*R)  
   CC=KC_s/(mu-ds)
 
   # grazing parameters
@@ -870,11 +870,11 @@ if __name__ == '__main__':
     pp = PdfPages(type_m+'_model_phi_latent_period_time_series_'+suffix+'.pdf')
     for phi in phis_to_plot:
       if  param=='phir': 
-        phir=phi/10
+        phir=phi/5
         epsr=eps
       elif param=='epsr':
         phir=phi
-        epsr=eps/10
+        epsr=eps/5
       nyears0=5
       ndays=365*nyears0
       result=simulation_SIVRZ_rk4(mu, mui, lat_per, beta, phi, ds, m,m2, Qv, Qp,  eps,epsr, epso,eps_r,eps_lr,phir,mur,phiz,eps_z,dz,dz2, CC,alpha,dt, ndays, init_conditions)

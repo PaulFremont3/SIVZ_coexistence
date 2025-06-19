@@ -16,8 +16,8 @@ def concentration_ranges(indice, otype):
         A_cond_low=1e8
         A_cond_high=1e10
         V_cond_low=1e8
-        V_cond_high=1e11
-        Z_cond_low=1e3
+        V_cond_high=1e11 
+        Z_cond_low=1e4 
         Z_cond_high=1e6
         I_cond_high=100
         I_cond_low=5
@@ -83,11 +83,11 @@ def target_concentrations(indice):
     if indice ==3:
         target_conc_u=[4e8, 2e9, 2e5]
         target_conc_m=[2e8, 1e9, 1e5]
-        target_conc_o=[1e8, 6e8, 1e4]
+        target_conc_o=[1e8, 5e8, 1e4]
     if indice==2:
         target_conc_u=[4e7, 2e9, 2e5]
         target_conc_m=[5e7, 1e9, 1e5]
-        target_conc_o=[2e7, 6e8, 1e4]
+        target_conc_o=[2e7, 5e8, 1e4]
     if indice==0:
         target_conc_u=[4e6, 2e9, 1e5]
         target_conc_m=[2e6, 1e9, 5e4]

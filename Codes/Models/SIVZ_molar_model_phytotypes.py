@@ -198,12 +198,14 @@ if __name__ == '__main__':
         SN=N_res*dN
         
     # carrying capacity
-    KC_s=(-dN*R+SN)/mu
+    KC_s=(-dN*R+SN)*(R+Nc)/(mu*R)
     CC=KC_s/(mu-d)
     
     print('Carying capacity')
     print(KC_s)
     
+    print('Nc')
+    print(Nc)
     # grazing parameters
     S_dep=1
     Sc=0.226 #dutkiewicz 2020 (1.5 in umolC.L-1)
@@ -860,20 +862,20 @@ if __name__ == '__main__':
                 predicted_state_bis[predicted_state==j]=4
 
         mi=0
-        mx=4
+        mx=4       
         alter_state_bis=copy.deepcopy(alter_state)
         alter_state_bis[alter_state_bis==1]=2
         alter_state_bis[alter_state_bis==0]=1
         alter_state_bis[alter_state_bis==2]=0
-
+        predicted_state_bis[limit_val_mat==0]=np.nan
         axi=plot_with_scale(predicted_state_bis,cmap_R ,mi,mx,atickx, aticky, alabel_tickx, alabel_ticky, 'Predicted state', norm=norm, yl=ylb)
         plt.contour(np.transpose(alter_state), colors=['limegreen', 'white'], levels=[0,1] , extent=[-1, len(phis), -1, len(lps)], origin='upper', linewidths=0.5)
-        plt.contourf(np.transpose(alter_state_bis), colors=['limegreen', 'white'], levels=[0,0.9] , alpha=0.2, extent=[-1, len(phis), -1, len(lps)], origin='upper')
-        plt.contour(np.transpose(u_state), colors=['black', 'white'], levels=[0,1] , extent=[-1, len(phis), -1, len(lps)], origin='upper', linewidths=0.5)
         u_state_bis=copy.deepcopy(u_state)
         u_state_bis[u_state_bis==1]=2
         u_state_bis[u_state_bis==0]=1
         u_state_bis[u_state_bis==2]=0
+        plt.contourf(np.transpose(alter_state_bis), colors=['limegreen', 'white'], levels=[0,0.9] , alpha=0.2, extent=[-1, len(phis), -1, len(lps)], origin='upper')
+        plt.contour(np.transpose(u_state), colors=['black', 'white'], levels=[0,1] , extent=[-1, len(phis), -1, len(lps)], origin='upper', linewidths=0.5)
         plt.contourf(np.transpose(u_state_bis), colors=['black', 'white'], levels=[0,0.9] , alpha=0.2, extent=[-1, len(phis), -1, len(lps)], origin='upper')
         
         coex_mat=np.zeros( (len(phis),len(lps)) )

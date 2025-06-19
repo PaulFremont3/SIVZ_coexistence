@@ -148,6 +148,7 @@ if __name__ == '__main__':
     m2=dv2*T_dep #virus qudratic mortality
     Qv=Qvs[indice]
     Qp=Qps[indice]
+    Nc=Ncs[indice]
     eps=1 # adsorption efficiency coefficient
     epso=float(eff) # loss of infectivity rate
     lat_per=lpes[indice]
@@ -166,9 +167,10 @@ if __name__ == '__main__':
         SN=N_res*dN
 
     # carrying capacity
-    KC_s=(-dN*R+SN)/mu
+    KC_s=(-dN*R+SN)*(R+Nc)/(mu*R)
     CC=KC_s/(mu-d)
  
+    print(KC_s)
     # grazing parameters
     S_dep=1
     Sc=0.226 #dutkiewicz 2020 (1.5 in umolC.L-1)

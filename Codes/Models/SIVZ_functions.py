@@ -116,7 +116,7 @@ def equilibrium_SIVZ(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, epso,phiz
 def equilibrium_SIVZ_m2(mu, mui, lp, beta, phi, d, m,m2, Qv, Qp,  eps, epso,phiz,eps_z,dz,dz2, CC, n_update):
     # first approximation
     g=phiz
-    a0=mu-d+eps_z*g*(dz/dz2)+beta*phi*eps/Qp*(m/m2)
+    a0=mu-d+g*(dz/dz2)+phi*eps/Qp*(m/m2)
     b0=1/CC+g*g*eps_z/dz2+beta*phi*phi*eps*eps/(Qp*m2*Qv)
     S_star_SVZ=a0/b0
     V_star_SVZ=(beta*phi/Qp*S_star_SVZ-m)/m2
@@ -862,19 +862,19 @@ def coexistence_analysis_SIVZ(S, I, V, Z,mu, mui, lp, beta, phi, d, m,m2, Qv, Qp
         gZ0_ncovIS.append(phiz*eps_z*(S[t]+alph*I[t_rand])-dz-dz2*Z[t])
         
         
-        gr=Jacob_IV(Qv,Qp, lp, d,m,m2, epso, phiz, beta, phi,V[t], Z[t], I[t], S[t])
+        gr=beta/lp*(Qv/Qp)*I[t]/V[t]-m-phi*S[t]/Qp-m2*V[t]
         gV.append(gr)
         
-        gr0=Jacob_IV(Qv,Qp, lp, d,m,m2, epso, phiz, beta, phi,V[t], Z[t], I_c, S_c)
+        gr0=beta/lp*(Qv/Qp)*I_c/V[t]-m-phi*S_c/Qp-m2*V[t]
         gV0.append(gr0)
         
-        gr0_cS=Jacob_IV(Qv,Qp, lp, d,m,m2, epso, phiz, beta, phi,V[t], Z[t], I[t], S_c)
+        gr0_cS=beta/lp*(Qv/Qp)*I[t]/V[t]-m-phi*S_c/Qp-m2*V[t]
         gV0_cS.append(gr0_cS)
         
-        gr0_cI=Jacob_IV(Qv,Qp, lp, d,m,m2, epso, phiz, beta, phi,V[t], Z[t], I_c, S[t])
+        gr0_cI=beta/lp*(Qv/Qp)*I_c/V[t]-m-phi*S[t]/Qp-m2*V[t]
         gV0_cI.append(gr0_cI)
         
-        gr0_ncovIS=Jacob_IV(Qv,Qp, lp, d,m,m2, epso, phiz, beta, phi,V[t], Z[t], I[t], S[t_rand])
+        gr0_ncovIS=beta/lp*(Qv/Qp)*I[t]/V[t]-m-phi*S[t_rand]/Qp-m2*V[t]
         gV0_ncovIS.append(gr0_ncovIS)
 
     epsZ_0=np.mean(gZ0)

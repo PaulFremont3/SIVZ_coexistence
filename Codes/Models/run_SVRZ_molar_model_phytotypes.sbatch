@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -J SVRZ_molar_model_phytotypes                           # Job name
 #SBATCH -N1 --ntasks-per-node=1                 # Number of nodes and cores per node required
-#SBATCH --mem-per-cpu=10G                        # Memory per core
+#SBATCH --mem-per-cpu=12G                        # Memory per core
 #SBATCH  --time=10:00:00                        # Duration of the job (Ex: 10 mins)
 #SBATCH -o run_SVRZ_molar_model_phytotypes-%j.out                        # Combined output and error messages file
  
