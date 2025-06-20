@@ -728,7 +728,7 @@ def MCT_analysis_SIVZ(mu, mui, lat_per, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, eps
     I_c_az=np.mean(I_az)
     
     surv_S_az=1
-    if np.max(S_az)/Qp<1:
+    if len(S_az)>0 and np.max(S_az)/Qp<1:
         surv_S_az=0
     if surv_S_az==1:
         effects_az=MCT_coexistence_effects_IS_on_VZ(S_az, I_az,Z_az,V_az, S_c_az, I_c_az, i1, i2,mu,eps,epso,d, phiz, eps_z, dz,dz2, m,m2, phi, Qp,Qv, beta, lat_per,alph,CC, 'zoop')
@@ -761,7 +761,7 @@ def MCT_analysis_SIVZ(mu, mui, lat_per, beta, phi, d, m,m2, Qv, Qp,Qz,  eps, eps
     I_c_av=np.mean(I_av)
     
     surv_S_av=1
-    if np.max(S_av)/Qp<1:
+    if len(S_av)>0 and np.max(S_av)/Qp<1:
         surv_S_av=0
     if surv_S_av==1:
         effects_av=MCT_coexistence_effects_IS_on_VZ(S_av, I_av,Z_av,V_av, S_c_av, I_c_av, i1, i2,mu,eps,epso,d, phiz, eps_z, dz,dz2, m,m2, phi, Qp,Qv, beta, lat_per, alph, CC,'virus')
