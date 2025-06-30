@@ -54,11 +54,9 @@ Practically in the study, only the life history trait of the smallest phytoplank
 `sbatch run_best_model_ml.sbatch LP nn` OR `Rscript best_model_ml.R LP nn`   
 `sbatch run_best_model_ml.sbatch LP gam` OR `Rscript best_model_ml.R LP gam`   
 `sbatch run_best_model_ml.sbatch LP lm` OR `Rscript best_model_ml.R LP lm`   
-`sbatch run_best_model_ml.sbatch LP rf` OR `Rscript best_model_ml.R LP rf`
-Important: Due to changes in software environments (e.g., R version, system libraries, numerical backends), re-running the neural network model (nn) optimization is likely to yield results that differ significantly from those reported in the paper — especially for parameters like burst size. These differences arise despite using the same seed, as neural networks can be sensitive to low-level numerical or initialization details.    
-
-To ensure full reproducibility, the original model files (`.rds`) used in the paper are provided in this repository.  
-
+`sbatch run_best_model_ml.sbatch LP rf` OR `Rscript best_model_ml.R LP rf`  
+Important: Due to changes in software environments (e.g., R version, system libraries, numerical backends), re-running the neural network model (nn) optimization is likely to yield results that differ significantly from those reported in the paper — especially for parameters like burst size. These differences arise despite using the same seed, as neural networks can be sensitive to low-level numerical or initialization details.  
+To ensure full reproducibility, the original model files (`.rds`) used in the paper are provided in this repository.   
 Warning: Running the optimization procedure will overwrite these .rds files. If you wish to preserve the published models, make a copy before executing the optimization.  
 Maximum computation time: 8 minutes
 ## 2.2. Generate life history traits data of phytoplankton
