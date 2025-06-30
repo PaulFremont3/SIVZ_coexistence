@@ -12,7 +12,7 @@ Python version: 3.12.9
 
 ## 1.1. Python scripts:
 For each file, pdf outputs are specified and *\*suffix\** refers to a suffix to identify parameters input of the simulation (see inside .py file and .sbatch files for inputs needed for each files). When specified, pdf outputs can depend on the input parameters: 
-  - `generic_functions.py`: files containing functions shared by different scripts
+  - `generic_functions.py`: files containing functions shared by different scripts 
   - `SVZ_molar_model_phytotypes.py` : code to run SVZ simulations and generate coexistence diagrams
       - outputs:
         - SVZ_model_phi_latent_period_time_series_*\*suffix\**.pdf: time series for different adsorption rates
@@ -87,8 +87,8 @@ In a HPC cluster:
 &nbsp;&nbsp;&nbsp;&nbsp;`mkdir model_data`
 
 ## 2.2. Run simulations of dynamics across the parameter space:  
-&nbsp;&nbsp;&nbsp;&nbsp;`module load python`
-&nbsp;&nbsp;&nbsp;&nbsp; run scripts using slurm: `./run_coexistence_simulations.sh` OR
+&nbsp;&nbsp;&nbsp;&nbsp;`module load python` 
+&nbsp;&nbsp;&nbsp;&nbsp; run scripts using slurm: `./run_coexistence_simulations.sh` OR 
 &nbsp;&nbsp;&nbsp;&nbsp; run scripts using python in your terminal: `run_coexistence_simulations_python_commands.sh` (~5.5 days of computing)
 &nbsp;&nbsp;&nbsp;&nbsp; This step will run all simulations necessary to generate figures of the coexistence diagram and some data that needs to be rescaled to generate some figures.
 
