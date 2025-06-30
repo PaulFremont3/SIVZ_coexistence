@@ -6,6 +6,7 @@ In this directory: all python and R codes to:
 All simulations were run on the Zaratan HPC cluster of the University of Maryland (https://hpcc.umd.edu/hpcc/zaratan.html)
 
 Python libraries: numpy, matplotlib, math, sys, copy, scipy, random
+Python version: 3.12.9
 
 # 1. FILES DESCRIPTION
 
@@ -58,7 +59,7 @@ For each file, pdf outputs are specified and *\*suffix\** refers to a suffix to 
     - output: hist_abundances_Syn_Pro_virus_percentage_infected.pdf    
 
 ## 1.3. .sbatch files:
-Each file contains a description of the parameters taken as inputs: .sbatch files are used to run simulations on a HPC cluster with slurm
+Each file contains a description of the parameters taken as inputs: .sbatch files are used to run simulations on a HPC cluster with slurm. 
   - `run_SVZ_molar_model_phytotypes.sbatch`: runs `SVZ_molar_model_phytotypes.py`
   - `run_SVRZ_molar_model_phytotypes.sbatch`: runs `SVRZ_molar_model_phytotypes.py`
   - `run_SIVZ_molar_model_phytotypes.sbatch`: runs `SIVZ_molar_model_phytotypes.py`
@@ -85,13 +86,15 @@ In a HPC cluster:
 &nbsp;&nbsp;&nbsp;&nbsp;`mkdir model_data`
 
 ## 2.2. Run simulations of dynamics across the parameter space:  
-&nbsp;&nbsp;&nbsp;&nbsp;`./run_coexistence_simulations.sh`  
-&nbsp;&nbsp;&nbsp;&nbsp;This step will run all simulations necessary to generate figures of the coexistence diagram and some data that needs to be rescaled to generate some figures.
+&nbsp;&nbsp;&nbsp;&nbsp;`module load python`
+&nbsp;&nbsp;&nbsp;&nbsp; run scripts using slurm: `./run_coexistence_simulations.sh` OR
+&nbsp;&nbsp;&nbsp;&nbsp; run scripts using python in your terminal: `run_coexistence_simulations_python_commands.sh` (~5.5 days of computing)
+&nbsp;&nbsp;&nbsp;&nbsp; This step will run all simulations necessary to generate figures of the coexistence diagram and some data that needs to be rescaled to generate some figures.
 
 &nbsp;&nbsp;&nbsp;&nbsp;**Run times:**  
 &nbsp;&nbsp;&nbsp;&nbsp;- SVZ and SVRZ simulations across the adsorption rate parameter space: ~3 minutes  
 &nbsp;&nbsp;&nbsp;&nbsp;- SIVZ and SIVRZ simulations across adsorption rate and latent period: ~2h30 to 3 hours  
-&nbsp;&nbsp;&nbsp;&nbsp;- SVRZ and SIVRZ across adsorption rate and resistance strength: ~3h30  
+&nbsp;&nbsp;&nbsp;&nbsp;- SVRZ and SIVRZ across adsorption rate and resistance strength: ~3h30 to 5 hours 
 
 &nbsp;&nbsp;&nbsp;&nbsp;Before running all together, consider checking each job (SVZ, SIVZ, SVRZ, and SIVRZ) individually to ensure it works.
 
