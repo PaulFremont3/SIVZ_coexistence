@@ -5,7 +5,11 @@
 #SBATCH  --time=10:00:00                        # Duration of the job (Ex: 10 mins)
 #SBATCH -o run_SIVRZ_molar_model_phytotypes-%j.out                        # Combined output and error messages file
 
+echo "Job started at $(date)"
+
 python SIVRZ_molar_model_phytotypes.py $1 $2 $3 $4 $5 $6 $7 $8 $9
+
+echo "Job finished at $(date)"
 
 # $1 phytoplankton type;
 # $2 % fail of infection;
