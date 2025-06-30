@@ -38,15 +38,15 @@ Practically in the study, only the life history trait of the smallest phytoplank
 # 2. RUN THE SIMULATIONS
 ## 2.1. Train models of viral life history traits
 - Burst size:  
-`sbatch run_best_model_ml.sbatch nn BS`  
-`sbatch run_best_model_ml.sbatch gam BS`  
-`sbatch run_best_model_ml.sbatch lm BS`  
-`sbatch run_best_model_ml.sbatch rf BS`  
+`sbatch run_best_model_ml.sbatch BS nn`  
+`sbatch run_best_model_ml.sbatch BS gam`  
+`sbatch run_best_model_ml.sbatch BS lm`  
+`sbatch run_best_model_ml.sbatch BS rf`  
 - Latent period:  
-`sbatch run_best_model_ml.sbatch nn LP`  
-`sbatch run_best_model_ml.sbatch gam LP`  
-`sbatch run_best_model_ml.sbatch lm LP`  
-`sbatch run_best_model_ml.sbatch rf LP`  
+`sbatch run_best_model_ml.sbatch LP nn`  
+`sbatch run_best_model_ml.sbatch LP gam`  
+`sbatch run_best_model_ml.sbatch LP lm`  
+`sbatch run_best_model_ml.sbatch LP rf`  
 ## 2.2. Generate life history traits data of phytoplankton
 Compile the c++ script `generate_traits.cpp`:  
 `g++ generate_traits.cpp -o generate_traits.exe`  
