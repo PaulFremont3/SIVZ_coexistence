@@ -17,6 +17,8 @@ if __name__ == '__main__':
     dz2=float(sys.argv[4]) # quadratic mortality of zooplankton
     m2=float(sys.argv[5]) # quadratic mortality of virus
 
+    print(sys.argv)
+
     # load life history traits
     Vols=load_vector('../trait_data/Vs_5.txt', sep=' ')
     Ncs=load_vector('../trait_data/Nc_dutkiewicz_5.txt', sep=' ')
@@ -659,6 +661,7 @@ if __name__ == '__main__':
     exclusion_times=np.transpose(exclusion_times)
     if nyears==25:
         write_matrix(exclusion_times, 'exclusion_times_SVZ_'+suffix+'.txt', ' ')
+    print("=== Script finished ===")
 
 
 
