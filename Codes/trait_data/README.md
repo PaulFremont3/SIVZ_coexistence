@@ -53,7 +53,7 @@ Compile the c++ script `generate_traits.cpp`:
 Generate the trait data:
 `./generate_traits.exe 5` (5 is the random seed)
 ## 2.3. Generate life history traits data of viruses
-`Rscript traits_for_simulation.R`
+`Rscript traits_for_simulation.R`: this will replace originally pre-uploaded files.
 
 # 3. MANUSCRIPT FIGURE PANELS (PDFs)
 - **Figure S1**
