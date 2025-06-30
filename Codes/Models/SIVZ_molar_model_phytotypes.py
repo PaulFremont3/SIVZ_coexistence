@@ -1299,3 +1299,4 @@ if __name__ == '__main__':
     write_matrix(final_V_th-mt.log10(Qv), 'model_data/Virus_th_'+type_mod+'_'+suffix+'.txt', ' ')
     write_matrix(final_Z_th-mt.log10(Qz), 'model_data/Zoop_th_'+type_mod+'_'+suffix+'.txt', ' ')
     write_matrix(final_ZV_ratio_th, 'model_data/ZV_ratio_th_'+type_mod+'_'+suffix+'.txt', ' ')
+    print("=== Script finished ===")
