@@ -1,6 +1,5 @@
 source('optimisation_gam.R')
 source('optimisation_nn.R')
-source('optimisation_nnet.R')
 source('optimisation_lm.R')
 source('optimisation_rf.R')
 library('mgcv')
