@@ -1,4 +1,4 @@
-This folder contains all R codes necessary to generate life history traits models. Note that all data is already in the file so you can directly run models in the `Models/` folder.
+This folder contains all R codes necessary to generate life history traits models. Note that all data is already in the file so you can directly run models in the `Models/` folder. When running codes in the `trait_data` folder, it will replace the original files but they should be identical.
 
 All simulations were run on the Zaratan HPC cluster of the University of Maryland (https://hpcc.umd.edu/hpcc/zaratan.html).
 
