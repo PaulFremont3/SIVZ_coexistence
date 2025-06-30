@@ -347,3 +347,4 @@ if __name__ == '__main__':
         plt.tight_layout()
         pp.savefig()
         pp.close()
+    print("=== Script finished ===")
