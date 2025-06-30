@@ -59,6 +59,7 @@ For each file, pdf outputs are specified and *\*suffix\** refers to a suffix to 
     - output: hist_abundances_Syn_Pro_virus_percentage_infected.pdf    
 
 ## 1.3. .sbatch files:
+Each slurm sbatch file will need to be edited to conform to your HPC system.
 Each file contains a description of the parameters taken as inputs: .sbatch files are used to run simulations on a HPC cluster with slurm. 
   - `run_SVZ_molar_model_phytotypes.sbatch`: runs `SVZ_molar_model_phytotypes.py`
   - `run_SVRZ_molar_model_phytotypes.sbatch`: runs `SVRZ_molar_model_phytotypes.py`
