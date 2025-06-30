@@ -87,8 +87,8 @@ In a HPC cluster:
 &nbsp;&nbsp;&nbsp;&nbsp;`mkdir model_data`
 
 ## 2.2. Run simulations of dynamics across the parameter space:  
-&nbsp;&nbsp;&nbsp;&nbsp;`module load python` 
-&nbsp;&nbsp;&nbsp;&nbsp; run scripts using slurm: `./run_coexistence_simulations.sh` OR 
+&nbsp;&nbsp;&nbsp;&nbsp;`module load python`  
+&nbsp;&nbsp;&nbsp;&nbsp; run scripts using slurm: `./run_coexistence_simulations.sh` OR  
 &nbsp;&nbsp;&nbsp;&nbsp; run scripts using python in your terminal: `run_coexistence_simulations_python_commands.sh` (~5.5 days of computing)
 &nbsp;&nbsp;&nbsp;&nbsp; This step will run all simulations necessary to generate figures of the coexistence diagram and some data that needs to be rescaled to generate some figures.
 
