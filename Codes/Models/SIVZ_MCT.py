@@ -12,12 +12,15 @@ from SIVZ_functions import *
 
 
 if __name__ == '__main__':
+    print("=== Script started ===")
     indice=int(sys.argv[1]) # phytoplankton type, 0: small diatom, 1, picoeukaryote, 2, synechococcus, 3, prochlorococcus
     eff=sys.argv[2] # loss of infection rate (0)
     otype=sys.argv[3] # ocean type
     dz2=float(sys.argv[4]) # quadratic mortality term of zooplankton
     alph=float(sys.argv[5])  # strength of intraguild predation 0-1
     dv2=float(sys.argv[6])  # quadratic mortality term of virus
+
+    print(sys.argv)
 
     # load life history traits 
     Vols=load_vector('../trait_data/Vs_5.txt', sep=' ')
@@ -351,6 +354,8 @@ if __name__ == '__main__':
     pp.savefig()
 
     pp.close()
+
+    print("=== Script finished ===")
     
         
 
