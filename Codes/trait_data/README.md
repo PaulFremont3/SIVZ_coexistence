@@ -33,6 +33,7 @@ R version: 3.3.2
   - `model_burst_size_nn-gam.txt`: burst size model generated from the life history trait model of this study (nn for burst size of eukaryotes, Synechococcus and Prochlorococcus and gam for burst size of diatom)
   - `model_latent_period_nn-gam.txt`: burst size model generated from the life history trait model of this study (nn for latent period)
 Practically in the study, only the life history trait of the smallest phytoplankton of each group is used.
+  - `edwards_2018.txt`: contains data from Edwards *et al.* 2018, necessary to train the models
 
 # 2. RUN THE SIMULATIONS
 ## 2.1. Train models of viral life history traits
