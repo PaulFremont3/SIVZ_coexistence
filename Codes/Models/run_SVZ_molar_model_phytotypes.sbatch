@@ -4,8 +4,12 @@
 #SBATCH --mem-per-cpu=5G                        # Memory per core
 #SBATCH  --time=06:00:00                        # Duration of the job (Ex: 10 mins)
 #SBATCH -o run_SVZ_molar_model_phytotypes-%j.out                        # Combined output and error messages file
- 
+
+echo "Job started at $(date)"
+
 python SVZ_molar_model_phytotypes.py $1 $2 $3 $4 $5
+
+echo "Job finished at $(date)"
 
 # $1 phytoplankton type 0 1 2 or 3;
 # $2 loss of infectivity;
