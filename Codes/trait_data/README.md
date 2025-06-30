@@ -45,7 +45,7 @@ Practically in the study, only the life history trait of the smallest phytoplank
 
 # 2. RUN THE SIMULATIONS
 ## 2.1. Train models of viral life history traits
-**Important**: Due to changes in software environments (e.g., R version, system libraries, numerical backends), re-running the neural network model (nn) optimization is likely to yield results that differ significantly from those reported in the paper — especially for parameters like burst size. These differences arise despite using the same seed, as neural networks can be sensitive to low-level numerical or initialization details.  
+**Important**: Due to changes in software environments (*e.g.*, R version, system libraries, numerical backends), re-running the neural network model (nn) optimization is likely to yield results that differ significantly from those reported in the paper — especially for the burst size model. These differences arise despite using the same seed, as neural networks can be sensitive to low-level numerical or initialization details.  
 To ensure full reproducibility, the original model files (`.rds`) used in the paper are provided in this repository.   
 **Warning**: Running the optimization procedure will overwrite these .rds files. If you wish to preserve the published models, make a copy before executing the optimization.  
 Maximum computation time: 8 minutes
