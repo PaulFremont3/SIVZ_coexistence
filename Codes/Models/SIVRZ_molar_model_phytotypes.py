@@ -13,6 +13,7 @@ from generic_functions import *
 
 
 if __name__ == '__main__':
+  print("=== Script started ===")
   indice=int(sys.argv[1]) # phytoplankton type, 0: small diatom, 1, picoeukaryote, 2, synechococcus, 3, prochlorococcus
   eff=sys.argv[2] # loss of infection rate (0)
   gr_ratio=sys.argv[3] # cost of resistance
@@ -1522,3 +1523,5 @@ if __name__ == '__main__':
   write_matrix(final_Z_th-mt.log10(Qz), 'model_data/Zoop_th_'+type_m+'_'+suffix+'.txt', ' ')
   write_matrix(final_R_th-mt.log10(Qp), 'model_data/Resistant_th_'+type_m+'_'+suffix+'.txt', ' ')
   write_matrix(final_ZV_ratio_th, 'model_data/ZV_ratio_th_'+type_m+'_'+suffix+'.txt', ' ')
+
+  print("=== Script finished ===")
