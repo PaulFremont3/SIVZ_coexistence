@@ -1,0 +1,78 @@
+Virus Name	Host	Host strain or synonym	Host genus	Host taxon	Environment	Virus type	Virus genome size (Kbp)	Virus genome reference	Virus particle size (nm)	Host genome size (Mbp)	Host genome reference	Host cell volume (cubic microns)	Host cell volume reference	Burst size	Infectious units or counts	Latent period (hr)	Temperature (ºC)	Irradiance (µmol photons per m squared per s)	Growth rate (per day)	Primary reference
+N-1	Nostoc muscorum	Anabaena PCC 7120	Anabaena	Cyanobacteria	Freshwater	dsDNA	65	14	55	7.21	21	11	30, 37	100	infectious	7		5.8		1
+MpV-SP1	Micromonas pusilla	strain plymouth 27	Micromonas	Prasinophyte	Marine	dsDNA	101	16	113	21.9	111	6.4	20				18	60		17
+MpV	Micromonas pusilla		Micromonas	Prasinophyte	Marine	dsDNA			132.5	21.9	111	6.4	20	72	infectious	7	16	40	0.69	109
+AaV	Aureococcus anophagefferens		Aureococcus	Pelagophyte	Marine	dsDNA	371	64	140	56	27	12.6	27	178	counts	24	18	120	0.404	10
+LPP-1	Plectonema boryanum	Leptolyngbya boryana	Plectonema	Cyanobacteria	Freshwater	dsDNA	41.5	112	59	7.26	21	15	88	100	infectious	7	26.5	22		28
+S-PM2	Synechococcus	WH7803	Synechococcus	Cyanobacteria	Marine	dsDNA											25	15		41
+PBCV-1	Chlorella-like symbiont	Chlorella variabilis NC64A	Chlorella	Chlorophyte	Freshwater	dsDNA	331	54	190	46	6	40	61	275	infectious	3	25	30	1.39	104
+AS-1	Synechococcus cedrorum		Synechococcus	Cyanobacteria	Freshwater	dsDNA			90			5.3		50	infectious	8.5	25	58		81
+S-BBS1	Synechococcus	BBC1	Synechococcus	Cyanobacteria	Marine	dsDNA			50	2.4	19	1.15	66	250	infectious	9	25	36		95
+S-PM2	Synechococcus	WH7803	Synechococcus	Cyanobacteria	Marine	dsDNA	196	60	85	2.37	19	1.1	34	45	infectious	9	25	20	0.33	110
+S-RIM1	Synechococcus	WH7803	Synechococcus	Cyanobacteria	Marine	dsDNA				2.37	19	1.1	34	63	infectious	7	21.5			91
+S-RIM8	Synechococcus	WH7803	Synechococcus	Cyanobacteria	Marine	dsDNA				2.37	19	1.1	34	86	infectious	7	21.5			91
+	Plectonema boryanum	Leptolyngbya boryana	Plectonema	Cyanobacteria	Freshwater				54.5	7.26	21	15	88	100	infectious	2				89
+SM-2	Synechococcus elongatum	UTEX 563	Synechococcus	Cyanobacteria	Freshwater	dsDNA			52.5	2.7	36	0.32	7	250	infectious	16	25	27		52
+LPP-1	Plectonema boryanum	Leptolyngbya boryana	Plectonema	Cyanobacteria	Freshwater	dsDNA	41.5	112	59	7.26	21	15	88	350	infectious	7	26	73		73
+SM-1	Microcystis aeruginosa	NRC-1, PCC 7941	Microcystis	Cyanobacteria	Freshwater	dsDNA	98	59	67	4.3	113	60	57	300	infectious	20	24	15		58
+AS-1M	Synechococcus cedrorum	UI 1911	Synechococcus	Cyanobacteria	Freshwater	dsDNA	99		90	3.5		5.3		40	infectious	8	30	123		85
+A-1(L)	Anabaena variabilis	Myers strain, PCC 7118	Anabaena	Cyanobacteria	Freshwater	dsDNA	68	4	60	5.87	35	11	30, 37	72.5	infectious	5				29
+A-4(L)	Anabaena variabilis	Myers strain, PCC 7118	Anabaena	Cyanobacteria	Freshwater	dsDNA	41.8	72	60	5.87	35	11	30, 37	110	infectious	2.5	25			29
+S-4(L)	Synechococcus elongatus	CALU 698	Synechococcus	Cyanobacteria	Freshwater				75					225	infectious	12				29
+S-5(L)	Synechococcus elongatus	CALU 698	Synechococcus	Cyanobacteria	Freshwater				80					125	infectious	18				29
+PvV01	Phaeocystis pouchetii		Phaeocystis	Haptophyte	Marine	dsDNA	485	115	220	201	9	166		475	counts	12	5	30		38
+HaV01	Heterosigma akashiwo	NM96	Heterosigma	Raphidophyte	Marine	dsDNA	294	98	202	1945	9	1103	96	770	infectious	30	20	45	0.43	67
+EhV-99B1	Emiliania huxleyi	Eh BOF92	Emiliania	Haptophyte	Marine	dsDNA	415		170	142	76	47	78	620	counts	12	15	30	0.42	13
+CeV-01B	Haptolina ericina	Chrysochromulina ericina	Haptolina	Haptophyte	Marine	dsDNA	474	117	160	1.07E+03	106	113	39	2950	counts	14	15	45		82
+PoV-01B	Pyramimonas orientalis		Pyramimonas	Prasinophyte	Marine	dsDNA	560		220			65	39	900	counts	14	15	45		82
+HcV03	Heterocapsa circularisquama		Heterocapsa	Dinoflagellate	Marine	dsDNA	356	97	197	2.05E+04	62	2200	114	1800	infectious	56	20	90	0.265	118
+MpRNAV01B	Micromonas pusilla	LAC38	Micromonas	Prasinophyte	Marine	dsRNA	25.5		72.5	21.9	111	6.4	20	490	counts	40	15	75	0.29	11
+RsRNAV	Rhizosolenia setigera		Rhizosolenia	Diatom	Marine	ssRNA	8.9	86	32	1.00E+05	15	63000	92	3100	infectious	48	15	110	1.02	70
+HcRNAV34 	Heterocapsa circularisquama		Heterocapsa	Dinoflagellate	Marine	ssRNA	4.4		30	2.05E+04	62	2200	114	2.10E+04	infectious	24	20	140		97
+HcRNAV109 	Heterocapsa circularisquama		Heterocapsa	Dinoflagellate	Marine	ssRNA	4.4		30	2.05E+04	62	2200	114	3.40E+03	infectious	24	20	140		97
+PgV Group I	Phaeocystis globosa		Phaeocystis	Haptophyte	Marine	dsDNA	466		150	2.93E+02	105	172	40	248	counts	10	15	100	0.34	5
+PgV Group IIa	Phaeocystis globosa		Phaeocystis	Haptophyte	Marine	dsDNA	177		100	2.93E+02	105	172	40	345	counts	12	15	100	0.34	5
+PgV Group IIb	Phaeocystis globosa		Phaeocystis	Haptophyte	Marine	dsDNA	177		100	2.93E+02	105	172	40	381	counts	16	15	100	0.34	5
+CsNIV	Chaetoceros salsugineum	Ch42	Chaetoceros	Diatom	Marine	ssDNA (partial ds)	7		38	2.39E+02	9	115	9	325	infectious	24	15	130	0.84	69
+Ma-LMM01	Microcystis aeruginosa		Microcystis	Cyanobacteria	Freshwater	dsDNA	160		86	4.3	113	60	57	82	infectious	8	30	40	0.6	116
+OtV5	Ostreococcus tauri	OTH95	Ostreococcus	Prasinophyte	Marine	dsDNA	186		122	1.26E+01		0.52		25	counts	8	20	100	1.23	18
+CtenRNAV	Chaetoceros tenuissimus		Chaetoceros	Diatom	Marine	ssRNA	13.2		31	2.39E+02	9	3.24E+02		1.18E+04	infectious	24	15	110	1.26	87
+CdebDNAV	Chaetoceros debilis	Ch48	Chaetoceros	Diatom	Marine	ssDNA	7		30	2.39E+02	9	280	32	55	infectious	24	15	130	0.284	98
+CwNIV	Chaetoceros cf. wighamii		Chaetoceros	Diatom	Marine		7.5		30	2.39E+02	9	1465	8	26396	counts	8	15	265	0.62	23
+PaV-LD	Planktothrix agardhii	HAB0637	Planktothrix	Cyanobacteria	Freshwater	dsDNA	95.3	25	77.5	5.00E+00	83	62.5	2	340	infectious	48	26	35	0.207	26
+TampV	Teleaulax amphioxeia		Teleaulax	Cryptophyte	Marine				203			165	31	480	infectious	24	20	140		68
+CsfrRNAV	Chaetoceros socialis f. radians		Chaetoceros	Diatom	Marine	ssRNA	9.5		22	2.39E+02	9	350	33	66	infectious	48	15	130	1.17	101
+S-CBM2	Synechococcus	CB0101	Synechococcus	Cyanobacteria	Marine	dsDNA	180		90	2.37	19	1.1	34	28	counts	15	25	15		108
+S-CBP1	Synechococcus	CB0101	Synechococcus	Cyanobacteria	Marine	dsDNA	48		52	2.37	19	1.1	34	86	counts	6	25	15		108
+S-CBP2	Synechococcus	CB0208	Synechococcus	Cyanobacteria	Marine	dsDNA	48		55	2.37	19	1.1	34	92	counts	8	25	15		108
+S-CBP3	Synechococcus	CB0101	Synechococcus	Cyanobacteria	Marine	dsDNA	48		55	2.37	19	1.1	34	75	counts	8	25	15		108
+S-CBS2	Synechococcus	CB0204	Synechococcus	Cyanobacteria	Marine	dsDNA	70		90	2.37	19	1.1	34	65	counts	24	25	15		108
+S-CBS3	Synechococcus	CB0202	Synechococcus	Cyanobacteria	Marine	dsDNA	30		56	2.37	19	1.1	34	175	counts	24	25	15		108
+S-CBS4	Synechococcus	CB0101	Synechococcus	Cyanobacteria	Marine	dsDNA	65		72	2.37	19	1.1	34	57	counts	24	25	15		108
+ClorDNAV	Chaetoceros lorenzianus		Chaetoceros	Diatom	Marine	ssDNA (partial ds)	5.8		34	1.00E+03	9	8000		2.20E+04	infectious	48	15	140	1.12	99
+HpygDNAV	Heterocapsa pygmaea		Heterocapsa	Dinoflagellate	Marine	dsDNA			165	3716	51	501	107	175	infectious	36	20	85	0.47	44
+Csp05DNAV 	Chaetoceros sp.	TG07-C28 	Chaetoceros	Diatom	Marine	ssDNA (partial ds)	11.6		33	2.39E+02	9	600		430	infectious	24	15	140	0.9	119
+Csp07DNAV	Chaetoceros sp. 	SS628-11	Chaetoceros	Diatom	Marine	ssDNA (partial ds)	5.5		34	2.39E+02	9	424		29	infectious	12	15	130	0.94	48
+MaMV-DC	Microcystis aeruginosa	FACHB-524	Microcystis	Cyanobacteria	Freshwater	dsDNA	160		70	4.3	113	60	57	80	infectious	24	25	35	0.133	71
+Csp03RNAV	Chaetoceros sp.	SS08-C03	Chaetoceros	Diatom	Marine	ssRNA	9.40E+00		32	2.39E+02	9	500				48	15	130	1.51	102
+CsetDNAV	Chaetoceros setoensis		Chaetoceros	Diatom	Marine	ssDNA	5.8		33	2.39E+02	9	800		2.00E+04	infectious	48	15	130	1.78	103
+P-SSP7	Prochlorococcus	MED4	Prochlorococcus	Cyanobacteria	Marine	dsDNA	45			1.66E+00	79	0.113	12	40	counts	5.5	20	30	0.6	24
+P-GSP1	Prochlorococcus	MED4	Prochlorococcus	Cyanobacteria	Marine	dsDNA	45			1.66E+00	79	0.113	12	65	counts	5	24	206	0.55	24
+P-HM1	Prochlorococcus	MED4	Prochlorococcus	Cyanobacteria	Marine	dsDNA	181			1.66E+00	79	0.113	12	15	counts	6.5	20	30	0.6	24
+P-HM2	Prochlorococcus	MED4	Prochlorococcus	Cyanobacteria	Marine	dsDNA	184			1.66E+00	79	0.113	12	30	counts	5	20	30	0.6	24
+P-HS2	Prochlorococcus	MED4	Prochlorococcus	Cyanobacteria	Marine	dsDNA	38.3			1.66E+00	79	0.113	12	160	counts	6.5	20	30	0.6	24
+P-HS3	Prochlorococcus	MED4	Prochlorococcus	Cyanobacteria	Marine	dsDNA	37.8			1.66E+00	79	0.113	12	25	counts	8	20	30	0.6	24
+Syn5	Synechococcus	WH8109	Synechococcus	Cyanobacteria	Marine	dsDNA	46.2		60	2.37	19	1.1	34	24	infectious	1	28	47.5	1.11	75
+S-TIM5	Synechococcus	WH8102	Synechococcus	Cyanobacteria	Marine	dsDNA	161		86	2.37	19	1.1	34	35	infectious	6	22	20		80
+CtenDNAV type II	Chaetoceros tenuissimus		Chaetoceros	Diatom	Marine	ssDNA (partial ds)	5.6		37	2.39E+02	9	3.24E+02		1.70E+03	infectious	24	20	130	1.86	47
+CtenRNAV type II	Chaetoceros tenuissimus		Chaetoceros	Diatom	Marine	ssRNA	9.6		35	2.39E+02	9	3.24E+02		2.84E+02	infectious	36	20	130	1.86	47
+HeV RF02	Haptolina ericina	Chrysochromulina ericina	Haptolina	Haptophyte	Marine	dsDNA	530		175	1.07E+03	106	113	39	775	counts	14	14	100		42
+PkV RF01	Prymnesium kappa		Prymnesium	Haptophyte	Marine	dsDNA			310					80	counts	24	14	100		42
+PkV RF02	Prymnesium kappa		Prymnesium	Haptophyte	Marine	dsDNA	507		160					400	counts	12	14	100		42
+SpalV	Stephanopyxis palmeriana		Stephanopyxis	Diatom	Marine				27.5			3.50E+05	84	92	infectious	40	20	85	0.91	46
+ScosV	Skeletonema costatum		Skeletonema	Diatom	Marine				47.5			186	22	170	infectious	40	20	85	0.84	45
+CpV-BQ1	Chrysochromulina parva		Chrysochromulina	Haptophyte	Marine	dsDNA	485		145	353	106	20	50	63	counts	48	15	23	0.18	63
+TsV	Tetraselmis striata		Tetraselmis	Chlorophyte	Marine	dsDNA	31		60	90	3	382	94	4.00E+04	counts	24	17			74
+Vb-AphaS-CL131	Aphanizomenon flos-aquae		Aphanizomenon	Cyanobacteria	Freshwater	dsDNA	120		97	4.5		12	77	218	infectious	36	22		0.48	93
+Pf-WMP4	Phormidium foveolarum		Phormidium	Cyanobacteria	Freshwater	dsDNA	40.9		55	4.65		6.3	43	145	infectious	4	28	28		56
+Pf-WMP3	Phormidium foveolarum		Phormidium	Cyanobacteria	Freshwater	dsDNA	43.2		55	4.65		6.3	43	113	infectious	5	28	28		55
