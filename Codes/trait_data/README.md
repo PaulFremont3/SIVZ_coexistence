@@ -35,6 +35,14 @@ R version: 3.3.2
 Practically in the study, only the life history trait of the smallest phytoplankton of each group is used.
   - `edwards_2018.txt`: contains data from Edwards *et al.* 2018, necessary to train the models
 
+## 1.5. .rds files: models used in the manuscript, note that for the nn model, your results might differ due to diverging computing architecture
+  - *variable*_*model*_result.rds: r object list of performance result of model *model* for the variable *variable*,  
+     - 1st list item: optimal hyperparameter and cross validation rmse  
+     - 2nd list item: model  
+  - *variable*_*model*_model.rds: r object list of model *model*, model only  
+  - *model* is nn, gam, rf or lm  
+  - *variable* is either LP or BS  
+
 # 2. RUN THE SIMULATIONS
 ## 2.1. Train models of viral life history traits
 - Burst size:  
