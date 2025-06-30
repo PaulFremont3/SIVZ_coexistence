@@ -1013,3 +1013,4 @@ if __name__ == '__main__':
 
     if nyears==20:
         write_matrix(exclusion_times, 'exclusion_times_SVRZ_'+suffix+'.txt', ' ')
+    print("=== Script finished ===")
