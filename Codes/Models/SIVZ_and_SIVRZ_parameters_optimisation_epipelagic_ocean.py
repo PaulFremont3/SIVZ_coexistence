@@ -22,6 +22,8 @@ if __name__ == '__main__':
     POM=str(sys.argv[3]) # 0 or 1 
     chunk=str(sys.argv[4]) # chunk
 
+    print(sys.argv)
+
     # lost life history traits
     Vols=load_vector('../trait_data/Vs_5.txt', sep=' ')
     Ncs=load_vector('../trait_data/Nc_dutkiewicz_5.txt', sep=' ')
@@ -479,3 +481,4 @@ if __name__ == '__main__':
                                 f.write(str(fl))
                                 f.write(' ')
                             f.write('\n')
+    print("=== Script finished ===")
