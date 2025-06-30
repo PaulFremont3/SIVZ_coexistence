@@ -49,7 +49,7 @@ Practically in the study, only the life history trait of the smallest phytoplank
   
 To ensure full reproducibility, the original model files (`.rds`) used in the paper are provided in this repository. 
   
-**Warning**: Running the optimization procedure will overwrite these .rds files. If you wish to preserve the published models, make a copy before executing the optimization.  
+**Warning**: Running the optimization procedure will overwrite these `.rds` files. If you wish to preserve the published models, make a copy before executing the optimization.  
   
 Maximum computation time: 8 minutes
 - Burst size:  
