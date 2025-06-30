@@ -174,7 +174,7 @@ pred_BS_lm=as.numeric(10^stats::predict(lm_mod_BS, newdata = new_data_gam))
 
 pred_LP_lm=as.numeric(10^stats::predict(lm_mod_LP, newdata = new_data_gam))
 
-mu_max=as.numeric(read.table('mumax_5.txt'))
+mu_max=as.numeric(read.table('mumax_dutkiewicz_5.txt'))
 
 ward_mumax = function(V){
   mumax=0.1128*V^0.84/(0.1504*V^0.5 + 0.024*V^1.1)
