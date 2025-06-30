@@ -5,4 +5,8 @@
 #SBATCH  --time=00:10:00                        # Duration of the job (Ex: 10 mins)
 #SBATCH -o run_analysis_optimization-%j.out                        # Combined output and error messages file
 
+echo "Job started at $(date)"
+
 python analysis_optimization.py $1
+
+echo "Job finished at $(date)"
