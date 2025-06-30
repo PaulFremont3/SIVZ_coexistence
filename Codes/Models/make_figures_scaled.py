@@ -231,5 +231,6 @@ if __name__ == '__main__':
         plot_with_scale_bis(d, 'coolwarm', -amx, amx, atickx, aticky, alabel_tickx, alabel_ticky, files_distances[j], yl=ylb)
         pp.savefig()
     pp.close()
+    print("=== Script finished ===")
 
 
