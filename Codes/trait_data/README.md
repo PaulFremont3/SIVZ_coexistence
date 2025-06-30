@@ -50,10 +50,11 @@ Practically in the study, only the life history trait of the smallest phytoplank
 ## 2.2. Generate life history traits data of phytoplankton
 Compile the c++ script `generate_traits.cpp`:  
 `g++ generate_traits.cpp -o generate_traits.exe`  
+This will replace pre-uploaded files `Vs_5.txt`, `mumax_dutkiewicz_5.txt` and `Nc_dutkiewicz_5.txt`
 Generate the trait data:
 `./generate_traits.exe 5` (5 is the random seed)
 ## 2.3. Generate life history traits data of viruses
-`Rscript traits_for_simulation.R`: this will replace originally pre-uploaded files.
+`Rscript traits_for_simulation.R`: this will replace originally pre-uploaded files (`model_burst_size_nn-gam.txt` and `model_latent_period_nn-gam.txt`)
 
 # 3. MANUSCRIPT FIGURE PANELS (PDFs)
 - **Figure S1**
