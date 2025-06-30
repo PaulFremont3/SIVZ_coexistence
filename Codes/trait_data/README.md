@@ -46,7 +46,8 @@ Practically in the study, only the life history trait of the smallest phytoplank
 `sbatch run_best_model_ml.sbatch LP nn` OR `Rscript best_model_ml.R LP nn`   
 `sbatch run_best_model_ml.sbatch LP gam` OR `Rscript best_model_ml.R LP gam`   
 `sbatch run_best_model_ml.sbatch LP lm` OR `Rscript best_model_ml.R LP lm`   
-`sbatch run_best_model_ml.sbatch LP rf` OR `Rscript best_model_ml.R LP rf`   
+`sbatch run_best_model_ml.sbatch LP rf` OR `Rscript best_model_ml.R LP rf`
+Maximum computation time: 8 minutes
 ## 2.2. Generate life history traits data of phytoplankton
 Compile the c++ script `generate_traits.cpp`:  
 `g++ generate_traits.cpp -o generate_traits.exe`  
