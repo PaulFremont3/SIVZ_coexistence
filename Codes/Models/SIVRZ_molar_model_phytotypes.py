@@ -13,7 +13,6 @@ from generic_functions import *
 
 
 if __name__ == '__main__':
-  print("=== Script started ===")
   indice=int(sys.argv[1]) # phytoplankton type, 0: small diatom, 1, picoeukaryote, 2, synechococcus, 3, prochlorococcus
   eff=sys.argv[2] # loss of infection rate (0)
   gr_ratio=sys.argv[3] # cost of resistance
