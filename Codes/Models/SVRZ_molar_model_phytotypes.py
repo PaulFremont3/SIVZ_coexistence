@@ -19,6 +19,8 @@ if __name__ == '__main__':
     m2=float(sys.argv[5]) # quadratic mortality of virus
     param=str(sys.argv[6]) #resistance type: phir or epsr
     spec_value=str(sys.argv[7]) #specify a specific value of phi/phir or eps/epsr => plot 1d matrix. If 'no' => explore the phi/phir or eps/epsr space
+
+    print(sys.argv)
     
     if spec_value!='no':
         spec_value=float(spec_value)
