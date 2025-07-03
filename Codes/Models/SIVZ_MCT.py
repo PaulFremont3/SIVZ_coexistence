@@ -100,7 +100,7 @@ if __name__ == '__main__':
     bs=betas[indice]
 
     
-    suffix=typePhyto+'_BS'+str(round(bs, -1))+'_LOI'+eff
+    suffix=typePhyto+'_BS'+str(bs)+'_LOI'+eff
     if dz2==0:
         suffix+='_no-dz2'
     if dv2==0:
