@@ -45,7 +45,7 @@ Practically in the study, only the life history trait of the smallest phytoplank
 
 # 2. RUN THE SIMULATIONS
 ## 2.1. Train models of viral life history traits
-**Important**: Due to changes in software environments (*e.g.*, R version, system libraries, numerical backends), re-running the neural network model (nn) optimization is likely to yield results that differ significantly from those reported in the paper — especially for the burst size model. These differences arise despite using the same seed, as neural networks can be sensitive to low-level numerical or initialization details.  
+**Important**: Due to changes in software environments (*e.g.*, R version, system libraries, numerical backends), re-running the neural network model (nn) optimization is likely to yield results that differ slightly from those reported in the paper — especially for the burst size model. These differences arise despite using the same seed, as neural networks can be sensitive to low-level numerical or initialization details.  
   
 To ensure full reproducibility, the original model files (`.rds`) used in the paper are provided in this repository. 
   
@@ -70,7 +70,7 @@ This will replace pre-uploaded files `Vs_5.txt`, `mumax_dutkiewicz_5.txt` and `N
 Generate the trait data:
 `./generate_traits.exe 5` (5 is the random seed)
 ## 2.3. Generate life history traits data of viruses
-`Rscript traits_for_simulation.R`: this will replace originally pre-uploaded files (`model_burst_size_nn-gam.txt` and `model_latent_period_nn-gam.txt`)
+`traits_for_simulation.R`: to be run locally in Rstudio. This will replace originally pre-uploaded files (`model_burst_size_nn-gam.txt` and `model_latent_period_nn-gam.txt`)
 
 # 3. MANUSCRIPT FIGURE PANELS (PDFs)
 - **Figure S1**
