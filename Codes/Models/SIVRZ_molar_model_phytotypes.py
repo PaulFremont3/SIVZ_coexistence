@@ -65,10 +65,10 @@ if __name__ == '__main__':
       Qp4=Qps[300:400][ind4]
 
       # burst size
-      bs1=round(betas[ind1],-1) 
-      bs2=round(betas[100:200][ind2],-1)
-      bs3=round(betas[200:300][ind3],-1)
-      bs4=round(betas[300:400][ind4],-1)
+      bs1=betas[0:100][ind1] 
+      bs2=betas[100:200][ind2]
+      bs3=betas[200:300][ind3]
+      bs4=betas[300:400][ind4]
       betas=[bs1,bs2,bs3,bs4]
 
       # latent period
