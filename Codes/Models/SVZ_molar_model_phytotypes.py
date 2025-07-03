@@ -104,7 +104,7 @@ if __name__ == '__main__':
     R=0.5 # nutrient concentration
     T_dep=1 # no T_dep in idealized case
     # suffix to identify simulation and output pdf
-    suffix=typePhyto+'_BS'+str(round(bs, -1))+'_LOI'+eff
+    suffix=typePhyto+'_BS'+str(bs)+'_LOI'+eff
     if dz2==0:
         suffix+='_no-dz2'
     if m2!=0:
