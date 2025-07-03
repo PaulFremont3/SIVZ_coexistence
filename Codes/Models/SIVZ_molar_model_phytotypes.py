@@ -119,7 +119,7 @@ if __name__ == '__main__':
     # temperature dependency
     Temp=20
     T_dep=1 # no T_dep in idealized case 
-    suffix=typePhyto+'_BS'+str(round(bs, -1))+'_LOI'+eff
+    suffix=typePhyto+'_BS'+str(bs)+'_LOI'+eff
     if m2!=0:
         suffix+='_m2-'+str(m2)
         type_mod='SIVZ'
