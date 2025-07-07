@@ -227,8 +227,8 @@ After running all simulations, the following .pdf and .txt files contain the fig
 
 - **Figure S1** to **Figure S4**: see trait_data folder
 - **Figure S5** SIVZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic.pdf
-  - S5a: pages 5, 7 and 8
-  - S5b: pages 50, 52 and 53
+  - S5a: pages 4, 6 and 7
+  - S5b: pages 78, 80 and 81
 - **Figure S6** Scaled_PVZ_FFT_and_Period.pdf
   - S6a to S6h: pages 1 to 8
 - **Figure S7**
