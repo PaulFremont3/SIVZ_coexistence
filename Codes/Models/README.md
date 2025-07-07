@@ -233,9 +233,9 @@ After running all simulations, the following .pdf and .txt files contain the fig
   - S6a to S6h: pages 1 to 8
 - **Figure S7**
   - S7a: pages 1 and 3 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-10.0.pdf
-  - S7b: pages 33 and 35 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-10.0.pdf
+  - S7b: pages 17 and 19 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-10.0.pdf
   - S7c: pages 1 and 3 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-fullres.pdf
-  - S7d: pages 33 and 35 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-fullres.pdf
+  - S7d: pages 17 and 19 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-fullres.pdf
 - **Figure S8**
   - S8a: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir.pdf
   - S8b: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_mesotrophic_phir.pdf
