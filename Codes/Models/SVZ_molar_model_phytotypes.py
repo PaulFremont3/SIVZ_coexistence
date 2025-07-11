@@ -10,7 +10,10 @@ from numpy import inf
 from SVZ_functions import *
 from generic_functions import *
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
+def main():
+    print("=== Script started ===")
+
     indice=int(sys.argv[1]) # choose phytoplantkon: 0, small diatom, 1, picoeukaryote, 2 synechococcus, 3, prochlorococcus
     eff=sys.argv[2] # loss of infectivity (irrelevant here)
     otype=sys.argv[3] # ocean type 
@@ -18,7 +21,6 @@ if __name__ == '__main__':
     m2=float(sys.argv[5]) # quadratic mortality of virus
 
     print(sys.argv)
-
     # load life history traits
     Vols=load_vector('../trait_data/Vs_5.txt', sep=' ')
     Ncs=load_vector('../trait_data/Nc_dutkiewicz_5.txt', sep=' ')
@@ -59,7 +61,7 @@ if __name__ == '__main__':
         Qp3=Qps[200:300][ind3]
         Qp4=Qps[300:400][ind4]
         # burst sizes
-        bs1=betas[0:100][ind1] 
+        bs1=betas[0:100][ind1]
         bs2=betas[100:200][ind2]
         bs3=betas[200:300][ind3]
         bs4=betas[300:400][ind4]
@@ -98,7 +100,7 @@ if __name__ == '__main__':
     typePhyto=typePhytos[indice]
 
     bs=betas[indice]
-
+    
     # temperature dependency
     Temp=20
     R=0.5 # nutrient concentration
@@ -663,8 +665,7 @@ if __name__ == '__main__':
         write_matrix(exclusion_times, 'exclusion_times_SVZ_'+suffix+'.txt', ' ')
     print("=== Script finished ===")
 
-
-
-        
+if __name__ == '__main__':
+    main() 
 
 

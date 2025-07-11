@@ -15,11 +15,11 @@ if __name__ == '__main__':
     mods=str(sys.argv[1]) #  main_models or ocean_types (only main_models is necessary to generate the figures in the paper)
 
     if mods=='main_models':
-        suffixes=['SIVZ_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.txt', 'SIVRZ_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic.txt', 'SIVRZ_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-0.0_mesotrophic.txt']
-        titles=['SIVZ_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic', 'SIVRZ_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic', 'SIVRZ_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-0.0_mesotrophic']
+        suffixes=['SIVZ_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.txt', 'SIVRZ_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic.txt', 'SIVRZ_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-0.0_mesotrophic.txt']
+        titles=['SIVZ_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic', 'SIVRZ_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic', 'SIVRZ_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-0.0_mesotrophic']
     elif mods=='ocean_types':
-        suffixes=['SIVZ_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.txt','SIVZ_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_oligotrophic.txt', 'SIVZ_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_upwelling.txt']
-        titles=['SIVZ_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic','SIVZ_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_oligotrophic', 'SIVZ_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_upwelling']
+        suffixes=['SIVZ_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.txt','SIVZ_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_oligotrophic.txt', 'SIVZ_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_upwelling.txt']
+        titles=['SIVZ_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic','SIVZ_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_oligotrophic', 'SIVZ_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_upwelling']
     
     files_algae=['model_data/Tot_algae_'+suff for suff in suffixes]
     files_virus=['model_data/Virus_'+suff for suff in suffixes]
@@ -127,8 +127,8 @@ if __name__ == '__main__':
 
     
     # Fourier analysis
-    suffixes=['SIVZ_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic.txt','SIVZ_Prochlorochoccus_BS20.0_LOI0_mesotrophic.txt','SIVZ_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.txt', 'SIVRZ_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic.txt']
-    titles=['SIVZ_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic','SIVZ_Prochlorochoccus_BS20.0_LOI0_mesotrophic','SIVZ_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic', 'SIVRZ_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic']
+    suffixes=['SIVZ_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic.txt','SIVZ_Prochlorochoccus_BS15.0_LOI0_mesotrophic.txt','SIVZ_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.txt', 'SIVRZ_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic.txt']
+    titles=['SIVZ_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic','SIVZ_Prochlorochoccus_BS15.0_LOI0_mesotrophic','SIVZ_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic', 'SIVRZ_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic']
 
     files_FFT=['model_data/FFT_modulo_'+suff for suff in suffixes]
     files_period=['model_data/Period_'+suff for suff in suffixes]
@@ -162,7 +162,7 @@ if __name__ == '__main__':
     pp.close()
         
     
-    files_coexistence_SIVZ= ['coexistence_analysis_V_SIVZ_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic_Fluctuation_free_growth_rate.txt', 'coexistence_analysis_V_SIVZ_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic_Relative_non_linearity_I.txt']
+    files_coexistence_SIVZ= ['coexistence_analysis_V_SIVZ_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic_Fluctuation_free_growth_rate.txt', 'coexistence_analysis_V_SIVZ_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic_Relative_non_linearity_I.txt']
     data_coex, mx_coex, mi_coex=read_data(files_coexistence_SIVZ, -100000000000000000000000000)
 
     # Coexistence analysis
@@ -202,7 +202,7 @@ if __name__ == '__main__':
     pp.close()
 
 
-    files_distances=['model_data/distance_A_SIVZ_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.txt','model_data/distance_A_SIVRZ_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic.txt', 'model_data/distance_A_SIVRZ_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-0.0_mesotrophic.txt', 'model_data/distance_V_SIVZ_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.txt','model_data/distance_V_SIVRZ_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic.txt', 'model_data/distance_V_SIVRZ_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-0.0_mesotrophic.txt', 'model_data/distance_Z_SIVZ_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.txt','model_data/distance_Z_SIVRZ_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic.txt', 'model_data/distance_Z_SIVRZ_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-0.0_mesotrophic.txt']
+    files_distances=['model_data/distance_A_SIVZ_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.txt','model_data/distance_A_SIVRZ_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic.txt', 'model_data/distance_A_SIVRZ_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-0.0_mesotrophic.txt', 'model_data/distance_V_SIVZ_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.txt','model_data/distance_V_SIVRZ_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic.txt', 'model_data/distance_V_SIVRZ_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-0.0_mesotrophic.txt', 'model_data/distance_Z_SIVZ_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.txt','model_data/distance_Z_SIVRZ_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-5.0_mesotrophic.txt', 'model_data/distance_Z_SIVRZ_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800.0_lp_phi-ratio-0.0_mesotrophic.txt']
     A_cond_low, A_cond_high, V_cond_low, V_cond_high, Z_cond_low, Z_cond_high, I_cond_high, I_cond_low, perc_cond_high, perc_cond_low, target_conc=concentration_ranges(3, 'mesotrophic')
 
     data_dist, mx_dist, mi_dist=read_data(files_distances, -1000000)
@@ -231,6 +231,5 @@ if __name__ == '__main__':
         plot_with_scale_bis(d, 'coolwarm', -amx, amx, atickx, aticky, alabel_tickx, alabel_ticky, files_distances[j], yl=ylb)
         pp.savefig()
     pp.close()
-    print("=== Script finished ===")
 
 
