@@ -85,7 +85,7 @@ Each file contains a description of the parameters taken as inputs: .sbatch file
 
 # 2. RUN THE SIMULATIONS
 
-In a HPC cluster:  
+In a HPC cluster (recommended), or locally (probably ~6-7 days of computation):  
 
 ## 2.1. Create in this directory a subfolder called `model_data` to store results:  
 &nbsp;&nbsp;&nbsp;&nbsp;`mkdir model_data`
