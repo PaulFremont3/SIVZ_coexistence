@@ -2,7 +2,7 @@ This folder contains all R codes necessary to generate life history traits model
 
 All simulations were run on the Zaratan HPC cluster of the University of Maryland (https://hpcc.umd.edu/hpcc/zaratan.html).
 
-R libraries: mgcv, nnet, Metrics
+R libraries: mgcv, nnet, scales, Metrics
 R version: 3.3.2
 
 # 1. FILES DESCRIPTION
@@ -41,7 +41,8 @@ Practically in the study, only the life history trait of the smallest phytoplank
      - 2nd list item: model  
   - `*variable*_*model*_model.rds`: r object list of model *model*, model only  
   - *model* is nn, gam, rf or lm  
-  - *variable* is either LP or BS  
+  - *variable* is either LP or BS
+  - These models are used to generate life history traits model of virus-host pairs (line 170-194)
 
 # 2. RUN THE SIMULATIONS
 ## 2.1. Train models of viral life history traits
