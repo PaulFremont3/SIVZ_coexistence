@@ -132,54 +132,54 @@ After running all simulations, the following .pdf and .txt files contain the fig
 
 ## 3.1. Figures
 - **Figure 2**
-  - 2a: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic.pdf
-  - 2b: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
-  - 2c: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_no-dz2_m2-1800.0_mesotrophic.pdf
-  - 2d: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
-  - 2e: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic.pdf
-  - 2f: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
-  - 2g: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_no-dz2_mesotrophic.pdf
-  - 2h: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
-  - 2i: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-5.0.pdf
-  - 2j: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_mesotrophic_phir-5.0.pdf
-  - 2k: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_m2-1800.0_mesotrophic_phir-5.0.pdf
-  - 2l: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_mesotrophic_phir-5.0.pdf
-  - 2m: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_no-dz2_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 2n: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 2o: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_no-dz2_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 2p: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 2q: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-0.0.pdf
-  - 2r: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_mesotrophic_phir-0.0.pdf
-  - 2s: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_m2-1800.0_mesotrophic_phir-0.0.pdf
-  - 2t: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_mesotrophic_phir-0.0.pdf
-  - 2u: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_no-dz2_lp_phi-ratio-0.0_mesotrophic.pdf
-  - 2v: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-0.0_mesotrophic.pdf
-  - 2w: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_no-dz2_m2-1800_lp_phi-ratio-0.0_mesotrophic.pdf
-  - 2x: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-0.0_mesotrophic.pdf
+  - 2a: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic.pdf
+  - 2b: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
+  - 2c: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_no-dz2_m2-1800.0_mesotrophic.pdf
+  - 2d: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - 2e: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic.pdf
+  - 2f: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
+  - 2g: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_no-dz2_mesotrophic.pdf
+  - 2h: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - 2i: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-5.0.pdf
+  - 2j: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_mesotrophic_phir-5.0.pdf
+  - 2k: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_m2-1800.0_mesotrophic_phir-5.0.pdf
+  - 2l: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_mesotrophic_phir-5.0.pdf
+  - 2m: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_no-dz2_lp_phi-ratio-5.0_mesotrophic.pdf
+  - 2n: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
+  - 2o: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_no-dz2_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - 2p: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - 2q: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-0.0.pdf
+  - 2r: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_mesotrophic_phir-0.0.pdf
+  - 2s: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_m2-1800.0_mesotrophic_phir-0.0.pdf
+  - 2t: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_mesotrophic_phir-0.0.pdf
+  - 2u: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_no-dz2_lp_phi-ratio-0.0_mesotrophic.pdf
+  - 2v: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_lp_phi-ratio-0.0_mesotrophic.pdf
+  - 2w: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_no-dz2_m2-1800_lp_phi-ratio-0.0_mesotrophic.pdf
+  - 2x: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-0.0_mesotrophic.pdf
 - **Figure 3**
-  - 3a: page 20 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_no-dz2_no-dv2_mesotrophic_MCT.pdf
-  - 3b: page 19 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_no-dz2_no-dv2_mesotrophic_MCT.pdf
-  - 3c: page 15 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_no-dz2_no-dv2_mesotrophic_MCT.pdf
+  - 3a: page 20 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_no-dz2_no-dv2_mesotrophic_MCT.pdf
+  - 3b: page 19 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_no-dz2_no-dv2_mesotrophic_MCT.pdf
+  - 3c: page 15 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_no-dz2_no-dv2_mesotrophic_MCT.pdf
   - 3d: page 3 of Scaled_SIVZ_coexistence.pdf
   - 3e: page 4 of Scaled_SIVZ_coexistence.pdf
-  - black MASK: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic.pdf
+  - black MASK: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic.pdf
 - **Figure 4**
-  - 4a: page 6 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
-  - 4b: page 10 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
-  - 4c: page 14 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
-  - 4d: page 18 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
-  - 4e: page 6 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - 4f: page 10 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - 4g: page 14 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - 4h: page 18 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - 4i: page 6 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - 4j: page 10 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - 4k: page 14 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - 4l: page 18 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - 4m: page 6 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - 4n: page 10 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - 4o: page 14 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - 4p: page 18 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - 4a: page 6 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
+  - 4b: page 10 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
+  - 4c: page 14 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
+  - 4d: page 18 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
+  - 4e: page 6 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - 4f: page 10 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - 4g: page 14 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - 4h: page 18 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - 4i: page 6 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - 4j: page 10 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - 4k: page 14 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - 4l: page 18 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - 4m: page 6 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - 4n: page 10 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - 4o: page 14 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - 4p: page 18 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
 - **Figure 5**
   - 5a: page 1 of Scaled_PVZ_main_models.pdf
   - 5b: page 2 of Scaled_PVZ_main_models.pdf
@@ -196,22 +196,22 @@ After running all simulations, the following .pdf and .txt files contain the fig
   - 5m: page 10 of Scaled_PVZ_main_models.pdf
   - 5n: page 11 of Scaled_PVZ_main_models.pdf
   - 5o: page 12 of Scaled_PVZ_main_models.pdf
-  - 5p: page 34 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
-  - 5q: page 43 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 5r: page 43 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-0.0_mesotrophic.pdf
-  - 5s: page 49 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
-  - 5t: page 10 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 5u: page 10 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - 5p: page 34 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - 5q: page 43 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - 5r: page 43 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-0.0_mesotrophic.pdf
+  - 5s: page 49 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - 5t: page 10 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - 5u: page 10 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
 - **Figure 6**
-  - 6b: page 47 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
-  - 6c: page 60 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 6d: page 60 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 6e: page 51 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
-  - 6f: page 64 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 6g: page 64 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 6h: page 56 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
-  - 6i: page 69 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 6j: page 69 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - 6b: page 47 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - 6c: page 60 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - 6d: page 60 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - 6e: page 51 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - 6f: page 64 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - 6g: page 64 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - 6h: page 56 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - 6i: page 69 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - 6j: page 69 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
 
 ## 3.2. Tables
 
@@ -226,108 +226,108 @@ After running all simulations, the following .pdf and .txt files contain the fig
 ## 3.3. Supplementary figures
 
 - **Figure S1** to **Figure S4**: see trait_data folder
-- **Figure S5** SIVZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_no-dz2_mesotrophic.pdf
+- **Figure S5** SIVZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic.pdf
   - S5a: pages 4, 6 and 7
   - S5b: pages 78, 80 and 81
 - **Figure S6** Scaled_PVZ_FFT_and_Period.pdf
   - S6a to S6h: pages 1 to 8
 - **Figure S7**
-  - S7a: pages 1 and 3 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-5.0.pdf
-  - S7b: pages 17 and 19 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-5.0.pdf
-  - S7c: pages 1 and 3 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-fullres.pdf
-  - S7d: pages 17 and 19 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-fullres.pdf
+  - S7a: pages 1 and 3 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-5.0.pdf
+  - S7b: pages 17 and 19 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-5.0.pdf
+  - S7c: pages 1 and 3 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-fullres.pdf
+  - S7d: pages 17 and 19 of SVRZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-fullres.pdf
 - **Figure S8**
-  - S8a: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir.pdf
-  - S8b: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_mesotrophic_phir.pdf
-  - S8c: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_m2-1800_no-dz2_mesotrophic_phir.pdf
-  - S8d: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_m2-1800_mesotrophic_phir.pdf
-  - S8e: page 1 of SIVRZ_model_phi_versus_phir_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_no-dz2_phir_mesotrophic.pdf
-  - S8f: page 1 of SIVRZ_model_phi_versus_phir_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_phir_mesotrophic.pdf
-  - S8g: page 1 of SIVRZ_model_phi_versus_phir_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_no-dz2_phir_mesotrophic.pdf
-  - S8h: page 1 of SIVRZ_model_phi_versus_phir_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - S8i: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_no-dz2_mesotrophic_epsr.pdf
-  - S8j: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_mesotrophic_epsr.pdf
-  - S8k: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_m2-1800_no-dz2_mesotrophic_epsr.pdf
-  - S8l: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS20.0_LOI0_GR-R0.8_m2-1800_mesotrophic_epsr.pdf
-  - S8m: page 1 of SIVRZ_model_eps_versus_epsr_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_no-dz2_phir_mesotrophic.pdf
-  - S8n: page 1 of SIVRZ_model_eps_versus_epsr_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_phir_mesotrophic.pdf
-  - S8o: page 1 of SIVRZ_model_eps_versus_epsr_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_no-dz2_phir_mesotrophic.pdf
-  - S8p: page 1 of SIVRZ_model_eps_versus_epsr_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - S8a: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir.pdf
+  - S8b: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_mesotrophic_phir.pdf
+  - S8c: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_m2-1800_no-dz2_mesotrophic_phir.pdf
+  - S8d: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_m2-1800_mesotrophic_phir.pdf
+  - S8e: page 1 of SIVRZ_model_phi_versus_phir_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_no-dz2_phir_mesotrophic.pdf
+  - S8f: page 1 of SIVRZ_model_phi_versus_phir_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_phir_mesotrophic.pdf
+  - S8g: page 1 of SIVRZ_model_phi_versus_phir_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_no-dz2_phir_mesotrophic.pdf
+  - S8h: page 1 of SIVRZ_model_phi_versus_phir_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - S8i: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_mesotrophic_epsr.pdf
+  - S8j: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_mesotrophic_epsr.pdf
+  - S8k: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_m2-1800_no-dz2_mesotrophic_epsr.pdf
+  - S8l: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_m2-1800_mesotrophic_epsr.pdf
+  - S8m: page 1 of SIVRZ_model_eps_versus_epsr_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_no-dz2_phir_mesotrophic.pdf
+  - S8n: page 1 of SIVRZ_model_eps_versus_epsr_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_phir_mesotrophic.pdf
+  - S8o: page 1 of SIVRZ_model_eps_versus_epsr_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_no-dz2_phir_mesotrophic.pdf
+  - S8p: page 1 of SIVRZ_model_eps_versus_epsr_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
 - **Figure S9**
-  - S9a: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
-  - S9b: page 7 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
-  - S9c: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - S9d: page 7 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - S9e: page 1 of SIVZ_model_phi_latent_period_Synechococcus_BS20.0_LOI0_mesotrophic.pdf
-  - S9f: page 7 of SIVZ_model_phi_latent_period_Synechococcus_BS20.0_LOI0_mesotrophic.pdf
-  - S9g: page 1 of SIVZ_model_phi_latent_period_Synechococcus_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - S9h: page 7 of SIVZ_model_phi_latent_period_Synechococcus_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - S9i: page 1 of SIVZ_model_phi_latent_period_Eukaryote_BS20.0_LOI0_mesotrophic.pdf
-  - S9j: page 7 of SIVZ_model_phi_latent_period_Eukaryote_BS20.0_LOI0_mesotrophic.pdf
-  - S9k: page 1 of SIVZ_model_phi_latent_period_Eukaryote_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - S9l: page 7 of SIVZ_model_phi_latent_period_Eukaryote_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - S9m: page 1 of SIVZ_model_phi_latent_period_Diatom_BS20.0_LOI0_mesotrophic.pdf
-  - S9n: page 7 of SIVZ_model_phi_latent_period_Diatom_BS20.0_LOI0_mesotrophic.pdf
-  - S9o: page 1 of SIVZ_model_phi_latent_period_Diatom_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - S9p: page 7 of SIVZ_model_phi_latent_period_Diatom_BS20.0_LOI0_m2-1800_mesotrophic.pdf
+  - S9a: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
+  - S9b: page 7 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
+  - S9c: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - S9d: page 7 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - S9e: page 1 of SIVZ_model_phi_latent_period_Synechococcus_BS15.0_LOI0_mesotrophic.pdf
+  - S9f: page 7 of SIVZ_model_phi_latent_period_Synechococcus_BS15.0_LOI0_mesotrophic.pdf
+  - S9g: page 1 of SIVZ_model_phi_latent_period_Synechococcus_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - S9h: page 7 of SIVZ_model_phi_latent_period_Synechococcus_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - S9i: page 1 of SIVZ_model_phi_latent_period_Eukaryote_BS15.0_LOI0_mesotrophic.pdf
+  - S9j: page 7 of SIVZ_model_phi_latent_period_Eukaryote_BS15.0_LOI0_mesotrophic.pdf
+  - S9k: page 1 of SIVZ_model_phi_latent_period_Eukaryote_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - S9l: page 7 of SIVZ_model_phi_latent_period_Eukaryote_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - S9m: page 1 of SIVZ_model_phi_latent_period_Diatom_BS15.0_LOI0_mesotrophic.pdf
+  - S9n: page 7 of SIVZ_model_phi_latent_period_Diatom_BS15.0_LOI0_mesotrophic.pdf
+  - S9o: page 1 of SIVZ_model_phi_latent_period_Diatom_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - S9p: page 7 of SIVZ_model_phi_latent_period_Diatom_BS15.0_LOI0_m2-1800_mesotrophic.pdf
 - **Figure S10**
-  - S10a to S10e: pages 2 to 6 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
-  - S10f to S10j: pages 2 ro 6 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800_mesotrophic.pdf
+  - S10a to S10e: pages 2 to 6 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
+  - S10f to S10j: pages 2 ro 6 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800_mesotrophic.pdf
 - **Figure S11**
-  - S9a: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9b: page 13 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9c: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9d: page 13 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9e: page 1 of SIVRZ_model_phi_versus_latent_period_Synechococcus_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9f: page 13 of SIVRZ_model_phi_versus_latent_period_Synechococcus_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9g: page 1 of SIVRZ_model_phi_versus_latent_period_Synechococcus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9h: page 13 of SIVRZ_model_phi_versus_latent_period_Synechococcus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9i: page 1 of SIVRZ_model_phi_versus_latent_period_Eukaryote_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9j: page 13 of SIVRZ_model_phi_versus_latent_period_Eukaryote_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9k: page 1 of SIVRZ_model_phi_versus_latent_period_Eukaryote_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9l: page 13 of SIVRZ_model_phi_versus_latent_period_Eukaryote_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9m: page 1 of SIVRZ_model_phi_versus_latent_period_Diatom_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9n: page 13 of SIVRZ_model_phi_versus_latent_period_Diatom_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9o: page 1 of SIVRZ_model_phi_versus_latent_period_Diatom_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S9p: page 13 of SIVRZ_model_phi_versus_latent_period_Diatom_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9a: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9b: page 13 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9c: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9d: page 13 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9e: page 1 of SIVRZ_model_phi_versus_latent_period_Synechococcus_LP0.37_BS15.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9f: page 13 of SIVRZ_model_phi_versus_latent_period_Synechococcus_LP0.37_BS15.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9g: page 1 of SIVRZ_model_phi_versus_latent_period_Synechococcus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9h: page 13 of SIVRZ_model_phi_versus_latent_period_Synechococcus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9i: page 1 of SIVRZ_model_phi_versus_latent_period_Eukaryote_LP0.37_BS15.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9j: page 13 of SIVRZ_model_phi_versus_latent_period_Eukaryote_LP0.37_BS15.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9k: page 1 of SIVRZ_model_phi_versus_latent_period_Eukaryote_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9l: page 13 of SIVRZ_model_phi_versus_latent_period_Eukaryote_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9m: page 1 of SIVRZ_model_phi_versus_latent_period_Diatom_LP0.37_BS15.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9n: page 13 of SIVRZ_model_phi_versus_latent_period_Diatom_LP0.37_BS15.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9o: page 1 of SIVRZ_model_phi_versus_latent_period_Diatom_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S9p: page 13 of SIVRZ_model_phi_versus_latent_period_Diatom_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
 - **Figure S12**
-  - S12a to S12k: pages 2 to 12 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S12l to S12v: pages 2 to 12 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S12a to S12k: pages 2 to 12 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S12l to S12v: pages 2 to 12 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
 - **Figure S13**
-  - S13a: page 5 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
-  - S13b: page 9 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
-  - S13c: page 13 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
-  - S13d: page 17 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_mesotrophic.pdf
-  - S13e: page 5 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - S13f: page 9 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - S13g: page 13 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - S13h: page 17 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS20.0_LOI0_m2-1800_mesotrophic.pdf
-  - S13i: page 5 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - S13j: page 9 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - S13k: page 13 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - S13l: page 17 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - S13m: page 5 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - S13n: page 9 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - S13o: page 13 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
-  - S13p: page 17 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - S13a: page 5 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
+  - S13b: page 9 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
+  - S13c: page 13 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
+  - S13d: page 17 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
+  - S13e: page 5 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - S13f: page 9 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - S13g: page 13 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - S13h: page 17 of SIVZ_model_phi_latent_period_time_series_Prochlorochoccus_BS15.0_LOI0_m2-1800_mesotrophic.pdf
+  - S13i: page 5 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - S13j: page 9 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - S13k: page 13 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - S13l: page 17 of SIVRZ_model_phi_latent_period_time_series_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - S13m: page 5 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - S13n: page 9 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - S13o: page 13 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
+  - S13p: page 17 of SIVRZ_model_phi_latent_period_time_series_full-res_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_phir_mesotrophic.pdf
 - **Figure S14**
   - S14a to S14f: pages 13 to 18 of Scaled_PVZ_main_models.pdf
   - S14g and S14h: pages 22 and 23 of Scaled_PVZ_main_models.pdf
-  - S14i: page 44 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S14j: page 44 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-0.0_mesotrophic.pdf
+  - S14i: page 44 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S14j: page 44 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-0.0_mesotrophic.pdf
 - **Figure S15**
   - S15a to S15d: pages 1,2,4,5 of hist_abundances_Syn_Pro_virus_percentage_infected.pdf
   - S15e: page 3 of hist_abundances_Syn_Pro_virus_percentage_infected.pdf
 - **Figure S16**
   - S16a to S16i: pages 1 to 9 of Scaled_SIVZ_distances.pdf
 - **Figure S17**
-  - S17a: page 48 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
-  - S17b: page 61 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S17c: page 61 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S17d: page 49 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
-  - S17e: page 62 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S17f: page 62 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S17g: page 50 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS20.0_LOI0_m2-1800.0_mesotrophic.pdf
-  - S17h: page 63 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - S17i: page 63 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS20.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S17a: page 48 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - S17b: page 61 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S17c: page 61 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S17d: page 49 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - S17e: page 62 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S17f: page 62 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S17g: page 50 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.pdf
+  - S17h: page 63 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
+  - S17i: page 63 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
 
