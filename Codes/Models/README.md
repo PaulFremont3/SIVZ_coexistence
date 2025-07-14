@@ -134,6 +134,7 @@ Note that the message `cat: results_optimization_params/SIVZ_intracellular_res_o
 After running all simulations, the following .pdf and .txt files contain the figure panels and data to generate figure 2 to 6, figure S5 to S17 and Table 1 and 2.  
 
 ## 3.1. Figures
+Pages of figure panels are reported in this section. Figures were assembled using Inkscape 1.4.2
 - **Figure 2**
   - 2a: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic.pdf
   - 2b: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
