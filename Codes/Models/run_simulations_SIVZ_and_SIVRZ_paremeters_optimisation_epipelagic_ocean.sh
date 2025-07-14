@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 for u in {0..3};
 do
 	echo $u;
