@@ -8,7 +8,7 @@ All simulations were run on the Zaratan HPC cluster of the University of Marylan
 Python libraries: numpy, matplotlib, math, sys, copy, scipy, random  
 Python version: 3.12.9
 
-R packages: scales
+R packages: scales  
 R version 4.3.2
 
 # 1. FILES DESCRIPTION
