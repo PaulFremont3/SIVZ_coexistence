@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # for most figures: figure 2, 3d,e, 4, 6b-j, S5, S7, s8, s9, s10, s11, s12, s13, s16, s17 and data for: figure 5, S6, s14
 python SVZ_molar_model_phytotypes.py 3 0 mesotrophic 0 0
 python SVZ_molar_model_phytotypes.py 3 0 mesotrophic 1.4 0
