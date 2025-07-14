@@ -5,6 +5,9 @@ All simulations were run on the Zaratan HPC cluster of the University of Marylan
 R libraries: mgcv, nnet, Metrics  
 R version: 4.3.2
 
+You might need to install:
+https://www.gnu.org/software/libiconv/
+
 # 1. FILES DESCRIPTION
 
 ## 1.1. R scripts
