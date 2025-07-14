@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # remove file first
 if [[ ${4} == '1' ]]; then
