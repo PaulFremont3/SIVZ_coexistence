@@ -70,7 +70,7 @@ Compile the c++ script `generate_traits.cpp`:
 This will replace pre-uploaded files `Vs_5.txt`, `mumax_dutkiewicz_5.txt` and `Nc_dutkiewicz_5.txt`
 Generate the trait data:
 `./generate_traits.exe 5` (5 is the random seed)
-## 2.3. Generate life history traits data of viruses
+## 2.3. Generate life history traits data of virus-host pairs
 `traits_for_simulation.R`: to be run locally in Rstudio. This will replace originally pre-uploaded files (`model_burst_size_nn-gam.txt` and `model_latent_period_nn-gam.txt`)
 
 # 3. MANUSCRIPT FIGURE PANELS (PDFs)
