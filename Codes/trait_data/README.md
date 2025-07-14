@@ -2,7 +2,7 @@ This folder contains all R codes necessary to generate life history traits model
 
 All simulations were run on the Zaratan HPC cluster of the University of Maryland (https://hpcc.umd.edu/hpcc/zaratan.html).
 
-R libraries: mgcv, nnet, Metrics
+R libraries: mgcv, nnet, Metrics 
 R version: 4.3.2
 
 # 1. FILES DESCRIPTION
