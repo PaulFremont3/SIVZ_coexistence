@@ -94,9 +94,9 @@ In a HPC cluster (recommended), or locally (probably ~6-7 days of computation):
 ## 2.1. Run simulations of dynamics across the parameter space:  
 WARNING: this step will overwrite example data stored in `model_data/` and the files `coexistence_analysis_V_SIVZ_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic_Fluctuation_free_growth_rate.txt` and `coexistence_analysis_V_SIVZ_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic_Relative_non_linearity_I.txt`  
 &nbsp;&nbsp;&nbsp;&nbsp;`module load python`  
-&nbsp;&nbsp;&nbsp;&nbsp; run scripts using slurm: `./run_coexistence_simulations.sh` OR  
-&nbsp;&nbsp;&nbsp;&nbsp; run scripts using python in your terminal: `run_coexistence_simulations_python_commands.sh` (~5.5 days of computing)  
-&nbsp;&nbsp;&nbsp;&nbsp; This step will run all simulations necessary to generate figures of the coexistence diagram and some data that needs to be rescaled to generate some figures.
+&nbsp;&nbsp;&nbsp;&nbsp;- run scripts using slurm: `./run_coexistence_simulations.sh` OR  
+&nbsp;&nbsp;&nbsp;&nbsp;- run scripts using python in your terminal: `run_coexistence_simulations_python_commands.sh` (~5.5 days of computing)  
+&nbsp;&nbsp;&nbsp;&nbsp; This step will run all simulations necessary to generate figures of the coexistence diagram and some data that needs to be rescaled to generate some figures (already preloaded in `model_data/`).
 
 &nbsp;&nbsp;&nbsp;&nbsp;**Run times:**  
 &nbsp;&nbsp;&nbsp;&nbsp;- SVZ and SVRZ simulations across the adsorption rate parameter space: ~3 minutes  
