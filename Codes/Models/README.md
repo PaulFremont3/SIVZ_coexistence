@@ -101,7 +101,8 @@ WARNING: this step will overwrite example data stored in `model_data/` and the f
 &nbsp;&nbsp;&nbsp;&nbsp;**Run times:**  
 &nbsp;&nbsp;&nbsp;&nbsp;- SVZ and SVRZ simulations across the adsorption rate parameter space: ~3 minutes  
 &nbsp;&nbsp;&nbsp;&nbsp;- SIVZ and SIVRZ simulations across adsorption rate and latent period: ~2h30 to 3 hours  
-&nbsp;&nbsp;&nbsp;&nbsp;- SVRZ and SIVRZ across adsorption rate and resistance strength: ~3h30 to 5 hours 
+&nbsp;&nbsp;&nbsp;&nbsp;- SVRZ and SIVRZ across adsorption rate and resistance strength: ~3h30 to 5 hours  
+&nbsp;&nbsp;&nbsp;&nbsp;- MCT jobs: 6 hours each
 
 &nbsp;&nbsp;&nbsp;&nbsp;Before running all together, consider checking each job (SVZ, SIVZ, SVRZ, and SIVRZ) individually to ensure it works.
 
