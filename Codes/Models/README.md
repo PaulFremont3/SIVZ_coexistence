@@ -1,9 +1,10 @@
 In this directory: all python and R codes to:
 - run simulations of the SVZ, SIVZ, SVRZ and SIVRZ models,
-- the parameter otpimization procedure for 4 types of phytoplankton: *Prochlorococcus*, *Synechococcus*, a picoeukaryote, a small diatom,
-- the code to generate histograms of measured count concentrations of *Prochlorococcus*, *Synechococcus*, their viruses and percentage of infected cells (Data from Carlson *et al.* 2022, https://www.nature.com/articles/s41564-022-01088-x).
 - As an example, data from full or part of Figure 3, Figure 4, Figure S6, Figure S14 and Figure S16 are stored in the folder `model_data` so these figures can be directly reproduced by running `python make_figures_scaled.py main_models` (generating the files `Scaled_PVZ_FFT_and_Period.pdf`,  `Scaled_PVZ_main_models.pdf`,  `Scaled_SIVZ_coexistence.pdf`, and  `Scaled_SIVZ_distances.pdf` in <10 seconds)  
 - To reproduce other figures, simulations will have to be run
+- the parameter otpimization procedure for 4 types of phytoplankton: *Prochlorococcus*, *Synechococcus*, a picoeukaryote, a small diatom,
+- the code to generate histograms of measured count concentrations of *Prochlorococcus*, *Synechococcus*, their viruses and percentage of infected cells (Data from Carlson *et al.* 2022, https://www.nature.com/articles/s41564-022-01088-x).
+
 
 All simulations were run on the Zaratan HPC cluster of the University of Maryland (https://hpcc.umd.edu/hpcc/zaratan.html)
 
