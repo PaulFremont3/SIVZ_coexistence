@@ -91,10 +91,8 @@ Each file contains a description of the parameters taken as inputs: .sbatch file
 
 In a HPC cluster (recommended), or locally (probably ~6-7 days of computation):  
 
-## 2.1. Create in this directory a subfolder called `model_data` to store results:  
-&nbsp;&nbsp;&nbsp;&nbsp;`mkdir model_data`
-
-## 2.2. Run simulations of dynamics across the parameter space:  
+## 2.1. Run simulations of dynamics across the parameter space:  
+&nbsp;&nbsp;&nbsp;&nbsp; WARNING: this step will overwright example data stored in `model_data/` and the files `coexistence_analysis_V_SIVZ_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic_Fluctuation_free_growth_rate.txt` and `coexistence_analysis_V_SIVZ_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic_Relative_non_linearity_I.txt`
 &nbsp;&nbsp;&nbsp;&nbsp;`module load python`  
 &nbsp;&nbsp;&nbsp;&nbsp; run scripts using slurm: `./run_coexistence_simulations.sh` OR  
 &nbsp;&nbsp;&nbsp;&nbsp; run scripts using python in your terminal: `run_coexistence_simulations_python_commands.sh` (~5.5 days of computing)
@@ -107,30 +105,30 @@ In a HPC cluster (recommended), or locally (probably ~6-7 days of computation):
 
 &nbsp;&nbsp;&nbsp;&nbsp;Before running all together, consider checking each job (SVZ, SIVZ, SVRZ, and SIVRZ) individually to ensure it works.
 
-## 2.4. Generate scaled figures:  
+## 2.2. Generate scaled figures:  
 &nbsp;&nbsp;&nbsp;&nbsp;`python make_figures_scaled.py main_models`  
 &nbsp;&nbsp;&nbsp;&nbsp;This will generate figures that need to be scaled (necessary data previously saved in the `model_data/` folder).
 
-## 2.5. Generate figures of distributions of measured abundances of *Prochlorococcus* and *Synechococcus*, their virus and the percentage of infected cells from Carlson *et al.* 2022.
+## 2.3. Generate figures of distributions of measured abundances of *Prochlorococcus* and *Synechococcus*, their virus and the percentage of infected cells from Carlson *et al.* 2022.
 &nbsp;&nbsp;&nbsp;&nbsp;`Rscript histogram_abundances.R`
 
-## 2.6. Create a subfolder to store parameter optimization results:  
+## 2.4. Create a subfolder to store parameter optimization results:  
 &nbsp;&nbsp;&nbsp;&nbsp;`mkdir results_optimization_params/`
 
-## 2.7. Grid search to optimize parameters to target concentrations:  
+## 2.5. Grid search to optimize parameters to target concentrations:  
 &nbsp;&nbsp;&nbsp;&nbsp;`./run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;This will run optimization of parameters to minimize distance to target concentrations for the four phytoplankton types considered in the study:  
 &nbsp;&nbsp;&nbsp;&nbsp;a small diatom, a picoeukaryote, a *Synechococcus*, and a *Prochlorococcus*.  
 &nbsp;&nbsp;&nbsp;&nbsp;Results are stored in the `results_optimization_params/` folder.
 
-## 2.8. Concatenate files of optimization results:  
+## 2.6. Concatenate files of optimization results:  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Synechococcus 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Prochlorochoccus 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Eukaryote 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Diatom 0`
 Note that the message `cat: results_optimization_params/SIVZ_intracellular_res_optimization_*organism*_*num*.txt: No such file or directory` is normal (no realistic concentrations found in this chunk)
 
-## 2.8. Run the analysis of the optimization:  
+## 2.7. Run the analysis of the optimization:  
 &nbsp;&nbsp;&nbsp;&nbsp;`sbatch run_analysis_optimization.sbatch 0`  
 &nbsp;&nbsp;&nbsp;&nbsp; This will extract the best and 200 best parameter combinations for each phytoplankton type
 
