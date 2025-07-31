@@ -110,6 +110,7 @@ if __name__ == '__main__':
 
     # Temperature dependency
     T_dep=1 # no T_dep in idealized case
+    R=1 # default nutrient
     if otype != '0':
         suffix+='_'+otype
         tauT = 0.8
@@ -155,7 +156,6 @@ if __name__ == '__main__':
 
     N_res=10 # nutrient concentration below MLD
     dN=0.1 # surface-deep mixing rate
-    R=0.5 # nutrient concentration
     if otype=='upwelling':
         dN=0.5
         SN=N_res*dN
