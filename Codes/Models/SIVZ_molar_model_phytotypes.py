@@ -132,6 +132,7 @@ if __name__ == '__main__':
         suffix+='_IG'+str(alph)
     if big=='1':
         suffix+='_big'
+    R=1
     if otype != '0':
         suffix+='_'+otype
         tauT = 0.8
@@ -187,7 +188,6 @@ if __name__ == '__main__':
     
     N_res=10 # nutrient concentration below MLD
     dN=0.1 # surface-deep mixing rate
-    R=0.5 # nutrient concentration
     if otype=='upwelling':
         dN=0.5
         SN=N_res*dN
