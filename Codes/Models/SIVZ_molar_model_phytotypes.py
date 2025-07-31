@@ -132,7 +132,7 @@ if __name__ == '__main__':
         suffix+='_IG'+str(alph)
     if big=='1':
         suffix+='_big'
-    R=1
+    R=1 # default nutrient concentration
     if otype != '0':
         suffix+='_'+otype
         tauT = 0.8
