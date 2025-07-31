@@ -115,7 +115,7 @@ if __name__ == '__main__':
     if m2!=0:
         suffix+='_m2-'+str(m2)
 
-    R=0.5 # nutrient concentration
+    R=1 # default nutrient concentration
     # temperature dependencey
     if otype != '0':
         suffix+='_'+otype
