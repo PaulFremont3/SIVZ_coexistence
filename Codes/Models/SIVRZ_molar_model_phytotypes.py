@@ -131,7 +131,7 @@ if __name__ == '__main__':
 
   # temperature dependency
   Temp=20
-  R=0.5
+  R=1
   T_dep=1
   if otype != '0':
       suffix+='_'+otype
