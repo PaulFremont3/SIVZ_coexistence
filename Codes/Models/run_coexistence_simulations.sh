@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# for most figures: figure 2, 3d,e, 4, 6b-j, S5, S7, s8, s9, s10, s11, s12, s13, s16, s17 and data for: figure 5, S6, s14
+# for most figures: figure 2, 3g,h, 5, 6b-j, S5, S7, s8, s9, s10, s11, s12, s13, s16, s17 and data for: figure 5, S6, s14
 sbatch run_SVZ_molar_model_phytotypes.sbatch 3 0 mesotrophic 0 0
 sbatch run_SVZ_molar_model_phytotypes.sbatch 3 0 mesotrophic 1.4 0
 sbatch run_SVZ_molar_model_phytotypes.sbatch 3 0 mesotrophic 0 1800
@@ -31,8 +31,17 @@ sbatch run_SIVRZ_molar_model_phytotypes.sbatch 3 0 0.8 SIVRZ mesotrophic 0 1800 
 sbatch run_SIVRZ_molar_model_phytotypes.sbatch 3 0 0.8 SIVRZ mesotrophic 1.4 1800 lp_phir 0
 
 
-# figure 2a-c
-sbatch run_SIVZ_MCT.sbatch 3 0 mesotrophic 0 1 0 
+# generate data for figure 3a-f
+sbatch run_SIVZ_MCT.sbatch 3 0 mesotrophic 0 1 0 0
+sbatch run_SIVZ_MCT.sbatch 3 0 mesotrophic 0 1 0 1
+sbatch run_SIVZ_MCT.sbatch 3 0 mesotrophic 0 1 0 2
+sbatch run_SIVZ_MCT.sbatch 3 0 mesotrophic 0 1 0 3
+sbatch run_SIVZ_MCT.sbatch 3 0 mesotrophic 0 1 0 4
+sbatch run_SIVZ_MCT.sbatch 3 0 mesotrophic 0 1 0 5
+sbatch run_SIVZ_MCT.sbatch 3 0 mesotrophic 0 1 0 6
+sbatch run_SIVZ_MCT.sbatch 3 0 mesotrophic 0 1 0 7
+sbatch run_SIVZ_MCT.sbatch 3 0 mesotrophic 0 1 0 8
+sbatch run_SIVZ_MCT.sbatch 3 0 mesotrophic 0 1 0 9
 
 # figure s8, figure 4 and figure s13 (time series)
 sbatch run_SVRZ_molar_model_phytotypes.sbatch 3 mesotrophic 0.8 0 0 phir no
