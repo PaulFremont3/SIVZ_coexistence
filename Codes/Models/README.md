@@ -234,9 +234,10 @@ Pages of figure panels are reported in this section. Figures were assembled usin
 ## 3.3. Supplementary figures
 
 - **Figure S1** to **Figure S4**: see trait_data folder
-- **Figure S5** SIVZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic.pdf
-  - S5a: pages 4, 6 and 7
-  - S5b: pages 78, 80 and 81
+- **Figure S5** SIVZ_model_phi_latent_period_time_series_coex_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic.pdf 
+  - S5a: pages 17, 19 and 20
+  - S5b: pages 48, 50 and 51
+  - WARNING: this figure might differ from one system to another (numerical instability)
 - **Figure S6** Scaled_PVZ_FFT_and_Period.pdf
   - S6a to S6h: pages 1 to 8
 - **Figure S7**
