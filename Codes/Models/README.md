@@ -107,7 +107,7 @@ WARNING: this step will overwrite example data stored in `model_data/` and the f
 
 &nbsp;&nbsp;&nbsp;&nbsp;Before running all together, consider checking each job (SVZ, SIVZ, SVRZ, and SIVRZ) individually to ensure it works.
 
-## 2.3. Generate MCT figures (figure 3a-f):
+## 2.2. Generate MCT figures (figure 3a-f):
 &nbsp;&nbsp;&nbsp;&nbsp;`python MCT_replicates_analysis.py`  
 &nbsp;&nbsp;&nbsp;&nbsp; This will analyse the replicates of the MCT analysis and output figure 3a-f and the sensitivity og the Chesson criterion
 
