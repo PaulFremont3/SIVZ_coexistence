@@ -57,6 +57,7 @@ For each file, pdf outputs are specified and *\*suffix\** refers to a suffix to 
       - Scaled_PVZ_FFT_and_Perdiod.pdf
       - Scaled_SIVZ_coexistence.pdf
       - Scaled_SIVZ_distances.pdf
+  - `MCT_replicates_analysis.py`: generate figure3a-f (MCT analysis)
   - `SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.py`: file to run the optimization of parameterization of the SIVZ and SIVRZ models with respect to target concentrations (grid search)
   - `analysis_optimization.py`: analyze the results of the optimization =>  generates data for table 1 and 2
 
@@ -106,30 +107,34 @@ WARNING: this step will overwrite example data stored in `model_data/` and the f
 
 &nbsp;&nbsp;&nbsp;&nbsp;Before running all together, consider checking each job (SVZ, SIVZ, SVRZ, and SIVRZ) individually to ensure it works.
 
-## 2.2. Generate scaled figures:  
+## 2.3. Generate MCT figures (figure 3a-f):
+&nbsp;&nbsp;&nbsp;&nbsp;`python MCT_replicates_analysis.py`  
+&nbsp;&nbsp;&nbsp;&nbsp; This will analyse the replicates of the MCT analysis and output figure 3a-f and the sensitivity og the Chesson criterion
+
+## 2.3. Generate scaled figures:  
 &nbsp;&nbsp;&nbsp;&nbsp;`python make_figures_scaled.py main_models`  
 &nbsp;&nbsp;&nbsp;&nbsp;This will generate figures that need to be scaled (necessary data previously saved in the `model_data/` folder).
 
-## 2.3. Generate figures of distributions of measured abundances of *Prochlorococcus* and *Synechococcus*, their virus and the percentage of infected cells from Carlson *et al.* 2022.
+## 2.4. Generate figures of distributions of measured abundances of *Prochlorococcus* and *Synechococcus*, their virus and the percentage of infected cells from Carlson *et al.* 2022.
 &nbsp;&nbsp;&nbsp;&nbsp;`Rscript histogram_abundances.R`
 
-## 2.4. Create a subfolder to store parameter optimization results:  
+## 2.5. Create a subfolder to store parameter optimization results:  
 &nbsp;&nbsp;&nbsp;&nbsp;`mkdir results_optimization_params/`
 
-## 2.5. Grid search to optimize parameters to target concentrations:  
+## 2.6. Grid search to optimize parameters to target concentrations:  
 &nbsp;&nbsp;&nbsp;&nbsp;`./run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;This will run optimization of parameters to minimize distance to target concentrations for the four phytoplankton types considered in the study:  
 &nbsp;&nbsp;&nbsp;&nbsp;a small diatom, a picoeukaryote, a *Synechococcus*, and a *Prochlorococcus*.  
 &nbsp;&nbsp;&nbsp;&nbsp;Results are stored in the `results_optimization_params/` folder.
 
-## 2.6. Concatenate files of optimization results:  
+## 2.7. Concatenate files of optimization results:  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Synechococcus 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Prochlorochoccus 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Eukaryote 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Diatom 0`
 Note that the message `cat: results_optimization_params/SIVZ_intracellular_res_optimization_*organism*_*num*.txt: No such file or directory` is normal (no realistic concentrations found in this chunk)
 
-## 2.7. Run the analysis of the optimization:  
+## 2.8. Run the analysis of the optimization:  
 &nbsp;&nbsp;&nbsp;&nbsp;`sbatch run_analysis_optimization.sbatch 0`  
 &nbsp;&nbsp;&nbsp;&nbsp; This will extract the best and 200 best parameter combinations for each phytoplankton type
 
