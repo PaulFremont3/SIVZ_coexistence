@@ -31,8 +31,17 @@ python SIVRZ_molar_model_phytotypes.py 3 0 0.8 SIVRZ mesotrophic 0 1800 lp_phir 
 python SIVRZ_molar_model_phytotypes.py 3 0 0.8 SIVRZ mesotrophic 1.4 1800 lp_phir 0
 
 
-# figure 2a-c
-python SIVZ_MCT.py 3 0 mesotrophic 0 1 0 
+# generate data for figure 3a-f
+python SIVZ_MCT.py 3 0 mesotrophic 0 1 0 0
+python SIVZ_MCT.py 3 0 mesotrophic 0 1 0 1
+python SIVZ_MCT.py 3 0 mesotrophic 0 1 0 2
+python SIVZ_MCT.py 3 0 mesotrophic 0 1 0 3
+python SIVZ_MCT.py 3 0 mesotrophic 0 1 0 4
+python SIVZ_MCT.py 3 0 mesotrophic 0 1 0 5
+python SIVZ_MCT.py 3 0 mesotrophic 0 1 0 6
+python SIVZ_MCT.py 3 0 mesotrophic 0 1 0 7
+python SIVZ_MCT.py 3 0 mesotrophic 0 1 0 8
+python SIVZ_MCT.py 3 0 mesotrophic 0 1 0 9
 
 # figure s8, figure 4 and figure s13 (time series)
 python SVRZ_molar_model_phytotypes.py 3 mesotrophic 0.8 0 0 phir no
