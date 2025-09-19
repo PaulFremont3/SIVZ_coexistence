@@ -1,8 +1,8 @@
 In this directory: all python and R codes to:
 - run simulations of the SVZ, SIVZ, SVRZ and SIVRZ models,
-- example data in the folder `model_data/` from Figure 4, Figure 7a-o, Figure S7, Figure S9, Figure S10, Figure S12, Figure S14, and Figure S16 are stored in the folder `model_data` so these figures can be directly reproduced by running:  
-   - `python make_figures_scaled.py main_models` for Figure 7a-o, Figure S7, Figure S14 and Figure S16: generating the files `Scaled_PVZ_FFT_and_Period.pdf`,  `Scaled_PVZ_main_models.pdf`,  `Scaled_SIVZ_coexistence.pdf`, and  `Scaled_SIVZ_distances.pdf` in <10 seconds)
-   -  `python make_state_diagrams_figures.py` for Figure 4, Figure S9, Figure S12 and Figure S14: generating the files `State_diagrams_main_models.pdf`, `State_diagrams_resistance_models.pdf`, `State_diagrams_phytoplankton_types_models.pdf`, `State_diagrams_phytoplankton_types_resistance_models.pdf`, `State_diagrams_phytoplankton_types_th.pdf`, and `State_diagrams_phytoplankton_types_resistance_th.pdf`)  
+- example data in the folder `model_data/` from Figure 4, Figure 7a-o, Figure S7, Figure s9, Figure s10, Figure s12, Figure s14, and Figure s16 are stored in the folder `model_data` so these figures can be directly reproduced by running:  
+   - `python make_figures_scaled.py main_models` for Figure 7a-o, Figure S7, Figure s14 and Figure s16: generating the files `Scaled_PVZ_FFT_and_Period.pdf`,  `Scaled_PVZ_main_models.pdf`,  `Scaled_SIVZ_coexistence.pdf`, and  `Scaled_SIVZ_distances.pdf` in <10 seconds)
+   -  `python make_state_diagrams_figures.py` for Figure 4, Figure s9, Figure s12 and Figure s14: generating the files `State_diagrams_main_models.pdf`, `State_diagrams_resistance_models.pdf`, `State_diagrams_phytoplankton_types_models.pdf`, `State_diagrams_phytoplankton_types_resistance_models.pdf`, `State_diagrams_phytoplankton_types_th.pdf`, and `State_diagrams_phytoplankton_types_resistance_th.pdf`)  
 - to reproduce other figures, simulations will have to be run
 - the parameter otpimization procedure for 4 types of phytoplankton: *Prochlorococcus*, *Synechococcus*, a picoeukaryote, a small diatom,
 - the code to generate histograms of measured count concentrations of *Prochlorococcus*, *Synechococcus*, their viruses and percentage of infected cells (Data from Carlson *et al.* 2022, https://www.nature.com/articles/s41564-022-01088-x).
@@ -53,12 +53,20 @@ For each file, pdf outputs are specified and *\*suffix\** refers to a suffix to 
   - `SIVZ_MCT.py`: code to run the SIVZ Modern coexistence theory analysis
     - outputs:
       - SIVZ_model_phi_latent_period_*\*suffix\**_MCT.pdf, effects from Modern Coexistence Theory (MCT, Ellner *et al.* 2019, https://onlinelibrary.wiley.com/doi/abs/10.1111/ele.13159) across the parameter space
-  - `make_figures_scaled.py`: code to create figures with same scales (from different models): => figure 5, s6, s14, and s16
+  - `make_figures_scaled.py`: code to create figures with same scales (from different models): => figure 7a-o, s7, s14, and s16
     - outputs:
-      - Scaled_PVZ_main_models.pdf
-      - Scaled_PVZ_FFT_and_Perdiod.pdf
-      - Scaled_SIVZ_coexistence.pdf
-      - Scaled_SIVZ_distances.pdf
+      - `Scaled_PVZ_main_models.pdf`
+      - `Scaled_PVZ_FFT_and_Perdiod.pdf`
+      - `Scaled_SIVZ_coexistence.pdf`
+      - `Scaled_SIVZ_distances.pdf`
+  - `make_state_diagrams_figures.py`: code to create state diagram figures: Figure 4, Figure s9, Figure s12 and Figure s14
+     - outputs:
+       - `State_diagrams_main_models.pdf`
+       - `State_diagrams_resistance_models.pdf`
+       - `State_diagrams_phytoplankton_types_models.pdf`
+       - `State_diagrams_phytoplankton_types_resistance_models.pdf`
+       - `State_diagrams_phytoplankton_types_th.pdf`
+       - `State_diagrams_phytoplankton_types_resistance_th.pdf`
   - `MCT_replicates_analysis.py`: generate figure3a-f (MCT analysis)
   - `SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.py`: file to run the optimization of parameterization of the SIVZ and SIVRZ models with respect to target concentrations (grid search)
   - `analysis_optimization.py`: analyze the results of the optimization =>  generates data for table 1 and 2
