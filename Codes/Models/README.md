@@ -88,7 +88,8 @@ Each file contains a description of the parameters taken as inputs: .sbatch file
 
 ## 1.4. .sh scripts: 
   For all .sh files, first add executable permissions: chmod +x name_of_file.sh
-  - `run_coexistence_simulations.sh` : runs all simulations necessary to generate figure 2, 4, 6b-j, S5, S7, s8, s9, s10, s11, s12, s13, s17 and data for: figure 5, 3d,e, S6, s14, s16
+  - `run_coexistence_simulations.sh` : runs all simulations necessary to generate figures 3, 5, 6, 7p-u, 8, s5, s6, s8, s11, s13, s15, s16i-j, s18 and data for 4, 7a-o, s7, s9, s10, s12, s14, s16a-h
+  - `run_coexistence_simulations_python_commands.sh`: runs all simulations necessary to generate figures
   - `run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh`: used to run in parallel  the optimization of parameters, it divides the grid search in 50 equal chunks of parameters combinations e.g. if 10^6 parameter combination are tested, one job will test 10^6/50= 20000 combinations 
   - `concatenate_results_optimisation_params.sh`: used to concatenate result files from the optimization
   - for all .sh files, give permission to execute using chmod +x file.sh
@@ -119,32 +120,36 @@ WARNING: this step will overwrite example data stored in `model_data/` and the f
 
 ## 2.2. Generate MCT figures (figure 3a-f):
 &nbsp;&nbsp;&nbsp;&nbsp;`python MCT_replicates_analysis.py`  
-&nbsp;&nbsp;&nbsp;&nbsp; This will analyse the replicates of the MCT analysis and output figure 3a-f and the sensitivity og the Chesson criterion
+&nbsp;&nbsp;&nbsp;&nbsp; This will analyse the replicates of the MCT analysis and output pdfs for figure 4 and the sensitivity of the Chesson criterion
 
 ## 2.3. Generate scaled figures:  
 &nbsp;&nbsp;&nbsp;&nbsp;`python make_figures_scaled.py main_models`  
-&nbsp;&nbsp;&nbsp;&nbsp;This will generate figures that need to be scaled (necessary data previously saved in the `model_data/` folder).
+&nbsp;&nbsp;&nbsp;&nbsp;This will generate figures that need to be scaled (necessary data previously saved in the `model_data/` folder, running will override).
 
-## 2.4. Generate figures of distributions of measured abundances of *Prochlorococcus* and *Synechococcus*, their virus and the percentage of infected cells from Carlson *et al.* 2022.
+## 2.3. Generate state diagram figures:  
+&nbsp;&nbsp;&nbsp;&nbsp;`python make_state_diagrams_figures.py main_models`  
+&nbsp;&nbsp;&nbsp;&nbsp;This will generate all state diagram figures (necessary data previously saved in the `model_data/` folder, running will override).
+
+## 2.5. Generate figures of distributions of measured abundances of *Prochlorococcus* and *Synechococcus*, their virus and the percentage of infected cells from Carlson *et al.* 2022.
 &nbsp;&nbsp;&nbsp;&nbsp;`Rscript histogram_abundances.R`
 
-## 2.5. Create a subfolder to store parameter optimization results:  
+## 2.6. Create a subfolder to store parameter optimization results:  
 &nbsp;&nbsp;&nbsp;&nbsp;`mkdir results_optimization_params/`
 
-## 2.6. Grid search to optimize parameters to target concentrations:  
+## 2.7. Grid search to optimize parameters to target concentrations:  
 &nbsp;&nbsp;&nbsp;&nbsp;`./run_simulations_SIVZ_and_SIVRZ_paremeters_optimisation_epipelagic_ocean.sh 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;This will run optimization of parameters to minimize distance to target concentrations for the four phytoplankton types considered in the study:  
 &nbsp;&nbsp;&nbsp;&nbsp;a small diatom, a picoeukaryote, a *Synechococcus*, and a *Prochlorococcus*.  
 &nbsp;&nbsp;&nbsp;&nbsp;Results are stored in the `results_optimization_params/` folder.
 
-## 2.7. Concatenate files of optimization results:  
+## 2.8. Concatenate files of optimization results:  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Synechococcus 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Prochlorochoccus 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Eukaryote 0`  
 &nbsp;&nbsp;&nbsp;&nbsp;`./concatenate_results_optimisation_params.sh SIVZ intracellular Diatom 0`
 Note that the message `cat: results_optimization_params/SIVZ_intracellular_res_optimization_*organism*_*num*.txt: No such file or directory` is normal (no realistic concentrations found in this chunk)
 
-## 2.8. Run the analysis of the optimization:  
+## 2.9. Run the analysis of the optimization:  
 &nbsp;&nbsp;&nbsp;&nbsp;`sbatch run_analysis_optimization.sbatch 0`  
 &nbsp;&nbsp;&nbsp;&nbsp; This will extract the best and 200 best parameter combinations for each phytoplankton type
 
@@ -154,31 +159,9 @@ After running all simulations, the following .pdf and .txt files contain the fig
 
 ## 3.1. Figures
 Pages of figure panels are reported in this section. Figures were assembled using Inkscape 1.4.2
-- **Figure 2**
-  - 2a: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic.pdf
-  - 2b: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
-  - 2c: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_no-dz2_m2-1800.0_mesotrophic.pdf
-  - 2d: page 1 of SVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.pdf
-  - 2e: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_no-dz2_mesotrophic.pdf
-  - 2f: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_mesotrophic.pdf
-  - 2g: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_no-dz2_mesotrophic.pdf
-  - 2h: page 1 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_m2-1800.0_mesotrophic.pdf
-  - 2i: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-5.0.pdf
-  - 2j: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_mesotrophic_phir-5.0.pdf
-  - 2k: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_m2-1800.0_mesotrophic_phir-5.0.pdf
-  - 2l: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_mesotrophic_phir-5.0.pdf
-  - 2m: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_no-dz2_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 2n: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 2o: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_no-dz2_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 2p: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-5.0_mesotrophic.pdf
-  - 2q: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_mesotrophic_phir-0.0.pdf
-  - 2r: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_mesotrophic_phir-0.0.pdf
-  - 2s: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_no-dz2_m2-1800.0_mesotrophic_phir-0.0.pdf
-  - 2t: page 1 of SVRZ_model_phi_versus_phir_Prochlorochoccus_BS15.0_LOI0_GR-R0.8_mesotrophic_phir-0.0.pdf
-  - 2u: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_no-dz2_lp_phi-ratio-0.0_mesotrophic.pdf
-  - 2v: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_lp_phi-ratio-0.0_mesotrophic.pdf
-  - 2w: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_no-dz2_m2-1800_lp_phi-ratio-0.0_mesotrophic.pdf
-  - 2x: page 1 of SIVRZ_model_phi_versus_latent_period_Prochlorochoccus_LP0.37_BS15.0_LOI0_GR-R0.8_m2-1800_lp_phi-ratio-0.0_mesotrophic.pdf
+- **Figure 3**
+   -    
+- **Figure 4**: a to x: page 1 to 24 of `State_diagrams_main_models.pdf`
 - **Figure 3**
   - 3a: page 20 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_no-dz2_no-dv2_mesotrophic_MCT.pdf
   - 3b: page 19 of SIVZ_model_phi_latent_period_Prochlorochoccus_BS15.0_LOI0_no-dz2_no-dv2_mesotrophic_MCT.pdf
