@@ -126,7 +126,7 @@ WARNING: this step will overwrite example data stored in `model_data/` and the f
 &nbsp;&nbsp;&nbsp;&nbsp;`python make_figures_scaled.py main_models`  
 &nbsp;&nbsp;&nbsp;&nbsp;This will generate figures that need to be scaled (necessary data previously saved in the `model_data/` folder, running will override).
 
-## 2.3. Generate state diagram figures:  
+## 2.4. Generate state diagram figures:  
 &nbsp;&nbsp;&nbsp;&nbsp;`python make_state_diagrams_figures.py main_models`  
 &nbsp;&nbsp;&nbsp;&nbsp;This will generate all state diagram figures (necessary data previously saved in the `model_data/` folder, running will override).
 
