@@ -87,7 +87,7 @@ def target_concentrations(indice):
     if indice ==3:
         target_conc_u=[4e8, 2e9, 4e5]
         target_conc_m=[2e8, 1e9, 2e5] # 1e5
-        target_conc_o=[1e8, 5e8, 1e5] # 1e4
+        target_conc_o=[1.5e8, 5e8, 1e5] # 1e4
     if indice==2:
         target_conc_u=[4e7, 2e9, 4e5]
         target_conc_m=[5e7, 1e9, 2e5]
