@@ -1,5 +1,7 @@
 data=read.table('carlson_data_cyanobacteria.txt', sep='\t', header = T)
 data_v=read.table('carlson_data_virus_and_percentage_infected.txt', sep='\t', header = T)
+data=data[data$Latitude<33,]
+data_v=data_v[data_v$Latitude<33,]
 
 pdf('hist_abundances_Syn_Pro_virus_percentage_infected.pdf')
 hist(data$Prochlorococcus..cells.mL.[data$Prochlorococcus..cells.mL.!=0]*1000, breaks=20, col=scales::alpha('green', 0.5),
