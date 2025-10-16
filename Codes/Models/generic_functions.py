@@ -41,7 +41,7 @@ def concentration_ranges(indice, otype):
         V_cond_high=1e10
         Z_cond_low=1e3
         Z_cond_high=1e6
-        I_cond_high=5
+        I_cond_high=10
         I_cond_low=0.5
         if otype=='oligotrophic':
             I_cond_low=0
@@ -63,7 +63,7 @@ def concentration_ranges(indice, otype):
             V_cond_high=1e10
         Z_cond_low=1e3
         Z_cond_high=1e6
-        I_cond_high=5
+        I_cond_high=10
         if indice==0:
             I_cond_high=50
         I_cond_low=0.5
