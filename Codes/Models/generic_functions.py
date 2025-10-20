@@ -252,9 +252,14 @@ def phivs_encounter(virus_radius, Host_volume, Te,indice):
         u_host=pow( 10,0.4 + 0.8*mt.log10(2*Host_radius*1e-4))*1e-2 # host speed in cm.s-1 then m.s-1
     else:
         u_host=1e-6
+        
+    if indice in [0,1]:
+        phi_e_a=pi*u_host*(Host_radius*1e-6+virus_radius*1e-9)**2+4*pi*(D_pred+D_prey)*(Host_radius*1e-6+virus_radius*1e-9)
+        phi_e=4*pi*(D_pred+D_prey)*(Host_radius*1e-6+virus_radius*1e-9)*0.5*(1+pow(1+2*u_host*Host_radius*1e-6/D_pred, 1/3))
+    else:
+        phi_e_a=4*pi*(D_pred+D_prey)*(Host_radius*1e-6+virus_radius*1e-9)
+        phi_e=4*pi*(D_pred+D_prey)*(Host_radius*1e-6+virus_radius*1e-9)
 
-    phi_e_a=pi*u_host*(Host_radius*1e-6+virus_radius*1e-9)**2+4*pi*(D_pred+D_prey)*(Host_radius*1e-6+virus_radius*1e-9)
-    phi_e=4*pi*Host_radius*1e-6*D_pred*0.5*(1+pow(1+2*u_host*Host_radius*1e-6/D_pred, 1/3))
     phi_e_a=phi_e_a*86400*1000
     phi_e=phi_e*86400*1000
 
