@@ -32,7 +32,7 @@ def dSIVZ(St, It,Vt, Zt, dt,mu, mui, eta, beta, phi, d, m,m2, Qv, Qp,Qz,  eps,ep
         gV=(1/eta)*beta*It/Vt*(Qv/Qp)-(m+phi*St*1/Qp)-m2*Vt
     else:
         gV=0
-    npp=(mu-d)*St
+    npp=mu*St
     return dS, dI, dV, dZ, mZ, mV, gZ, gV, npp
 
 # runge lutta 4
