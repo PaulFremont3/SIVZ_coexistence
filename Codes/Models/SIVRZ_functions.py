@@ -24,7 +24,7 @@ def dSIVRZ(St, It,Vt,Rt, Zt,dt, mu, mui, eta, beta, phi,ds,m,m2, Qv, Qp,  eps, e
     else:
         pi=0
     mV=pi/eta #weighted mortality linked to virus
-    npp=(mu-ds)*St+(mur-ds)*Rt
+    npp=mu*St+mur*Rt
     return dS, dI, dV, dR, dZ, mZ, mV, npp
 
 # runge kutta 4 integration
